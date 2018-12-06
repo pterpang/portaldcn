@@ -14,6 +14,10 @@
 							<a class="btn bg-blue takejob" href="#" url="{{Request::URL()}}/take">
 								<i class="material-icons" style="margin-right: 5px">assignment</i>Take
 							</a>
+                        <?php elseif ($parentProgress == 100):?>
+                            <a class="btn bg-blue" href="#" url="#" disabled="disabled">
+                                <i class="material-icons" style="margin-right: 5px">check</i>Complete
+                            </a>
 						<?php else: ?>
 							<a class="btn bg-blue" href="#" url="#" disabled="disabled">
 								<i class="material-icons" style="margin-right: 5px">hourglass_full</i>On progress

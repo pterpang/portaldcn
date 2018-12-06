@@ -22,7 +22,6 @@ class TPController extends Controller
         }
         return view('services.requestList', compact('activeClasses', 'serviceList'));
     }
-
 	
 	//////////////////////////////////////////////////
 	//Services Section								//
@@ -69,7 +68,7 @@ class TPController extends Controller
         $activeClasses = ['tp_active', 'tp_services_active', 'tp_deviceconnection_active'];
         $parentProgress = AdditionalHelper::getParentProgress($id);
         $otherService = AdditionalHelper::getOtherServiceById($id);
-        return view('services.deviceconnection.table', compact('activeClasses', 'serviceDetail', 'parentProgress', 'otherService'));
+        return view('services.deviceConnection.table', compact('activeClasses', 'serviceDetail', 'parentProgress', 'otherService'));
     }
 	
     public function editDeviceConnection($id)

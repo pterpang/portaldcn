@@ -74,6 +74,8 @@
 													<a url="{{Request::url() . '/' . $row->id . '/take'}}" href="#" class="btn bg-blue takejob">
 														<i class="material-icons" style="margin-right: 5px">assignment</i>Take
 													</a>
+												<?php elseif(AdditionalHelper::getParentProgress($row->id) == 100):?>
+													<div align="center" class="col-teal status status-complete">Complete</div>
 												<?php else: ?>
 													<div align="center" class="col-teal status status-complete">On progress</div>
 													<!-- <button url="#" class="btn bg-teal status" disabled="disabled">
