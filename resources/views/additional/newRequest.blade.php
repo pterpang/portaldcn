@@ -168,8 +168,8 @@ active
 													<th>No.</th>
 													<th>Source</th>
 													<th>Destination</th>
-													<th>Port Number</th>                
 													<th>Port Type</th>                
+													<th>Port Number</th>                
 													<th>Direction</th>              
 													<th>Action</th>              
 													<th>Description</th>
@@ -256,7 +256,7 @@ active
 									</div>
 								</div>
 
-								<div class="panel mainPanel" id="panel-h2h"   sign="dtcb3"  style="display: none">
+								<div class="panel mainPanel panel-hosttohost" id="panel-h2h"   sign="dtcb3"  style="display: none">
 									<div class="panel-heading bg-blue-grey" role="tab" id="headingThree_192">
 										<h4 class="panel-title">
 											<!-- <input name="checked-panel" id="dtcb3" class="filled-in pull-left chk-col-green check-panel" data-parent="#accordion_1921" type="checkbox" style="display:inline;"><label for="dtcb3" style="display:inline;margin-left: 5px; width: 10px;"></label>                                                     -->
@@ -278,6 +278,7 @@ active
 													<th>Partner Server IP</th>		
 													<th>IP P2P BCA</th>		
 													<th>IP P2P Partner</th>
+													<th>Protocol</th>
 													<th>App. Port</th>		
 													<th>App. Name</th>
 													<th>Direction</th>
@@ -287,18 +288,46 @@ active
 													<tr id="cloneRow" style="display:none">
 														<td class="tdNo"></td>
 														<td class="editable tdPartner h2h_nama_partner"></td>
-														<td class="editable tdLink h2h_link_komunikasi"></td>
-														<td class="editable tdSite h2h_site"></td>
+														<td class="editable tdLink">
+															<select class="form-control h2h_link_komunikasi">
+																<option value="Telkom">Telkom</option>
+																<option value="Biznet">Biznet</option>                      
+																<option value="Icon">Icon</option>
+																<option value="CBN">CBN</option>                      
+																<option value="Iforte">Iforte</option>
+																<option value="Rintis">Rintis</option>                      
+																<option value="Indosat">Indosat</option>
+																<option value="Icon">VPN Internet</option>
+															</select>
+														</td>
+														<td class="editable tdSite h2h_site">
+															<input id="h2h_site_wsa2" class="filled-in" type="checkbox" name="h2h_site" value="WSA2">
+															<label for="h2h_site_wsa2">Wisma Asia 2</label><br/>
+															<input id="h2h_site_mbca" class="filled-in" type="checkbox" name="h2h_site" value="MBCA">
+															<label for="h2h_site_mbca">Menara BCA</label><br/>
+															<input id="h2h_site_wsby" class="filled-in" type="checkbox" name="h2h_site" value="GRHA">
+															<label for="h2h_site_wsby">Grha Asia Surabaya</label>							
+														</td>
 														<td class="editable tdBCAServerIP h2h_ip_server_bca"></td>
 														<td class="editable tdPartnerServerIP h2h_ip_server_partner"></td>
 														<td class="editable tdIPP2PBCA h2h_ip_p2p_bca"></td>
 														<td class="editable tdIPP2PPartner h2h_ip_p2p_partner"></td>
+														<td class="tdPortNumber" style="width: 200px">
+															<select class="form-control portType tdPortType spk h2h_protocol">
+																<option value="TCP">TCP</option>
+																<option value="UDP">UDP</option>                      
+																<option value="TCP-UDP">TCP-UDP</option>                      
+																<option value="ICMP">ICMP</option>
+																<option value="IP">IP</option>                      
+															</select>
+														</td>
 														<td class="editable tdAppPort h2h_port_aplikasi"></td>
 														<td class="editable tdAppName h2h_nama_aplikasi"></td>
 														<td class="tdDirection">
-															<select class="form-group h2h_arah_akses">
-																<option value="Inbound">Inbound</option>
-																<option value="Outbound">Outbound</option>                      
+															<select class="form-control h2h_arah_akses">
+																<option value="Partner to BCA">Partner to BCA</option>
+																<option value="BCA to Partner">BCA to Partner</option>                      
+																<option value="Both">Both</option>                      				
 															</select>
 														</td>
 														<td align="center"><button class="btn btn-danger btn-sm"><i class="material-icons">close</i></button></td>                     
@@ -993,7 +1022,7 @@ active
 			$("textarea, select").attr("disabled", "disabled");
 
 
-			$(".panel-openport").on('change', '.tdPortType', function(){
+			$(".panel-openport, .panel-hosttohost").on('change', '.tdPortType', function(){
 				if( $(this).val() == "IP" || $(this).val() == "ICMP")	{
 					tdDis = $(this).parent().next();
 					tdDis.html("");
@@ -1283,6 +1312,40 @@ active
 				}
 			});
 
+			function isValidPort(port){
+				if(Number(port) >= 1 && Number(port) <= 65535)
+					return true;
+				return false;
+			}
+
+			function isHostIp(str){
+				chunk = str.split(".");
+				if(chunk.length == 4){
+					for(i=0;i<4;i++){
+						if( Number(chunk[i]) < 0 || Number(chunk[i]) > 255 ){
+							return false;
+						}
+					}
+					return true;
+				}else{
+					return false;
+				}
+			}
+
+			function blankArea(arr){
+				errFlag = 0;
+				$.each(arr, function( index, value ) {
+				  if(value.length == 0){
+				  	errFlag = 1;
+				  	return false;
+				  }
+				});
+				if(errFlag == 1)
+					return true;
+				else
+					return false;
+			}
+
 		    $("#btnSubmit").click(function(e){
 		    	e.preventDefault();
 		    	opForm = [];
@@ -1301,7 +1364,7 @@ active
 		    	wafArr = {};
 		    	aaArr = {};
 		    	madcArr = {};
-
+		    	errFlag = 0;
 		    	// $("input[name=checked-panel]:visible").each(function(){
 		    	$(".mainPanel:visible").each(function(){		    		
 		    		// open port
@@ -1316,9 +1379,20 @@ active
 							tmpArr['arah'] = $(this).find(".op_arah").first().val();
 							tmpArr['port'] = $(this).find(".op_port").first().html();
 		    				tmpArr['action'] = $(this).find(".op_action").first().val();
+
+		    				//validation area
+		    				var err = "";
+		    				if( blankArea(tmpArr) == true ) err += "<br/>All column must be filled.";
+		    				if( !isValidPort(tmpArr['port']) ) err += "<br/>All port Number must between 1-65536.";
+		    				if(err.length > 0){
+		    					toastr.error(err.substring(5), "Form Open Port");		    					
+		    					errFlag = 1;
+		    					return false;
+		    				}
 		    				opArr.push(tmpArr);
 		    			});		    			
 		    		} 
+
 		    		//device connection
 					if($(this).attr('sign') == 'dtcb2'){
 			    		i = 0;
@@ -1329,6 +1403,16 @@ active
 							tmpArr['koneksi_perangkat_network'] = $(this).find(".dc_perangkat").first().html();
 							tmpArr['interface'] = $(this).find(".dc_interface").first().html();
 							tmpArr['deskripsi'] = $(this).find(".dc_description").first().html();
+
+							//validation area
+		    				var err = "";
+		    				if( blankArea(tmpArr) == true ) err += "<br/>All column must be filled.";
+		    				if(err.length > 0){
+		    					toastr.error(err.substring(5), "Form Device Connection");		    					
+		    					errFlag = 1;		    					
+		    					return false;
+		    				}
+
 							dcArr.push(tmpArr);
 		    			});
 		    		} 
@@ -1340,15 +1424,31 @@ active
 			    		$('#panel-h2h').find("tbody tr:not(#cloneRow):not(.uneditable)").each(function(){
 		    				tmpArr = {}
 		    				tmpArr['nama_partner'] = $(this).find(".h2h_nama_partner").first().html();
-							tmpArr['link_komunikasi'] = $(this).find(".h2h_link_komunikasi").first().html();
-							tmpArr['site'] = $(this).find(".h2h_site").first().html();
+							tmpArr['link_komunikasi'] = $(this).find(".h2h_link_komunikasi").first().val();
+							tmpArr['site'] = "";
+							$("input[name=h2h_site]:checked").each(function(){
+			    				tmpArr['site'] += $(this).val() + ",";
+			    			});
 							tmpArr['ip_server_partner'] = $(this).find(".h2h_ip_server_partner").first().html();
 							tmpArr['ip_server_bca'] = $(this).find(".h2h_ip_server_bca").first().html();
 							tmpArr['ip_p2p_bca'] = $(this).find(".h2h_ip_p2p_bca").first().html();
 							tmpArr['ip_p2p_partner'] = $(this).find(".h2h_ip_p2p_partner").first().html();
+							tmpArr['protocol'] = $(this).find(".h2h_protocol").first().val();
 							tmpArr['port_aplikasi'] = $(this).find(".h2h_port_aplikasi").first().html();
 							tmpArr['nama_aplikasi'] = $(this).find(".h2h_nama_aplikasi").first().html();
 							tmpArr['arah_akses'] = $(this).find(".h2h_arah_akses").first().val();
+							
+							//validation area
+		    				var err = "";
+		    				if( blankArea(tmpArr) == true ) err += "<br/>All column must be filled.";
+		    				if( isHostIp(tmpArr["ip_server_partner"]) != true || isHostIp(tmpArr["ip_server_bca"]) != true || isHostIp(tmpArr["ip_p2p_partner"]) != true || isHostIp(tmpArr["ip_p2p_bca"]) != true ) err += "<br/>Invalid IP Address.";
+		    				if( !isValidPort(tmpArr[port_aplikasi]) ) err += "<br/>Port number must be 1-65535.";
+		    				if(err.length > 0){
+		    					toastr.error(err.substring(5), "Form H2H");		    					
+		    					errFlag = 1;
+		    					return false;
+		    				}
+
 							h2hArr.push(tmpArr);
 		    			});
 		    		} 
@@ -1500,6 +1600,9 @@ active
 			    		});
 		    		} 
 		    	});
+				if(errFlag == 1){
+					return false;
+				}
 		    	$.ajax({
 					url: "{{Request::URL()}}",
     				type: 'post',

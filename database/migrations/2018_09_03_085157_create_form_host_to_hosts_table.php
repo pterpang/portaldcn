@@ -26,9 +26,10 @@ class CreateFormHostToHostsTable extends Migration
 			$table->string('ip_server_bca');
 			$table->string('ip_p2p_bca');
 			$table->string('ip_p2p_partner');
-			$table->string('port_aplikasi');
-			$table->string('nama_aplikasi');
-			$table->string('arah_akses');
+            $table->string('protocol');
+            $table->string('port_aplikasi');
+            $table->string('nama_aplikasi');
+            $table->string('arah_akses');
             $table->foreign('service_id')->references('id')->on('services');
         });
     }
