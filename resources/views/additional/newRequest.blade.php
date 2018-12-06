@@ -964,6 +964,7 @@ active
 			</div>
 			<!-- #END# Page Content -->
 		</div>
+	</div>
 	</section>
 
 	@stop

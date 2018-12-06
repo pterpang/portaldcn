@@ -8,7 +8,7 @@ use Adldap\AdldapInterface;
 use App\AdditionalHelper;
 use App\Service;
 use App\Article;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -44,9 +44,9 @@ class DashboardController extends Controller
     							->groupBy('pic')
     							->get();
 		$deviceConnectionWorker = DB::table('form_koneksi_device_ke_jaringans')
-    							->selectRaw('pic, count(*) as count')
-    							->groupBy('pic')
-    							->get();
+                                ->selectRaw('pic, count(*) as count')
+                                ->groupBy('pic')
+                                ->get();
 		$ASDeliveryWorker = DB::table('aplication_service_deliveries')
     							->selectRaw('pic, count(*) as count')
     							->groupBy('pic')
@@ -81,7 +81,8 @@ class DashboardController extends Controller
 		}
 		arsort($tempArr);
 		$tempArr = array_slice($tempArr, 0, 5);
-		return view('dashboard.index', compact('activeClasses', 'topRequester', 'totalRequest', 'tempArr', 'articleList', 'flotData'));
+		return view('dashboard.index', compact('activeClasses', 'topRequester'
+            , 'totalRequest', 'tempArr', 'articleList', 'flotData'));
     }
 
     public function LDAP(){

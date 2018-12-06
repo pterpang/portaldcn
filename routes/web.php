@@ -124,12 +124,12 @@ Route::group(['middleware' => ['auth']], function(){
 	//TP
 	Route::get('TP/H2H', 'TPController@H2H');
 	Route::get('TP/openport', 'TPController@openport');
-	Route::get('TP/ASDelivery', 'TPController@ASDelivery');
+	//Route::get('TP/ASDelivery', 'TPController@ASDelivery');
 	Route::get('TP/deviceConnection', 'TPController@deviceConnection');
 
 	Route::get('TP/H2H/{id}', 'TPController@showH2H');
 	Route::get('TP/openport/{id}', 'TPController@showOpenport');
-	Route::get('TP/ASDelivery/{id}', 'TPController@showASDelivery');
+	//Route::get('TP/ASDelivery/{id}', 'TPController@showASDelivery');
 	Route::get('TP/deviceConnection/{id}', 'TPController@showDeviceConnection');
 
 	Route::get('TP/H2H/{id}/edit', 'TPController@editH2H');
@@ -239,6 +239,11 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::get('report/TP', 'ReportController@TP');
 	Route::get('report/LAN', 'ReportController@LAN');
 	Route::get('report/NS', 'ReportController@NS');
+
+	//survey
+    Route::get('/survey','SurveyController@create')->name('survey');
+    Route::post('/survey/insert','SurveyController@store')->name('newSurvey');
+    Route::get('/survey/surveyList','SurveyController@index')->name('surveyList');
 
 
 

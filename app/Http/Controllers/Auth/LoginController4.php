@@ -40,7 +40,15 @@ class LoginController4 extends Controller
         if($username == "guest" && $password == "guest"){
             $request->session()->put('isLogin', true);
             $request->session()->put('displayName', 'Guest');
-
+            $user = User::where($this->username(), $username) -> first();
+            if (!$user) {
+                $user = new User();
+                $user->username = $username;
+                $user->name = $username;
+                $user->email = $username;
+                $user->password = '';
+            }
+            $this->guard()->login($user, true);
             return "";
         }
         else {

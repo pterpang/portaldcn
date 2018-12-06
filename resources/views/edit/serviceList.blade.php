@@ -66,8 +66,8 @@
 													<i class="material-icons" style="margin-right: 5px">remove_red_eye</i>View
 												</a>											
 											</td>
-										</tr>										
-										<?php endif ?>										
+										</tr>
+										<?php endif ?>
 									<?php endforeach ?>
 								</tbody>
 							</table>
