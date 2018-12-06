@@ -19,6 +19,7 @@
 // Route::get('/ldap', 'DashboardController@LDAP');
 
 Route::get('/email', 'AdditionalController@sendEmail');
+Route::get('/login', 'Auth\LoginController@customLogin');
 
 Route::get('/login', function(){ 
     if(Auth::check()){

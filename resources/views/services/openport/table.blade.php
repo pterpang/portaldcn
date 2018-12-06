@@ -97,6 +97,7 @@
 							<th>Protocol</th>
 							<th>Port Number</th>		
 							<th>Direction</th>
+							<th>Action</th>
 							<th>Description</th>
 							<th>Status</th>										
 						</tr>
@@ -111,6 +112,7 @@
 								<td>{{ $row->protocol }}</td>
 								<td>{!! $row->port !!}</td>	
 								<td>{{ $row->arah }} Arah</td>
+								<td>Open</td>
 								<td>{!! $row->fungsi !!}</td>
 								<?php if ($serviceDetail->Form_Open_Port[0]->pic == "none"): ?>
 									<td align="center" class="col-red status status-complete">Pending</td>

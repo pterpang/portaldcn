@@ -23,8 +23,9 @@ class CreateFormOpenPortsTable extends Migration
 			$table->string('destination_ip');
 			$table->string('protocol');
 			$table->string('port');
-			$table->string('arah');
-			$table->string('fungsi')->nullable();
+            $table->string('arah');
+            $table->string('action');
+            $table->string('fungsi')->nullable();
             $table->foreign('service_id')->references('id')->on('services');
         });
     }

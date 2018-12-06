@@ -19,6 +19,10 @@
 	display: inline;
 }
 
+.tdDisabled{
+	cursor: not-allowed;
+	background: gray;
+}
 
 [type="checkbox"].filled-in:not(:checked) + label::after{
 	background: white;
@@ -151,7 +155,6 @@ active
 								<div class="panel panel-openport mainPanel" sign="dtcb1" id="panel-op" style="display: none">
 									<div class="panel-heading bg-blue-grey" role="tab" id="headingOne_192">
 										<h4 class="panel-title">
-											<!-- <input name="checked-panel" id="dtcb1" class="filled-in pull-left chk-col-green check-panel" type="checkbox" style="display:inline;"><label for="dtcb1" style="display:inline;margin-left: 5px; width: 10px;"></label>                                                     -->
 											<a role="button" data-toggle="collapse" data-parent="#accordion_1921" href="#collapseOne_192" aria-expanded="false" aria-controls="collapseOne_192">
 												<i class="material-icons pull-right">expand_more</i>Open Port
 											</a>
@@ -168,33 +171,42 @@ active
 													<th>Port Number</th>                
 													<th>Port Type</th>                
 													<th>Direction</th>              
+													<th>Action</th>              
 													<th>Description</th>
-													<th>Action</th>
+													<th>Remove</th>
 												</thead>
 												<tbody>
 													<tr id="cloneRow" style="display:none">
 														<td class="tdNo op_no"></td>
 														<td class="editable tdSource op_source_ip"></td>
 														<td class="editable tdDestination op_destination_ip"></td>
-														<td class="editable tdPortNumber op_port"></td>
 														<td class="form-group tdPortNumber" style="width: 200px">
 															<select class="form-control portType tdPortType spk op_protocol">
 																<option value="TCP">TCP</option>
 																<option value="UDP">UDP</option>                      
-																<option value="IP">IP</option>
+																<option value="TCP-UDP">TCP-UDP</option>                      
+																<option value="ICMP">ICMP</option>
+																<option value="IP">IP</option>                      
 															</select>
 														</td>
+														<td class="editable tdPortNumber op_port"></td>
 														<td class="form-group tdDirection" style="width: 200px">
 															<select class="form-control op_arah">
 																<option value="1">1 Direction</option>
 																<option value="2">2 Direction</option>                      
 															</select>
 														</td>
+														<td class="form-group tdAction" style="width: 200px">
+															<select class="form-control op_action">
+																<option value="Open">Open</option>
+																<option value="Close">Close</option>                      
+															</select>
+														</td>
 														<td class="editable tdDescription op_fungsi"></td>       
 														<td align="center"><button class="btn btn-danger btn-sm"><i class="material-icons">close</i></button></td>                     
 													</tr>               
 													<tr class="uneditable">
-														<td id="newRow" colspan="8" align="center" style="background: #EEEEEE; cursor: pointer"><span style="font-weight: bold; font-size: 20px">+</span>&nbsp;Add New Row</td>                
+														<td id="newRow" colspan="9" align="center" style="background: #EEEEEE; cursor: pointer"><span style="font-weight: bold; font-size: 20px">+</span>&nbsp;Add New Row</td>                
 													</tr> 
 												</tbody>
 											</table>
@@ -980,6 +992,19 @@ active
 			$("textarea, select").attr("disabled", "disabled");
 
 
+			$(".panel-openport").on('change', '.tdPortType', function(){
+				if( $(this).val() == "IP" || $(this).val() == "ICMP")	{
+					tdDis = $(this).parent().next();
+					tdDis.html("");
+					tdDis.attr("contenteditable", "false");
+					tdDis.addClass("tdDisabled");
+				}else{
+					tdDis = $(this).parent().next();
+					tdDis.attr("contenteditable", "true");
+					tdDis.removeClass("tdDisabled");
+				}
+			});
+
 			$("#category").change(function(e){
 				$("#services").show();				
 				var category = $("#category").val();
@@ -1062,10 +1087,12 @@ active
 
 			$(".editable").attr("contenteditable", "true");
 
-			$(".mainTable").on("click", ".btn-danger", function(){
+			$(".mainTable").on("click", ".btn-danger", function(e){
+				e.preventDefault();
 				if(window.confirm("Are you sure want to delete row?")){
+					elm = $(this).parent().parent().parent();
 					$(this).parent().parent().remove();
-					reSequence();				
+					reSequence(elm);				
 				}
 			});
 
@@ -1276,7 +1303,7 @@ active
 
 		    	// $("input[name=checked-panel]:visible").each(function(){
 		    	$(".mainPanel:visible").each(function(){		    		
-		    		// if($(this).attr('id') == 'dtcb1'){
+		    		// open port
 	    			if($(this).attr('sign') == 'dtcb1'){
 			    		i = 0;
 			    		$('#panel-op').find("tbody tr:not(#cloneRow):not(.uneditable)").each(function(){
@@ -1287,6 +1314,7 @@ active
 							tmpArr['protocol'] = $(this).find(".op_protocol").first().val();
 							tmpArr['arah'] = $(this).find(".op_arah").first().val();
 							tmpArr['port'] = $(this).find(".op_port").first().html();
+		    				tmpArr['action'] = $(this).find(".op_action").first().val();
 		    				opArr.push(tmpArr);
 		    			});		    			
 		    		} 

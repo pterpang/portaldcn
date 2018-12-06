@@ -38,10 +38,10 @@ class LoginController extends Controller
         // $username = 'portaldcn';
         // $password = 'bcabca';
         $ldapconfig = array();
-        $ldapconfig['host'] = "dti.co.id";
-        $ldapconfig['port'] = '389';
-        $dn = 'CN='. $username .',OU=devuser,DC=dti,DC=co,DC=id';
-
+        $ldapconfig['host'] = "127.0.0.1";
+        $ldapconfig['port'] = '10389';
+        // $dn = 'CN='. $username .',OU=devuser,DC=dti,DC=co,DC=id';
+        $dn = 'cn='. $username .',ou=Users,dc=example,dc=com';
         if($username == "guest" && $password == "guest"){
             $user = User::where($this->username(), $username) -> first();
             if (!$user) {
@@ -55,6 +55,9 @@ class LoginController extends Controller
             return "";
         }
         else {
+            echo($username);
+            echo($password);
+            // die();
             if(Adldap::auth()->attempt($dn, $password, $bindAsUser = true)) {
                 // the user exists in the LDAP server, with the provided password
                 $user = User::where($this->username(), $username) -> first();

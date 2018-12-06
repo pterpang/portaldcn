@@ -11,7 +11,7 @@ use Adldap\Laravel\Facades\Adldap;
 use App\M_Session;
 use App\User;
 
-class LoginController extends Controller
+class LoginController4 extends Controller
 {
     use AuthenticatesUsers;
 

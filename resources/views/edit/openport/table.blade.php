@@ -105,8 +105,9 @@
 							<th>Source</th>
 							<th>Destination</th>
 							<th>Port Number</th>
-							<th>Protocol</th>		
+							<th>Protocol</th>
 							<th>Direction</th>
+							<th>Action</th>		
 							<th>Description</th>					
 						</tr>
 					</thead>
@@ -136,6 +137,12 @@
 										<select class="form-control arah">
 											<option value="1" {{$row->arah == '1'? 'selected=selected':''}}>1 Arah</option>
 											<option value="2" {{$row->arah == '2'? 'selected=selected':''}}>2 Arah</option>			
+										</select>
+									</td>
+									<td>
+										<select class="form-control action">
+											<option value="1" {{$row->action == 'Open'? 'selected=selected':''}}>Open</option>
+											<option value="2" {{$row->action == 'Close'? 'selected=selected':''}}>Close</option>			
 										</select>
 									</td>
 									<td class="fungsi" contenteditable="true">
@@ -187,6 +194,7 @@
 			tmpArr['fungsi'] = $(this).find(".fungsi").first().html();
 			tmpArr['port'] = $(this).find(".port").first().html();
 			tmpArr['protocol'] = $(this).find(".protocol").first().val();
+			tmpArr['action'] = $(this).find(".action").first().val();
 			tmpArr['arah'] = $(this).find(".arah").first().val();
 			opArr.push(tmpArr);
 		});	

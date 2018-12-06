@@ -39,6 +39,7 @@ $factory->define(App\Form_Open_Port::class, function (Faker $faker) {
 		'destination_ip' => $faker->ipv4,
 		'protocol' => $faker->randomElement($array = array ('TCP', 'UDP')),
 		'port' => $faker->numberBetween($min = 1, $max = 65535),
+		'action' => $faker->randomElement($array = array ('TCP', 'UDP')),
 		'arah' => $faker->numberBetween($min = 1, $max = 2),
 		'fungsi' => $faker->sentence($nbWords = 6, $variableNbWords = true),	
     ];

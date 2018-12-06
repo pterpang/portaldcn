@@ -85,7 +85,7 @@
 							<th>Source</th>
 							<th>Destination</th>
 							<th>Protocol</th>
-							<th>Port Number</th>		
+							<th>Port Numbe	 r</th>		
 							<th>Direction</th>
 							<th>Description</th>
 							<th>Status</th>										

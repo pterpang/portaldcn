@@ -118,8 +118,6 @@
                         }
                     },
                     error: function(response){
-                        // alert("Login Failed:" + response);
-                        
                         toastr.error(response, "Login Failed");
                     }
                 });
