@@ -38,6 +38,11 @@
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">language</i>
                             <span class="mainmenu-title">Internet Banking & E-Channel</span>
+                            <?php $count = $openPortIBCount + $deviceConnectionIBCount + $ASDeliveryIBCount?>
+                            <?php if($count>0):?>
+                            <span class="badge badge-light" >
+                                 {{$count}}</span>
+                            <?php endif?>
                         </a>
                         <ul class="ml-menu">
                             <li class="@yield('ib_requestlist_active')">
@@ -68,16 +73,25 @@
 									<li class="@yield('ib_openport_active')">
                                         <a href="{{URL::to('IB/openport')}}">
                                             <span class="submenu-title">Open Port Firewall</span>
+                                            <?php if($openPortIBCount>0):?>
+                                            <span class="badge badge-light">{{$openPortIBCount}}</span>
+                                            <?php endif ?>
                                         </a>
                                     </li>
 									<li class="@yield('ib_deviceconnection_active')">
                                         <a href="{{URL::to('IB/deviceConnection')}}">
                                             <span class="submenu-title">Device Connection</span>
+                                            <?php if($deviceConnectionIBCount>0):?>
+                                            <span class="badge badge-light">{{$deviceConnectionIBCount}}</span>
+                                            <?php endif ?>
                                         </a>
                                     </li>
 									<li class="@yield('ib_ASDelivery_active')">
                                         <a href="{{URL::to('IB/ASDelivery')}}">
                                             <span class="submenu-title">App. Service Delivery</span>
+                                            <?php if($ASDeliveryIBCount>0):?>
+                                            <span class="badge badge-light">{{$ASDeliveryIBCountIBCount}}</span>
+                                            <?php endif ?>
                                         </a>
                                     </li>
                                 </ul>
@@ -88,6 +102,12 @@
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">phonelink</i>
                             <span class="mainmenu-title">Server Farm Internal & Intranet</span>
+                            <?php $count = $openPortSFCount+$deviceConnectionSFCount+$ASDeliverySFCount
+                            +$H2HSFCount+$remoteAccessSFCount?>
+                            <?php if($count>0):?>
+                            <span class="badge badge-light">
+                                  {{$count}}</span>
+                            <?php endif?>
                         </a>
                         <ul class="ml-menu">
                             <li class="@yield('sf_requestlist_active')">
@@ -118,26 +138,41 @@
 									<li class="@yield('sf_remoteAccess_active')">
                                         <a href="{{URL::to('SF/remoteAccess')}}">
                                             <span class="submenu-title">Remote Access</span>
+                                            <?php if($remoteAccessSFCount>0):?>
+                                            <span class="badge badge-light">{{$remoteAccessSFCount}}</span>
+                                            <?php endif ?>
                                         </a>
                                     </li>
 									<li class="@yield('sf_H2H_active')">
                                         <a href="{{URL::to('SF/H2H')}}">
                                             <span class="submenu-title">H2H Connection</span>
+                                            <?php if($H2HSFCount>0):?>
+                                            <span class="badge badge-light">{{$H2HSFCount}}</span>
+                                            <?php endif ?>
                                         </a>
                                     </li>
                                     <li class="@yield('sf_openport_active')">
                                         <a href="{{URL::to('SF/openport')}}">
                                             <span class="submenu-title">Open Port Firewall</span>
+                                            <?php if($openPortSFCount>0):?>
+                                            <span class="badge badge-light">{{$openPortSFCount}}</span>
+                                            <?php endif ?>
                                         </a>
                                     </li>
 									<li class="@yield('sf_deviceconnection_active')">
                                         <a href="{{URL::to('SF/deviceConnection')}}">
                                             <span class="submenu-title">Device Connection</span>
+                                            <?php if($deviceConnectionSFCount>0):?>
+                                            <span class="badge badge-light">{{$deviceConnectionSFCount}}</span>
+                                            <?php endif ?>
                                         </a>
                                     </li>
 									<li class="@yield('sf_ASDelivery_active')">
                                         <a href="{{URL::to('SF/ASDelivery')}}">
                                             <span class="submenu-title">App. Service Delivery</span>
+                                            <?php if($ASDeliverySFCount>0):?>
+                                            <span class="badge badge-light">{{$ASDeliverySFCount}}</span>
+                                            <?php endif ?>
                                         </a>
                                     </li>
                                 </ul>
@@ -148,6 +183,11 @@
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">people</i>
                             <span class="mainmenu-title">H2H & WAN</span>
+                            <?php $count = $H2HCount+$openPortH2HCount+$deviceConnectionH2HCount?>
+                            <?php if($count>0):?>
+                            <span class="badge badge-primary badge-danger">
+                                {{$count}}</span>
+                            <?php endif?>
                         </a>
                         <ul class="ml-menu">
                             <li class="@yield('tp_requestlist_active')">
@@ -178,16 +218,25 @@
 									<li class="@yield('tp_H2H_active')">
                                         <a href="{{URL::to('TP/H2H')}}">
                                             <span class="submenu-title">H2H Connection</span>
+                                            <?php if($H2HCount>0):?>
+                                            <span class="badge badge-light">{{$H2HCount}}</span>
+                                            <?php endif ?>
                                         </a>
                                     </li>
                                     <li class="@yield('tp_openport_active')">
                                         <a href="{{URL::to('TP/openport')}}">
                                             <span class="submenu-title">Open Port Firewall</span>
+                                            <?php if($openPortH2HCount>0):?>
+                                            <span class="badge badge-light">{{$openPortH2HCount}}</span>
+                                            <?php endif ?>
                                         </a>
                                     </li>
 									<li class="@yield('tp_deviceconnection_active')">
                                         <a href="{{URL::to('TP/deviceConnection')}}">
                                             <span class="submenu-title">Device Connection</span>
+                                            <?php if($deviceConnectionH2HCount>0):?>
+                                            <span class="badge badge-light">{{$deviceConnectionH2HCount}}</span>
+                                            <?php endif ?>
                                         </a>
                                     </li>
                                 </ul>
@@ -198,6 +247,11 @@
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">computer</i>
                             <span class="mainmenu-title">Remote Office & LAN HQ</span>
+                            <?php $count = $lanROLCount+$openPortROLCount+$deviceConnectionROLCount?>
+                            <?php if($count>0):?>
+                            <span class="badge badge-primary badge-danger">
+                                 {{$count}}</span>
+                            <?php endif?>
                         </a>
                         <ul class="ml-menu">
                             <li class="@yield('lan_requestlist_active')">
@@ -228,16 +282,25 @@
 									<li class="@yield('lan_LAN_active')">
                                         <a href="{{URL::to('LAN/LAN')}}">
                                             <span class="submenu-title">LAN Connection</span>
+                                            <?php if($lanROLCount>0):?>
+                                            <span class="badge badge-light">{{$lanROLCount}}</span>
+                                            <?php endif ?>
                                         </a>
                                     </li>
                                     <li class="@yield('lan_openport_active')">
                                         <a href="{{URL::to('LAN/openport')}}">
                                             <span class="submenu-title">Open Port Firewall</span>
+                                            <?php if($openPortROLCount>0):?>
+                                            <span class="badge badge-light">{{$openPortROLCount}}</span>
+                                            <?php endif ?>
                                         </a>
                                     </li>
 									<li class="@yield('lan_deviceconnection_active')">
                                         <a href="{{URL::to('LAN/deviceConnection')}}">
                                             <span class="submenu-title">Device Connection</span>
+                                            <?php if($deviceConnectionROLCount>0):?>
+                                            <span class="badge badge-light">{{$deviceConnectionROLCount}}</span>
+                                            <?php endif ?>
                                         </a>
                                     </li>
                                 </ul>
@@ -248,6 +311,11 @@
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">security</i>
                             <span class="mainmenu-title">Network Security & Monitoring</span>
+                            <?php $count = $lanNetSecCount+$remoteAccessNetSecCount?>
+                            <?php if($count>0):?>
+                            <span class="badge badge-primary badge-danger">
+                                 {{$count}}</span>
+                            <?php endif?>
                         </a>
                         <ul class="ml-menu">
                             <li class="@yield('netsec_requestlist_active')">
@@ -278,11 +346,17 @@
 									<li class="@yield('netsec_LAN_active')">
                                         <a href="{{URL::to('netsec/LAN')}}">
                                             <span class="submenu-title">LAN/WLAN Connection</span>
+                                            <?php if($lanNetSecCount>0):?>
+                                            <span class="badge badge-light">{{$lanNetSecCount}}</span>
+                                            <?php endif ?>
                                         </a>
                                     </li>
                                     <li class="@yield('netsec_remoteAccess_active')">
                                         <a href="{{URL::to('netsec/remoteAccess')}}">
                                             <span class="submenu-title">Remote Access</span>
+                                            <?php if($remoteAccessNetSecCount>0):?>
+                                            <span class="badge badge-light">{{$remoteAccessNetSecCount}}</span>
+                                            <?php endif ?>
                                         </a>
                                     </li>
                                     <li class="@yield('netsec_openport_active')">
@@ -301,7 +375,13 @@
                             <i class="material-icons">add_box</i>
                             <span class="mainmenu-title">New Article</span>
                         </a>
-                    </li> 
+                    </li>
+                    <li class="ml-mainmenu @yield('surveyList_active')">
+                        <a href="{{URL::to('/survey/surveyList')}}">
+                            <i class="material-icons">list</i>
+                            <span class="mainmenu-title">Survey Responses</span>
+                        </a>
+                    </li>
 
 
 
@@ -444,7 +524,13 @@
                             <i class="material-icons">library_books</i>
                             <span class="mainmenu-title">Articles</span>
                         </a>
-                    </li   				
+                    </li>
+                        <li class="ml-mainmenu @yield('survey_active')">
+                            <a href="{{URL::to('survey')}}">
+                                <i class="material-icons">feedback</i>
+                                <span class="mainmenu-title">Feedback</span>
+                            </a>
+                        </li>
                 </ul>
             </div>
             <!-- #Menu -->
