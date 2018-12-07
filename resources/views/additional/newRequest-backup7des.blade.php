@@ -529,6 +529,7 @@ active
 								<div class="panel mainPanel" id="panel-asd" sign="dtcb4"  style="display: none">
 									<div class="panel-heading bg-blue-grey" role="tab" id="headingFour_192">
 										<h4 class="panel-title">
+											<!-- <input name="checked-panel" id="dtcb4" class="filled-in pull-left chk-col-green check-panel" data-parent="#accordion_1921" type="checkbox" style="display:inline;"><label for="dtcb4" style="display:inline;margin-left: 5px; width: 10px;"></label>                                                     -->
 											<a role="button" data-toggle="collapse" href="#collapseFour_192" data-parent="#accordion_1921" aria-expanded="false" aria-controls="collapseFour_192">
 												<i class="material-icons pull-right">expand_more</i>Application Service Delivery
 											</a>
@@ -538,51 +539,64 @@ active
 										<div class="panel-body">
 											<div class="row clearfix">
 												<!-- test aja-->
-												<div class="form-group col-md-12" id="pilih-asd" style="border-bottom: solid #DDDDDD 1px; padding-bottom: 10px">
+												<div class="form-group col-md-12" style="border-bottom: solid #DDDDDD 1px; padding-bottom: 10px">
+													<tr>
 														<P>
-															<label>Application Service Delivery <span style="font-style: italic; color: #D0D0D0">(required)</span></label>
+															<label>Application Service Delivery<span style="color: red">*</span></label>
 														</P>
-														<input class="asdService load_balancer" name="asdservices" type="checkbox" value="LoadBalancer" id="LoadBalancer" />
-														<label class="asdService load_balancer" for="LoadBalancer">Load Balancer</label><br class="asdService load_balancer"/>
-														<input class="asdService web_application_firewall" name="asdservices" type="checkbox" value="webApplicationFirewall" id="webApplicationFirewall" />
-														<label class="asdService web_application_firewall" for="webApplicationFirewall">Web Application Firewall</label><br class="asdService web_application_firewall"/>
-														<input class="asdService application_acceleration" name="asdservices" type="checkbox" value="applicationAcceleration" id="applicationAcceleration" />
-														<label class="asdService application_acceleration" for="applicationAcceleration">Application Acceleration</label><br class="asdService application_acceleration">
-														<input class="asdService multiple_active_data_center" name="asdservices" type="checkbox" value="multipleActiveDataCenter" id="multipleActiveDataCenter" />
-														<label class="asdService multiple_active_data_center" for="multipleActiveDataCenter">Multiple Active Data Center</label><br class="asdService multiple_active_data_center"/>
+															<td style="padding-left: 20px; padding-top: 10px">
+																<input class="asdService load_balancer" name="asdservices" type="checkbox" value="LoadBalancer" id="LoadBalancer" />
+																<label class="asdService load_balancer" for="LoadBalancer">Load Balancer</label><br class="asdService load_balancer"/>
+																<input class="asdService web_application_firewall" name="asdservices" type="checkbox" value="webApplicationFirewall" id="webApplicationFirewall" />
+																<label class="asdService web_application_firewall" for="webApplicationFirewall">Web Application Firewall</label><br class="asdService web_application_firewall"/>
+																<input class="asdService application_acceleration" name="asdservices" type="checkbox" value="applicationAcceleration" id="applicationAcceleration" />
+																<label class="asdService application_acceleration" for="applicationAcceleration">Application Acceleration</label><br class="asdService application_acceleration">
+																<input class="asdService multiple_active_data_center" name="asdservices" type="checkbox" value="multipleActiveDataCenter" id="multipleActiveDataCenter" />
+																<label class="asdService multiple_active_data_center" for="multipleActiveDataCenter">Multiple Active Data Center</label><br class="asdService multiple_active_data_center"/>
 
-														<!-- <input class="services asds" name="cbservices" type="checkbox" value="ApplicationServiceDelivery" id="ApplicationServiceDelivery" />
-														<label class="services asds" for="ApplicationServiceDelivery">Application Service Delivery</label><br class="services asds"/>
-														<input class="services ras" name="cbservices" type="checkbox" value="RemoteAccess" id="RemoteAccess" />
-														<label class="services ras" for="RemoteAccess">Remote Access</label><br class="services ras"/> -->
-													<button class="btn bg-deep-purple" id="btnChoose">Next Stage</button>
+																<!-- <input class="services asds" name="cbservices" type="checkbox" value="ApplicationServiceDelivery" id="ApplicationServiceDelivery" />
+																<label class="services asds" for="ApplicationServiceDelivery">Application Service Delivery</label><br class="services asds"/>
+																<input class="services ras" name="cbservices" type="checkbox" value="RemoteAccess" id="RemoteAccess" />
+																<label class="services ras" for="RemoteAccess">Remote Access</label><br class="services ras"/> -->
+														</td>
+													</tr>
+													<tr><td colspan="2" style="color: red; font-style: italic; padding-top: 10px">*) Required</td></tr>
+
+													<tr>
+														<td colspan="1" style="padding-top: 20px">
+															<button class="btn bg-teal form-control" id="btnChoose">Choose This</button>
+														</td>
 													</tr>
 												</div>
-												
-												<div style="display:none; overflow: hidden" class="col-md-12" id="asdService">
-													<!--lokasi-->
-													<div class="form-group col-md-12" style="border-bottom: solid #DDDDDD 1px; padding-bottom: 10px">
-														<P>
-															<label for="lokasi">Lokasi<span style="color: red">*</span></label>
-														</P>
-														<input id="basic_checkbox_1" class="filled-in" type="checkbox" name="asdLokasi" value="WSA2">
-														<label for="basic_checkbox_1">Wisma Asia 2</label><br/>
-														<input id="basic_checkbox_2" class="filled-in" type="checkbox" name="asdLokasi" value="MBCA">
-														<label for="basic_checkbox_2">Menara BCA</label><br/>
-														<input id="basic_checkbox_3" class="filled-in" type="checkbox" name="asdLokasi" value="GRHA">
-														<label for="basic_checkbox_3">Grha Asia Surabaya</label>	<br/>
-														<input id="basic_checkbox_4" class="filled-in" type="checkbox" name="asdLokasi" value="Other">
-														<label for="basic_checkbox_4">Other</label>													
-													</div>
-													<!--Col Kiri-->
-													<div class="col-md-12" style="display: none; margin-bottom: 20px;" id="col-panel-pink">
-														<div class="panel panel-col-pink" id="panel-pink">
+												<!--lokasi-->
+												<div class="form-group col-md-12" style="border-bottom: solid #DDDDDD 1px; padding-bottom: 10px">
+													<P>
+														<label for="lokasi">Lokasi<span style="color: red">*</span></label>
+													</P>
+													<input id="basic_checkbox_1" class="filled-in" type="checkbox" name="asdLokasi" value="WSA2">
+													<label for="basic_checkbox_1">Wisma Asia 2</label><br/>
+													<input id="basic_checkbox_2" class="filled-in" type="checkbox" name="asdLokasi" value="MBCA">
+													<label for="basic_checkbox_2">Menara BCA</label><br/>
+													<input id="basic_checkbox_3" class="filled-in" type="checkbox" name="asdLokasi" value="GRHA">
+													<label for="basic_checkbox_3">Grha Asia Surabaya</label>	<br/>
+													<input id="basic_checkbox_4" class="filled-in" type="checkbox" name="asdLokasi" value="Other">
+													<label for="basic_checkbox_4">Other</label>													
+												</div>
+
+
+												<tr style="display:none" id="asdService">
+												<!--Col Kiri-->
+												<div class="col-xs-6 ol-sm-6 col-md-6 col-lg-6">
+													
+													<div class="panel-group" id="accordion_19" role="tablist" aria-multiselectable="true">
+														<td>
+														<div class="panel panel-col-pink" style="display: none" id="panel-pink">
 															<div class="panel-heading" role="tab" id="headingOne_19" >
 																<h4 class="panel-title">
 																	<input id="tcb1" name="sub-check" class="filled-in pull-left chk-col-green" type="checkbox" style="display:inline;">
-																	<label for="tcb1" style="display:none;margin-left: 5px; width: 10px;"></label>                                                    
+																	<label for="tcb1" style="display:inline;margin-left: 5px; width: 10px;"></label>                                                    
 																	<a role="button" data-toggle="collapse" href="#collapseOne_19" aria-expanded="false" aria-controls="collapseOne_19">
-																		Load Balancing Server
+																		<i class="material-icons pull-right">expand_more</i>1. Load Balancing Server
 																	</a>
 																</h4>
 															</div>
@@ -680,89 +694,92 @@ active
 																</div>
 															</div>
 
-														</div>																
-													</div>
-													<div class="col-md-12" style="display: none; margin-bottom: 20px;" id="col-panel-cyan" >
-														<div class="panel panel-col-cyan" id="panel-cyan">
-																	<div class="panel-heading" role="tab" id="headingTwo_19">
-																		<h4 class="panel-title">
-																			<input id="tcb2" name="sub-check" class="filled-in pull-left chk-col-green" type="checkbox" style="display:inline;">
-																			<label for="tcb2" style="display:none;margin-left: 5px; width: 10px;"></label>
-																			<a class="" role="button" data-toggle="collapse" href="#collapseTwo_19" aria-expanded="true" aria-controls="collapseTwo_19">
-																				Web Application Firewall
-																			</a>
-																		</h4>
-																	</div>
-																	<div id="collapseTwo_19" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo_19" aria-expanded="true" style="">
-																		<div class="panel-body">
-																			<!--IP Server-->
-																			<div class="form-group col-md-12 clearfix">
-																				<p>
-																					<label>IP Server/LB</label>
-																				</p>
-																				<div class="form-group">
-																					<div style="border: solid #DADADA 1px">
-																						<textarea class="form-control waf_ip_server" style="resize:none" rows="5" name="IPServer3"></textarea>
-																					</div>
-																				</div>
-																			</div>		
-																			<!--Source IP-->
-																			<div class="form-group col-md-12 clearfix">
-																				<p>
-																					<label>Source IP</label>
-																				</p>
-																				<div class="form-group">
-																					<div style="border: solid #DADADA 1px">
-																						<textarea class="form-control waf_source" style="resize:none" rows="5" name="SourceIP"></textarea>
-																					</div>
-																				</div>
-																			</div>		
+														</div>
+													</td>
+													<td>
+														<div class="panel panel-col-cyan" style="display: none" id="panel-cyan">
+															<div class="panel-heading" role="tab" id="headingTwo_19">
+																<h4 class="panel-title">
+																	<input id="tcb2" name="sub-check" class="filled-in pull-left chk-col-green" type="checkbox" style="display:inline;"><label for="tcb2" style="display:inline;margin-left: 5px; width: 10px;"></label>
+																	<a class="" role="button" data-toggle="collapse" href="#collapseTwo_19" aria-expanded="true" aria-controls="collapseTwo_19">
+																		<i class="material-icons pull-right">expand_more</i>2.  Web Application Firewall
+																	</a>
+																</h4>
+															</div>
+															<div id="collapseTwo_19" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo_19" aria-expanded="true" style="">
+																<div class="panel-body">
+																	<!--IP Server-->
+																	<div class="form-group col-md-12 clearfix">
+																		<p>
+																			<label>IP Server/LB</label>
+																		</p>
+																		<div class="form-group">
+																			<div style="border: solid #DADADA 1px">
+																				<textarea class="form-control waf_ip_server" style="resize:none" rows="5" name="IPServer3"></textarea>
+																			</div>
+																		</div>
+																	</div>		
+																	<!--Source IP-->
+																	<div class="form-group col-md-12 clearfix">
+																		<p>
+																			<label>Source IP</label>
+																		</p>
+																		<div class="form-group">
+																			<div style="border: solid #DADADA 1px">
+																				<textarea class="form-control waf_source" style="resize:none" rows="5" name="SourceIP"></textarea>
+																			</div>
+																		</div>
+																	</div>		
 
-																			<!--Port-->
-																			<div class="form-group col-md-12 clearfix">
-																				<p>
-																					<label>Port</label>
-																				</p>
-																				<div class="form-group">
-																					<div class="form-line">
-																						<input class="form-control waf_port" type="text" placeholder="Port" name="port3">
-																					</div>
-																				</div>
+																	<!--Port-->
+																	<div class="form-group col-md-12 clearfix">
+																		<p>
+																			<label>Port</label>
+																		</p>
+																		<div class="form-group">
+																			<div class="form-line">
+																				<input class="form-control waf_port" type="text" placeholder="Port" name="port3">
 																			</div>
-																			<!--URL-->
-																			<div class="form-group col-md-12 clearfix">
-																				<p>
-																					<label for="URL3">URL</label>
-																				</p>
-																				<div class="form-group">
-																					<div class="form-line">
-																						<input class="form-control waf_url" type="text" placeholder="URL" name="URL3">
-																					</div>
-																				</div>
-																			</div>
-																			<!--SSL-->
-																			<div class="form-group col-md-12">
-																				<P>
-																					<label for="SSL3">SSL</label>
-																				</P>
-																				<input class="with-gap" name="waf_ssl" type="radio" value="Ya" id="waf_ssl_1" checked />
-																				<label for="waf_ssl_1">Ya</label><br/>
-																				<input class="with-gap" name="waf_ssl" type="radio" value="Tidak" id="waf_ssl_2" />
-																				<label for="waf_ssl_2">Tidak</label><br/>								
-																			</div>	
 																		</div>
 																	</div>
-														</div>													
-													</div>	
+																	<!--URL-->
+																	<div class="form-group col-md-12 clearfix">
+																		<p>
+																			<label for="URL3">URL</label>
+																		</p>
+																		<div class="form-group">
+																			<div class="form-line">
+																				<input class="form-control waf_url" type="text" placeholder="URL" name="URL3">
+																			</div>
+																		</div>
+																	</div>
+																	<!--SSL-->
+																	<div class="form-group col-md-12">
+																		<P>
+																			<label for="SSL3">SSL</label>
+																		</P>
+																		<input class="with-gap" name="waf_ssl" type="radio" value="Ya" id="waf_ssl_1" checked />
+																		<label for="waf_ssl_1">Ya</label><br/>
+																		<input class="with-gap" name="waf_ssl" type="radio" value="Tidak" id="waf_ssl_2" />
+																		<label for="waf_ssl_2">Tidak</label><br/>								
+																	</div>	
+																</div>
+															</div>
+														</div>
+													</td>
+													</div>
 
-													<!--Col Kanan-->
-													<div class="col-md-12" style="display: none; margin-bottom: 20px;" id="col-panel-teal" >
-														<div class="panel panel-col-teal" id="panel-teal">
+												</div>
+
+												<!--Col Kanan-->
+												<div class="col-xs-6 ol-sm-6 col-md-6 col-lg-6">
+													<div class="panel-group" id="accordion_19" role="tablist" aria-multiselectable="true">
+														<div class="panel panel-col-teal" style="display: none" id="panel-teal">
 															<div class="panel-heading" role="tab" id="headingThree_19" >
 																<h4 class="panel-title">
-																	<input id="tcb3" name="sub-check" class="filled-in pull-left chk-col-green" type="checkbox" style="display:inline;"><label for="tcb3" style="display:none;margin-left: 5px; width: 10px;"></label>
+																	<input id="tcb3" name="sub-check" class="filled-in pull-left chk-col-green" type="checkbox" style="display:inline;"><label for="tcb3" style="display:inline;margin-left: 5px; width: 10px;"></label>
 																	<a class="collapsed" role="button" data-toggle="collapse" href="#collapseThree_19" aria-expanded="false" aria-controls="collapseThree_19">
-																		Application Acceleration
+																		<i class="material-icons pull-right">expand_more</i> 3. Application Acceleration
 																	</a>
 																</h4>
 															</div>
@@ -815,109 +832,107 @@ active
 																</div>
 															</div>
 														</div>
-															
-														<!--End of Col Kanan-->
-													</div>
-													<div class="col-md-12" style="display: none; margin-bottom: 20px;" id="col-panel-orange">
-														<div class="panel panel-col-orange" id="panel-orange">
-																<div class="panel-heading" role="tab" id="headingFour_19">
-																	<h4 class="panel-title">
-																		<input id="tcb4" name="sub-check" class="filled-in pull-left chk-col-green" type="checkbox" style="display:inline;"/><label for="tcb4" style="display:none;margin-left: 5px; width: 10px;"></label>
-																		<a class="collapsed" role="button" data-toggle="collapse" href="#collapseFour_19" aria-expanded="false" aria-controls="collapseFour_19">
-																			Multiple Active Data Center
-																		</a>
-																	</h4>
-																</div>
-																<div id="collapseFour_19" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour_19">
-																	<div class="panel-body">
+														<div class="panel panel-col-orange"  style="display: none" id="panel-orange">
+															<div class="panel-heading" role="tab" id="headingFour_19">
+																<h4 class="panel-title">
+																	<input id="tcb4" name="sub-check" class="filled-in pull-left chk-col-green" type="checkbox" style="display:inline;"/><label for="tcb4" style="display:inline;margin-left: 5px; width: 10px;"></label>
+																	<a class="collapsed" role="button" data-toggle="collapse" href="#collapseFour_19" aria-expanded="false" aria-controls="collapseFour_19">
+																		<i class="material-icons pull-right">expand_more</i>4. Multiple Active Data Center
+																	</a>
+																</h4>
+															</div>
+															<div id="collapseFour_19" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour_19">
+																<div class="panel-body">
 
-																		<!--lokasi-->
-																		<div class="form-group col-md-12">
-																			<P>
-																				<label for="SSL3">lokasi/Sticky</label>
-																			</P>
-																			<input class="with-gap" name="madc_lokasi" type="radio" value="Internal" id="lokasi_13" checked />
-																			<label for="lokasi_13">Internal</label><br/>
-																			
-																			<input class="with-gap" name="madc_lokasi" type="radio" value="Eksternal" id="lokasi_23" />
-																			<label for="lokasi_23">Eksternal</label><br/>
-
-																			<input class="with-gap" name="madc_lokasi" type="radio" value="3rd Party" id="lokasi_33" />
-																			<label for="lokasi_33">3rd Party</label><br/>				
-																		</div>	
-																		<div class="form-group col-md-12 clearfix">
-																			<p>
-																				<label>IP Server/LB</label>
-																			</p>
-																			<div class="form-group">
-																				<div style="border: solid #DADADA 1px">
-																					<textarea class="form-control madc_ip_server" style="resize:none" rows="5" name="IPServer3"></textarea>
-																				</div>
-																			</div>
-																		</div>		
-																		<!--Port-->
-																		<div class="form-group col-md-12 clearfix">
-																			<p>
-																				<label>Port</label>
-																			</p>
-																			<div class="form-group">
-																				<div class="form-line">
-																					<input class="form-control madc_port" type="text" placeholder="Port" name="port3">
-																				</div>
-																			</div>
-																		</div>
-																		<!--URL-->
-																		<div class="form-group col-md-12 clearfix">
-																			<p>
-																				<label for="URL3">URL</label>
-																			</p>
-																			<div class="form-group">
-																				<div class="form-line">
-																					<input class="form-control madc_url" type="text" placeholder="URL" name="URL3">
-																				</div>
-																			</div>
-																		</div>
-																		<!--Persistence-->
-																		<div class="form-group col-md-12">
-																			<P>
-																				<label for="SSL3">Persistence/Sticky</label>
-																			</P>
-																			<input class="with-gap" name="madc_persistence" type="radio" value="Ya" id="madc_p1" checked />
-																			<label for="madc_p1">Ya</label><br/>
-																			<input class="with-gap" name="madc_persistence" type="radio" value="Tidak" id="madc_p2" />
-																			<label for="madc_p2">Tidak</label><br/>								
-																		</div>	
-																		<!--Metode-->
-																		<div class="form-group col-md-12">
-																			<p>
-																				<label for="metode">Metode</label>
-																			</p>
-																			<select class="form-control madc_metode" style="border: solid #DADADA 1px">
-																				<option value="" disabled selected>-- Method --</option>
-																				<option value="Least Connection">Least Connection</option>
-																				<option value="Round Robin">Round Robin</option>
-																				<option value="Weighted balance">Weighted Balance</option>
-																				<option value="Priority">Priority</option>
-																				<option value="Other">Other</option>					
-																			</select>
-																		</div>
-																		<!--Keterangan-->
-																		<div class="form-group col-md-12 clearfix">
-																			<p>
-																				<label>Keterangan</label>
-																			</p>
-																			<div class="form-group">
-																				<div style="border: solid #DADADA 1px">
-																					<textarea class="form-control madc_keterangan" style="resize:none" rows="5" name="madc_keterangans"></textarea>
-																				</div>
-																			</div>
-																		</div>
+																	<!--lokasi-->
+																	<div class="form-group col-md-12">
+																		<P>
+																			<label for="SSL3">lokasi/Sticky</label>
+																		</P>
+																		<input class="with-gap" name="madc_lokasi" type="radio" value="Internal" id="lokasi_13" checked />
+																		<label for="lokasi_13">Internal</label><br/>
 																		
+																		<input class="with-gap" name="madc_lokasi" type="radio" value="Eksternal" id="lokasi_23" />
+																		<label for="lokasi_23">Eksternal</label><br/>
+
+																		<input class="with-gap" name="madc_lokasi" type="radio" value="3rd Party" id="lokasi_33" />
+																		<label for="lokasi_33">3rd Party</label><br/>				
+																	</div>	
+																	<div class="form-group col-md-12 clearfix">
+																		<p>
+																			<label>IP Server/LB</label>
+																		</p>
+																		<div class="form-group">
+																			<div style="border: solid #DADADA 1px">
+																				<textarea class="form-control madc_ip_server" style="resize:none" rows="5" name="IPServer3"></textarea>
+																			</div>
+																		</div>
+																	</div>		
+																	<!--Port-->
+																	<div class="form-group col-md-12 clearfix">
+																		<p>
+																			<label>Port</label>
+																		</p>
+																		<div class="form-group">
+																			<div class="form-line">
+																				<input class="form-control madc_port" type="text" placeholder="Port" name="port3">
+																			</div>
+																		</div>
 																	</div>
+																	<!--URL-->
+																	<div class="form-group col-md-12 clearfix">
+																		<p>
+																			<label for="URL3">URL</label>
+																		</p>
+																		<div class="form-group">
+																			<div class="form-line">
+																				<input class="form-control madc_url" type="text" placeholder="URL" name="URL3">
+																			</div>
+																		</div>
+																	</div>
+																	<!--Persistence-->
+																	<div class="form-group col-md-12">
+																		<P>
+																			<label for="SSL3">Persistence/Sticky</label>
+																		</P>
+																		<input class="with-gap" name="madc_persistence" type="radio" value="Ya" id="madc_p1" checked />
+																		<label for="madc_p1">Ya</label><br/>
+																		<input class="with-gap" name="madc_persistence" type="radio" value="Tidak" id="madc_p2" />
+																		<label for="madc_p2">Tidak</label><br/>								
+																	</div>	
+																	<!--Metode-->
+																	<div class="form-group col-md-12">
+																		<p>
+																			<label for="metode">Metode</label>
+																		</p>
+																		<select class="form-control madc_metode" style="border: solid #DADADA 1px">
+																			<option value="" disabled selected>-- Method --</option>
+																			<option value="Least Connection">Least Connection</option>
+																			<option value="Round Robin">Round Robin</option>
+																			<option value="Weighted balance">Weighted Balance</option>
+																			<option value="Priority">Priority</option>
+																			<option value="Other">Other</option>					
+																		</select>
+																	</div>
+																	<!--Keterangan-->
+																	<div class="form-group col-md-12 clearfix">
+																		<p>
+																			<label>Keterangan</label>
+																		</p>
+																		<div class="form-group">
+																			<div style="border: solid #DADADA 1px">
+																				<textarea class="form-control madc_keterangan" style="resize:none" rows="5" name="madc_keterangans"></textarea>
+																			</div>
+																		</div>
+																	</div>
+																	
 																</div>
 															</div>
+														</div>
 													</div>
+													<!--End of Col Kanan-->
 												</div>
+											</tr>
 
 											</div>
 										</div>
@@ -1249,23 +1264,6 @@ active
 					return false;
 				}
 
-				$("input.asdService:checkbox:checked").each(function(){
-					if($(this).attr("id") == "LoadBalancer"){
-						$("#tcb1").attr("checked", "checked");
-					}
-					if($(this).attr("id") == "webApplicationFirewall"){
-						$("#tcb2").attr("checked", "checked");
-					}
-					if($(this).attr("id") == "applicationAcceleration"){
-						$("#tcb3").attr("checked", "checked");
-					}
-					if($(this).attr("id") == "multipleActiveDataCenter"){
-						$("#tcb4").attr("checked", "checked");
-					}
-
-				});
-				$("#asdService").show();
-				$("#pilih-asd").hide();
 				$("a[data-toggle='collapse']").trigger('click');
 
 				vForm = $("#metaForm");
@@ -1276,20 +1274,20 @@ active
 					$("#btnChoose").hide();
 
 					if( $("#LoadBalancer:checked").length > 0 ){
-						$("#col-panel-pink").show();
-						$("#col-panel-pink").find("a").prop("href", "#");						
+						$("#panel-pink").show();
+						$("#panel-pink").find("a").prop("href", "#");						
 					}
 					if( $("#webApplicationFirewall:checked").length > 0 ){
-						$("#col-panel-cyan").show();
-						$("#col-panel-cyan").find("a").prop("href", "#");
+						$("#panel-cyan").show();
+						$("#panel-cyan").find("a").prop("href", "#");
 					}
 					if( $("#applicationAcceleration:checked").length > 0 ){
-						$("#col-panel-teal").show();
-						$("#col-panel-teal").find("a").prop("href", "#");
+						$("#panel-teal").show();
+						$("#panel-teal").find("a").prop("href", "#");
 					}
 					if( $("#multipleActiveDataCenter:checked").length > 0 ){
-						$("#col-panel-orange").show();
-						$("#col-panel-orange").find("a").prop("href", "#");						
+						$("#panel-orange").show();
+						$("#panel-orange").find("a").prop("href", "#");						
 					}
 				}				
 			});
