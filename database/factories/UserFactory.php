@@ -68,6 +68,7 @@ $factory->define(App\Form_Host_to_Host::class, function (Faker $faker) {
 		'ip_server_bca' => $faker->ipv4,
 		'ip_p2p_bca' => $faker->ipv4,
 		'ip_p2p_partner' => $faker->ipv4,
+		'protocol' => $faker->randomElement($array = array ('TCP', 'UDP')),
 		'port_aplikasi' => $faker->numberBetween($min = 1, $max = 65535),
 		'nama_aplikasi' => $faker->bothify('PT ????## JAYA'),
 		'arah_akses' => $faker->randomElement($array = array ('Inbound', 'Outbound')),
