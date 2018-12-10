@@ -139,4 +139,53 @@
 		</div>
 	</div>
 </div>
+<div class="row clearfix">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		<div class="card">
+			<div class="header">
+				<div class="row clearfix">
+					<div class="col-xs-12 col-sm-6">
+						<h2 >Progress Status</h2>
+					</div>
+				</div>
+			</div>
+			<div class="body">
+				<div class="progress">
+                    <?php if ($serviceDetail->Form_Open_Port[0]->pic == "none"): ?>
+					<div class="progress-bar progress-bar" role="progressbar" aria-valuenow="0"
+						 aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+					<?php elseif ($parentProgress == 100):?>
+						<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100"
+							 aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+					<?php else: ?>
+						<div class="progress-bar progress-bar" role="progressbar" aria-valuenow="100"
+							 aria-valuemin="" aria-valuemax="100" style="width: 50%"></div>
+					<?php endif ?>
+				</div>
+			</div>
+		</div>
+		<div class="card" style="margin-top: -4%">
+			<div class="header">
+				<div class="row clearfix">
+					<div class="col-xs-12 col-sm-6">
+						<h2 >SLA Bar</h2>
+					</div>
+				</div>
+			</div>
+			<div class="body">
+				<div class="progress">
+					<div class="progress-bar bg-orange progress-bar-striped active" role="progressbar"
+						 aria-valuemin="0" aria-valuemax="100" id="progressBar"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<script>
+		//var startDate = new Date("{{$serviceDetail->Form_Open_Port[0]->start_date}}"+" UTC");
+		//var expectedFinishDate = new Date("{{$serviceDetail->Form_Open_Port[0]->expected_finish_date}}"+" UTC");
+		var expectedFinishDate = new Date(2018,11,10,08,30,00);
+		var startDate = new Date(2018,11,10,08,25,00);
+
+	</script>
 @stop

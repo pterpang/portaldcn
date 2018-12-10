@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Request;
 use Illuminate\Support\Facades\Auth;
 use App\AdditionalHelper;
@@ -45,7 +46,8 @@ class IBController extends Controller
         $activeClasses = ['ib_active', 'ib_services_active', 'ib_openport_active'];
         $parentProgress = AdditionalHelper::getParentProgress($id);
         $otherService = AdditionalHelper::getOtherServiceById($id);
-        return view('services.openport.table', compact('activeClasses', 'serviceDetail', 'parentProgress', 'otherService'));
+        $category = "openPort";
+        return view('services.openport.table', compact('activeClasses', 'serviceDetail', 'parentProgress', 'otherService', 'category'));
     }
 
     public function editOpenport($id)
@@ -73,7 +75,8 @@ class IBController extends Controller
         $activeClasses = ['ib_active', 'ib_services_active', 'ib_deviceconnection_active'];
         $parentProgress = AdditionalHelper::getParentProgress($id);
         $otherService = AdditionalHelper::getOtherServiceById($id);
-        return view('services.deviceconnection.table', compact('activeClasses', 'serviceDetail', 'parentProgress', 'otherService'));
+        $category = "deviceConnection";
+        return view('services.deviceconnection.table', compact('activeClasses', 'serviceDetail', 'parentProgress', 'otherService','category'));
     }
 
     public function editDeviceConnection($id)
@@ -100,7 +103,8 @@ class IBController extends Controller
         $activeClasses = ['ib_active', 'ib_services_active', 'ib_H2H_active'];
         $parentProgress = AdditionalHelper::getParentProgress($id);
         $otherService = AdditionalHelper::getOtherServiceById($id);
-        return view('services.h2h.table', compact('activeClasses', 'serviceDetail', 'parentProgress', 'otherService'));
+        $category = "H2H";
+        return view('services.h2h.table', compact('activeClasses', 'serviceDetail', 'parentProgress', 'otherService','category'));
     }
 	
 	public function ASDelivery()
@@ -117,7 +121,8 @@ class IBController extends Controller
         $activeClasses = ['ib_active', 'ib_services_active', 'ib_ASDelivery_active'];
         $parentProgress = AdditionalHelper::getParentProgress($id);
         $otherService = AdditionalHelper::getOtherServiceById($id);
-        return view('services.asdelivery.table', compact('activeClasses', 'serviceDetail', 'parentProgress', 'otherService'));
+        $category = "ASDelivery";
+        return view('services.asdelivery.table', compact('activeClasses', 'serviceDetail', 'parentProgress', 'otherService', 'category'));
     }
     
     public function editASDelivery($id)

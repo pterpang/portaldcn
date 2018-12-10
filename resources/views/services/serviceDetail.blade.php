@@ -210,7 +210,16 @@
 
 		@yield('subcontent-script')
 	});
-	
-	
+
+	function progressBar(){
+        var today = new Date();
+        var dateDiff = expectedFinishDate-startDate;
+        var currentDateDiff = expectedFinishDate - today;
+        var p = Math.floor(currentDateDiff/dateDiff*100);
+        $("#progressBar").css("width",p+"%").attr("aria-valuenow", p);
+        alert(p);
+	}
+	progressBar();
+
 </script>
 @stop
