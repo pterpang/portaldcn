@@ -19,7 +19,7 @@ class CreateFormPermohonanKoneksiLansTable extends Migration
 			$table->integer('service_id');
             $table->dateTime('start_date')->nullable();
             $table->datetime('expected_finish_date')->nullable();
-			$table->date('finish_date')->nullable();
+            $table->dateTime('finish_date')->nullable();
 			$table->string('pic');
 			$table->date('tanggal_pemakaian');
 			$table->string('lokasi');
