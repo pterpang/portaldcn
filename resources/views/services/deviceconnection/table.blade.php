@@ -169,18 +169,28 @@
 			 <div class="header">
 				 <div class="row clearfix">
 					 <div class="col-xs-12 col-sm-6">
-						 <h2>SLA BAR</h2>
+						 <h2>SLA Bar</h2>
 					 </div>
 				 </div>
 			 </div>
 			 <div class="body">
-				 <p id="title"></p>
+				 <p id="startDate"></p>
+				 <p id="expectedFinishDate"></p>
+				 <p id="finishedDate"></p>
 				 <div class="progress" style="position: relative">
 					 <div id="text" class="center" style="position: absolute;left: 40%">
 					 </div>
+                     <?php if ($serviceDetail->Form_Koneksi_Device_ke_Jaringan[0]->pic == "none"): ?>
+					 <div class="progress-bar bg-red progress-bar" role="progressbar" aria-valuenow="0"
+						  aria-valuemin="0" aria-valuemax="100" style="width: 100%">Request Belum Diambil</div>
+                     <?php elseif($serviceDetail->Form_Koneksi_Device_ke_Jaringan[0]->finish_date == null): ?>
 					 <div class="progress-bar bg-orange progress-bar-striped active" role="progressbar"
 						  aria-valuemin="0" aria-valuemax="100" id="progressBar" style="width:0%;">
+                         <?php else:?>
+						 <div class="progress-bar bg-light-green progress-bar" role="progressbar" aria-valuenow="0"
+							  aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
 					 </div>
+                     <?php endif ?>
 				 </div>
 			 </div>
 		 </div>
@@ -189,7 +199,7 @@
  <script>
      var startDate = new Date("{{$serviceDetail->Form_Koneksi_Device_ke_Jaringan[0]->start_date}}");
      var expectedFinishDate = new Date("{{$serviceDetail->Form_Koneksi_Device_ke_Jaringan[0]->expected_finish_date}}");
-     var finishDate = "{{$serviceDetail->Form_Koneksi_Device_ke_Jaringan[0]->finish_date}}";
+     var finishDate = new Date("{{$serviceDetail->Form_Koneksi_Device_ke_Jaringan[0]->finish_date}}");
      var pic = "{{$serviceDetail->Form_Koneksi_Device_ke_Jaringan[0]->pic}}";
      //var expectedFinishDate = new Date(2018,11,10,15,33,00);
      //var startDate = new Date(2018,11,10,15,30,00);

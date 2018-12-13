@@ -77,7 +77,7 @@
 												<?php elseif(AdditionalHelper::getParentProgress($row->id) == 100):?>
 													<div align="center" class="col-teal status status-complete">Complete</div>
 												<?php else: ?>
-													<div align="center" class="col-teal status status-complete">On progress</div>
+													<div align="center" class="col-orange status status-complete">On progress</div>
 													<!-- <button url="#" class="btn bg-teal status" disabled="disabled">
 														<i class="material-icons" style="margin-right: 5px">create</i>
 													</button> -->

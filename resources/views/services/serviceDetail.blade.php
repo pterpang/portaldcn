@@ -226,8 +226,11 @@
 
 	if(pic != "none"){
 
-	    if(finishDate==""){
-            document.getElementById("title").innerHTML= "Expected to be finished at: " + expectedFinishDate.toString();
+		document.getElementById("startDate").innerHTML="<b>Taken at:</b> "+ startDate;
+		document.getElementById("expectedFinishDate").innerHTML= "<b>Expected to be finished at:</b> " + expectedFinishDate.toString();
+
+		if(finishDate!="Invalid Date"){
+            document.getElementById("finishedDate").innerHTML="<b>Finished at:</b> "+ finishDate;
 		}
 
         var x = setInterval(function(){
@@ -245,7 +248,7 @@
             }
             else if(currentDateDiff>0 && percentage==100){
                 clearInterval(x);
-                document.getElementById("text").innerHTML = "Request Telah Selesai"
+                document.getElementById("text").innerHTML = "Request Telah Selesai";
             }
         },1000);
 
