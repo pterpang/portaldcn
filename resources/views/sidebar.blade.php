@@ -90,7 +90,7 @@
                                         <a href="{{URL::to('IB/ASDelivery')}}">
                                             <span class="submenu-title">App. Service Delivery</span>
                                             <?php if($ASDeliveryIBCount>0):?>
-                                            <span class="badge badge-light">{{$ASDeliveryIBCountIBCount}}</span>
+                                            <span class="badge badge-light">{{$ASDeliveryIBCount}}</span>
                                             <?php endif ?>
                                         </a>
                                     </li>

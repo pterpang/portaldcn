@@ -134,10 +134,13 @@
 <script src="{{asset('AdminBSB/js/pages/tables/jquery-datatable.js')}}"></script>
 
 <script>
+    var completeRow = $("#mainTable .form-content .status-complete").length;
+    var allRow = $("#mainTable .form-content .status").length;
+    var percentage = allRow == 0? 0 : Math.floor(completeRow * 100 / allRow);
 	$(document).ready(function() {
-		var completeRow = $("#mainTable .form-content .status-complete").length;
-		var allRow = $("#mainTable .form-content .status").length;
-		var percentage = allRow == 0? 0 : Math.floor(completeRow * 100 / allRow);
+		//var completeRow = $("#mainTable .form-content .status-complete").length;
+		//var allRow = $("#mainTable .form-content .status").length;
+		//var percentage = allRow == 0? 0 : Math.floor(completeRow * 100 / allRow);
 		
 		$(".openportprogress").val(percentage);
 		$(".parentprogress").val("{{$parentProgress}}");
@@ -211,15 +214,49 @@
 		@yield('subcontent-script')
 	});
 
-	function progressBar(){
-        var today = new Date();
-        var dateDiff = expectedFinishDate-startDate;
-        var currentDateDiff = expectedFinishDate - today;
-        var p = Math.floor(currentDateDiff/dateDiff*100);
-        $("#progressBar").css("width",p+"%").attr("aria-valuenow", p);
-        alert(p);
+    var dateDiff = expectedFinishDate-startDate;
+
+	function updateProgress(percentage){
+        $("#progressBar").css("width",percentage+"%");
 	}
-	progressBar();
+
+	if(pic != "none"){
+
+	    if(finishDate==""){
+            document.getElementById("title").innerHTML= "Expected to be finished at: " + expectedFinishDate.toString();
+		}
+
+        var x = setInterval(function(){
+            var today = new Date();
+            var currentDateDiff = expectedFinishDate - today;
+            var days = Math.floor(currentDateDiff/(1000*60*60*24));
+            var hours = Math.floor((currentDateDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((currentDateDiff % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds =  Math.floor((currentDateDiff % (1000 * 60)) / (1000));
+
+            document.getElementById("text").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s left";
+            if (currentDateDiff<0){
+                clearInterval(x);
+                document.getElementById("text").innerHTML = "Waktu Telah Habis!"
+            }
+            else if(currentDateDiff>0 && percentage==100){
+                clearInterval(x);
+                document.getElementById("text").innerHTML = "Request Telah Selesai"
+            }
+        },1000);
+
+        function progressBar(){
+            var today = new Date();
+            var interval = dateDiff/1000;
+            var currentDateDiff = expectedFinishDate - today;
+            var p = currentDateDiff/dateDiff*100;
+            if(p>=0 && percentage !=100){
+                updateProgress(p);
+                setTimeout(progressBar, interval);
+            }
+        }
+        progressBar();
+	}
 
 </script>
 @stop

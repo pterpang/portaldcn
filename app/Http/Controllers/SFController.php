@@ -55,7 +55,7 @@ class SFController extends Controller
 	
 	public function deviceConnection()
     {
-        $serviceList= Service::with('Form_Koneksi_Device_ke_Jaringan')->where('category', 1) ->get(); 
+        $serviceList= Service::with('Form_Koneksi_Device_ke_Jaringan')->where('category', 2) ->get();
         $activeClasses = ['sf_active', 'sf_services_active', 'sf_deviceconnection_active'];
         $category = "deviceConnection";
         return view('services.serviceList', compact('activeClasses', 'serviceList', 'category'));
