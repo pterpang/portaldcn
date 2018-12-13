@@ -24,7 +24,7 @@
 											<i class="material-icons" style="margin-right: 5px">hourglass_full</i>On progress
 										</a>
 									<?php endif ?>	
-									<a class="btn bg-teal" href="{{Request::URL()}}/edit">
+									<a class="btn bg-teal" href="{{Request::URL()}}/edit" id="atoedit">
 										<i class="material-icons" style="margin-right: 5px">edit</i>Edit
 									</a>
 								</div>		
@@ -94,7 +94,7 @@
 							<P>
 								Status: 
 								<?php if ($serviceDetail->Form_Permohonan_Koneksi_Lan[0]->pic == "none"): ?>
-									<span class="col-red status status-complete">Pending</span>
+									<span class="col-red status">Pending</span>
 								<?php else: ?>
 									<?php if (isset($serviceDetail->Form_Permohonan_Koneksi_Lan[0]->finish_date)): ?>
 										<span class="col-teal status status-complete">Complete</span>			

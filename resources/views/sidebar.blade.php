@@ -40,7 +40,7 @@
                             <span class="mainmenu-title">Internet Banking & E-Channel</span>
                             <?php $count = $openPortIBCount + $deviceConnectionIBCount + $ASDeliveryIBCount?>
                             <?php if($count>0):?>
-                            <span class="badge badge-light" >
+                            <span class="badge badge-light bg-blue col-white" >
                                  {{$count}}</span>
                             <?php endif?>
                         </a>
@@ -74,7 +74,7 @@
                                         <a href="{{URL::to('IB/openport')}}">
                                             <span class="submenu-title">Open Port Firewall</span>
                                             <?php if($openPortIBCount>0):?>
-                                            <span class="badge badge-light">{{$openPortIBCount}}</span>
+                                            <span class="badge badge-light bg-teal col-white">{{$openPortIBCount}}</span>
                                             <?php endif ?>
                                         </a>
                                     </li>
@@ -82,7 +82,7 @@
                                         <a href="{{URL::to('IB/deviceConnection')}}">
                                             <span class="submenu-title">Device Connection</span>
                                             <?php if($deviceConnectionIBCount>0):?>
-                                            <span class="badge badge-light">{{$deviceConnectionIBCount}}</span>
+                                            <span class="badge badge-light bg-teal col-white">{{$deviceConnectionIBCount}}</span>
                                             <?php endif ?>
                                         </a>
                                     </li>
@@ -90,7 +90,7 @@
                                         <a href="{{URL::to('IB/ASDelivery')}}">
                                             <span class="submenu-title">App. Service Delivery</span>
                                             <?php if($ASDeliveryIBCount>0):?>
-                                            <span class="badge badge-light">{{$ASDeliveryIBCountIBCount}}</span>
+                                            <span class="badge badge-light bg-teal col-white">{{$ASDeliveryIBCountIBCount}}</span>
                                             <?php endif ?>
                                         </a>
                                     </li>
@@ -105,7 +105,7 @@
                             <?php $count = $openPortSFCount+$deviceConnectionSFCount+$ASDeliverySFCount
                             +$H2HSFCount+$remoteAccessSFCount?>
                             <?php if($count>0):?>
-                            <span class="badge badge-light">
+                            <span class="badge badge-light bg-blue col-white">
                                   {{$count}}</span>
                             <?php endif?>
                         </a>
@@ -139,7 +139,7 @@
                                         <a href="{{URL::to('SF/remoteAccess')}}">
                                             <span class="submenu-title">Remote Access</span>
                                             <?php if($remoteAccessSFCount>0):?>
-                                            <span class="badge badge-light">{{$remoteAccessSFCount}}</span>
+                                            <span class="badge badge-light bg-teal col-white">{{$remoteAccessSFCount}}</span>
                                             <?php endif ?>
                                         </a>
                                     </li>
@@ -147,7 +147,7 @@
                                         <a href="{{URL::to('SF/H2H')}}">
                                             <span class="submenu-title">H2H Connection</span>
                                             <?php if($H2HSFCount>0):?>
-                                            <span class="badge badge-light">{{$H2HSFCount}}</span>
+                                            <span class="badge badge-light bg-teal col-white">{{$H2HSFCount}}</span>
                                             <?php endif ?>
                                         </a>
                                     </li>
@@ -155,7 +155,7 @@
                                         <a href="{{URL::to('SF/openport')}}">
                                             <span class="submenu-title">Open Port Firewall</span>
                                             <?php if($openPortSFCount>0):?>
-                                            <span class="badge badge-light">{{$openPortSFCount}}</span>
+                                            <span class="badge badge-light bg-teal col-white">{{$openPortSFCount}}</span>
                                             <?php endif ?>
                                         </a>
                                     </li>
@@ -163,7 +163,7 @@
                                         <a href="{{URL::to('SF/deviceConnection')}}">
                                             <span class="submenu-title">Device Connection</span>
                                             <?php if($deviceConnectionSFCount>0):?>
-                                            <span class="badge badge-light">{{$deviceConnectionSFCount}}</span>
+                                            <span class="badge badge-light bg-teal col-white">{{$deviceConnectionSFCount}}</span>
                                             <?php endif ?>
                                         </a>
                                     </li>
@@ -171,7 +171,7 @@
                                         <a href="{{URL::to('SF/ASDelivery')}}">
                                             <span class="submenu-title">App. Service Delivery</span>
                                             <?php if($ASDeliverySFCount>0):?>
-                                            <span class="badge badge-light">{{$ASDeliverySFCount}}</span>
+                                            <span class="badge badge-light bg-teal col-white">{{$ASDeliverySFCount}}</span>
                                             <?php endif ?>
                                         </a>
                                     </li>
@@ -185,7 +185,7 @@
                             <span class="mainmenu-title">H2H & WAN</span>
                             <?php $count = $H2HCount+$openPortH2HCount+$deviceConnectionH2HCount?>
                             <?php if($count>0):?>
-                            <span class="badge badge-primary badge-danger">
+                            <span class="badge badge-primary badge-danger col-white bg-blue">
                                 {{$count}}</span>
                             <?php endif?>
                         </a>
@@ -219,7 +219,7 @@
                                         <a href="{{URL::to('TP/H2H')}}">
                                             <span class="submenu-title">H2H Connection</span>
                                             <?php if($H2HCount>0):?>
-                                            <span class="badge badge-light">{{$H2HCount}}</span>
+                                            <span class="badge badge-light bg-teal col-white">{{$H2HCount}}</span>
                                             <?php endif ?>
                                         </a>
                                     </li>
@@ -227,7 +227,7 @@
                                         <a href="{{URL::to('TP/openport')}}">
                                             <span class="submenu-title">Open Port Firewall</span>
                                             <?php if($openPortH2HCount>0):?>
-                                            <span class="badge badge-light">{{$openPortH2HCount}}</span>
+                                            <span class="badge badge-light bg-teal col-white">{{$openPortH2HCount}}</span>
                                             <?php endif ?>
                                         </a>
                                     </li>
@@ -235,7 +235,7 @@
                                         <a href="{{URL::to('TP/deviceConnection')}}">
                                             <span class="submenu-title">Device Connection</span>
                                             <?php if($deviceConnectionH2HCount>0):?>
-                                            <span class="badge badge-light">{{$deviceConnectionH2HCount}}</span>
+                                            <span class="badge badge-light bg-teal col-white">{{$deviceConnectionH2HCount}}</span>
                                             <?php endif ?>
                                         </a>
                                     </li>
@@ -249,7 +249,7 @@
                             <span class="mainmenu-title">Remote Office & LAN HQ</span>
                             <?php $count = $lanROLCount+$openPortROLCount+$deviceConnectionROLCount?>
                             <?php if($count>0):?>
-                            <span class="badge badge-primary badge-danger">
+                            <span class="badge badge-primary badge-danger col-white bg-blue">
                                  {{$count}}</span>
                             <?php endif?>
                         </a>
@@ -283,7 +283,7 @@
                                         <a href="{{URL::to('LAN/LAN')}}">
                                             <span class="submenu-title">LAN Connection</span>
                                             <?php if($lanROLCount>0):?>
-                                            <span class="badge badge-light">{{$lanROLCount}}</span>
+                                            <span class="badge badge-light bg-teal col-white">{{$lanROLCount}}</span>
                                             <?php endif ?>
                                         </a>
                                     </li>
@@ -291,7 +291,7 @@
                                         <a href="{{URL::to('LAN/openport')}}">
                                             <span class="submenu-title">Open Port Firewall</span>
                                             <?php if($openPortROLCount>0):?>
-                                            <span class="badge badge-light">{{$openPortROLCount}}</span>
+                                            <span class="badge badge-light bg-teal col-white">{{$openPortROLCount}}</span>
                                             <?php endif ?>
                                         </a>
                                     </li>
@@ -299,7 +299,7 @@
                                         <a href="{{URL::to('LAN/deviceConnection')}}">
                                             <span class="submenu-title">Device Connection</span>
                                             <?php if($deviceConnectionROLCount>0):?>
-                                            <span class="badge badge-light">{{$deviceConnectionROLCount}}</span>
+                                            <span class="badge badge-light bg-teal col-white">{{$deviceConnectionROLCount}}</span>
                                             <?php endif ?>
                                         </a>
                                     </li>
@@ -313,7 +313,7 @@
                             <span class="mainmenu-title">Network Security & Monitoring</span>
                             <?php $count = $lanNetSecCount+$remoteAccessNetSecCount?>
                             <?php if($count>0):?>
-                            <span class="badge badge-primary badge-danger">
+                            <span class="badge badge-primary badge-danger bg-blue col-white">
                                  {{$count}}</span>
                             <?php endif?>
                         </a>
@@ -347,7 +347,7 @@
                                         <a href="{{URL::to('netsec/LAN')}}">
                                             <span class="submenu-title">LAN/WLAN Connection</span>
                                             <?php if($lanNetSecCount>0):?>
-                                            <span class="badge badge-light">{{$lanNetSecCount}}</span>
+                                            <span class="badge badge-light bg-teal col-white">{{$lanNetSecCount}}</span>
                                             <?php endif ?>
                                         </a>
                                     </li>
@@ -355,7 +355,7 @@
                                         <a href="{{URL::to('netsec/remoteAccess')}}">
                                             <span class="submenu-title">Remote Access</span>
                                             <?php if($remoteAccessNetSecCount>0):?>
-                                            <span class="badge badge-light">{{$remoteAccessNetSecCount}}</span>
+                                            <span class="badge badge-light bg-teal col-white">{{$remoteAccessNetSecCount}}</span>
                                             <?php endif ?>
                                         </a>
                                     </li>

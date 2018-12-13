@@ -16,7 +16,7 @@ td{
 						<h2 class="content-submenu"></h2>
 					</div>
 					<div class="col-xs-12 col-sm-6" align="right">
-						<a class="btn bg-teal" href="{{Request::URL()}}/edit">
+						<a class="btn bg-teal" href="{{Request::URL()}}/edit" id="atoedit">
 							<i class="material-icons" style="margin-right: 5px">edit</i>Edit
 						</a>
 					</div>

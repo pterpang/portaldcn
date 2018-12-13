@@ -23,7 +23,7 @@
 								<i class="material-icons" style="margin-right: 5px">hourglass_full</i>On progress
 							</a>
 						<?php endif ?>	
-						<a class="btn bg-teal" href="{{Request::URL()}}/edit">
+						<a class="btn bg-teal" href="{{Request::URL()}}/edit" id="atoedit">
 							<i class="material-icons" style="margin-right: 5px">edit</i>Edit
 						</a>
 					</div>	
@@ -123,7 +123,7 @@
 								<td>{!! $row->port_aplikasi !!}</td>
 								<td>{!! $row->nama_aplikasi !!}</td>
 								<?php if ($serviceDetail->Form_Host_to_Host[0]->pic == "none"): ?>
-									<td align="center" class="col-red status status-complete">Pending</td>
+									<td align="center" class="col-red status">Pending</td>
 								<?php else: ?>
 									<?php if (isset($row->finish_date)): ?>
 										<td align="center" class="col-teal status status-complete">Complete</td>			

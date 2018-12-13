@@ -29,7 +29,7 @@ td{
 								<i class="material-icons" style="margin-right: 5px">hourglass_full</i>On progress
 							</a>
 						<?php endif ?>	
-						<a class="btn bg-teal" href="{{Request::URL()}}/edit">
+						<a class="btn bg-teal" href="{{Request::URL()}}/edit" id="atoedit">
 							<i class="material-icons" style="margin-right: 5px">edit</i>Edit
 						</a>
 					</div>
@@ -290,7 +290,7 @@ td{
 							<span style="font-weight: bold">Multiple Active Data Center</span>	
 							<span>
 							<?php if ($serviceDetail->Form_Application_Service_Delivery[0]->pic == "none"): ?>
-									<span class="col-red status status-complete">Pending</span>
+									<span class="col-red status">Pending</span>
 							<?php else: ?>	
 								<?php if (isset($serviceDetail->Form_Application_Service_Delivery[0]->Form_Multiple_Active_Data_Center[0]->finish_date)): ?>
 									<span class="col-teal status status-complete">(Complete)</span>			

@@ -96,7 +96,7 @@
                         </div>
                         <div class="body" style="padding-bottom:26px" align="center">                            
 							<div class="body">                            
-								<input type="text" value="50" class="openportprogress">
+								<input type="text" value="50" class="svcprogress">
 							</div>
 						</div>
 			        </div>
@@ -138,11 +138,16 @@
 		var completeRow = $("#mainTable .form-content .status-complete").length;
 		var allRow = $("#mainTable .form-content .status").length;
 		var percentage = allRow == 0? 0 : Math.floor(completeRow * 100 / allRow);
+
+		if(percentage == 100){
+			$("#atoedit").removeAttr("href");
+			$("#atoedit").attr("disabled", "true");
+		}
 		
-		$(".openportprogress").val(percentage);
+		$(".svcprogress").val(percentage);
 		$(".parentprogress").val("{{$parentProgress}}");
 
-		$(".openportprogress").knob({
+		$(".svcprogress").knob({
 			'readOnly': true,
 			"fgColor":"#03A9F4",
 			'format' : function (value) {
