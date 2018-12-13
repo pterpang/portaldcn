@@ -32,6 +32,7 @@ class CreateFormPermohonanKoneksiLansTable extends Migration
 			$table->string('ip_phone');
 			$table->string('lama_pemakaian');
 			$table->string('bypass_nas_ise');
+            $table->longText('mac_address');
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');			
         });
     }

@@ -11,6 +11,7 @@
                                     <h2 class="content-submenu"></h2>
                                 </div>
                                 <div class="col-xs-12 col-sm-6" align="right">
+                                	<button class="btn bg-primary" onclick="window.history.back();"><i class="material-icons" style="margin-right: 5px">arrow_back</i>Back</button>
 									<a class="btn bg-teal" href="{{Request::URL()}}/edit" id="atoedit">
 										<i class="material-icons" style="margin-right: 5px">edit</i>Edit
 									</a>
@@ -101,6 +102,15 @@
 									</P>
 									<p>{{$temp->antivirus}}</p>							
 								</div>		
+								<!--Lantai-->
+								<div class="form-group col-md-12 clearfix">
+									<p>
+										<label>Lantai:</label>
+									</p>
+									<div class="form-group">
+										<p>{{$temp->lantai}} User</p>
+									</div>
+								</div>
 								<!--Total User/Device-->
 								<div class="form-group col-md-12 clearfix">
 									<p>
@@ -155,16 +165,16 @@
 									<p>{{$temp->bypass_nas_ise}}</p>							
 								</div>		
 								<!--MAC Address-->
-								<!-- <div class="form-group col-md-12 clearfix" id="macAddressDiv">
+								<div class="form-group col-md-12 clearfix" id="macAddressDiv">
 									<p>
 										<label>IP/MAC Address:</label>
 									</p>
 									<div class="form-group">
 										<div style="border: solid #DADADA 1px">
-											<textarea class="form-control" style="resize:none" rows="5" name="macAddress" disabled="true">aa:bb:cc:dd</textarea>
+											<textarea class="form-control" style="resize:none" rows="5" name="macAddress" disabled="true">{{$temp->mac_address}}</textarea>
 										</div>
 									</div>
-								</div> -->								
+								</div>								
 							</div>		  
                         </div>
                     </div>

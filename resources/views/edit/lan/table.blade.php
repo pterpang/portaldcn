@@ -106,15 +106,45 @@
 							<P>
 								<label for="lokasi">Lokasi</label>
 							</P>
-							<input class="with-gap" name="lokasi" type="radio" value="MBCA" id="lokasi_1" {{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'MBCA'? 'checked' : ''}}/>
-							<label for="lokasi_1">Menara BCA</label><br/>
-							<input class="with-gap" name="lokasi" type="radio" value="WSA2" id="lokasi_2" {{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'WSA2'? 'checked' : ''}}/>
-							<label for="lokasi_2">Wisma Asia 2</label><br/>
-							<input class="with-gap" name="lokasi" type="radio" value="WSBY" class="with-gap" id="lokasi_3" {{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'WSBY'? 'checked' : ''}}/>
-							<label for="lokasi_3">Grha Asia</label><br/>
-							<input class="with-gap" name="lokasi" type="radio" value="Others" id="lokasi_4" class="with-gap" {{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi != 'MBCA' && $serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi != 'WSA2' && $serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi != 'WSBY'? 'checked' : ''}}/>
-							<label for="lokasi_4">Lainnya</label>  
+							<div class="col-md-6">
+								<input class="with-gap" name="lokasi" type="radio" value="Menara BCA" id="lokasi_1" {{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'Menara BCA'? 'checked' : ''}}/>
+								<label for="lokasi_1">Menara BCA</label><br/>
+								<input class="with-gap" name="lokasi" type="radio" value="Wisma Asia 2" id="lokasi_2" {{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'Wisma Asia 2'? 'checked' : ''}}/>
+								<label for="lokasi_2">Wisma Asia 2</label><br/>
+								<input class="with-gap" name="lokasi" type="radio" value="Grha Asia" class="with-gap" id="lokasi_3" {{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'Grha Asia'? 'checked' : ''}}/>
+								<label for="lokasi_3">Grha Asia</label><br/>
+								<input class="with-gap" name="lokasi" type="radio" value="Chase Plaza" id="lokasi_4" {{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'Chase Plaza'? 'checked' : ''}}/>
+								<label for="lokasi_4">Chase Plaza</label><br/>
+								<input class="with-gap" name="lokasi" type="radio" value="Wisma BSD" id="lokasi_5" {{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'Wisma BSD'? 'checked' : ''}}/>
+								<label for="lokasi_5">Wisma BSD</label><br/>
+								<input class="with-gap" name="lokasi" type="radio" value="Wisma PI" id="lokasi_6" {{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'Wisma PI'? 'checked' : ''}}/>
+								<label for="lokasi_6">Wisma PI</label><br/>								
+							</div>
+							<div class="col-md-6">
+								<input class="with-gap" name="lokasi" type="radio" value="CPC Alam Sutera" class="with-gap" id="lokasi_7" {{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'CPC Alam Sutera'? 'checked' : ''}}/>
+								<label for="lokasi_7">CPC Alam Sutera</label><br/>
+								<input class="with-gap" name="lokasi" type="radio" value="BLI Sentul" id="lokasi_8" {{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'BLI Sentul'? 'checked' : ''}}/>
+								<label for="lokasi_8">BLI Sentul</label><br/>
+								<input class="with-gap" name="lokasi" type="radio" value="Halo Menara Batavia" id="lokasi_9" {{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'Halo Menara Batavia'? 'checked' : ''}}/>
+								<label for="lokasi_9">Halo Menara Batavia</label><br/>
+								<input class="with-gap" name="lokasi" type="radio" value="Halo Semarang 1" id="lokasi_10" {{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'Halo Semarang 1'? 'checked' : ''}}/>
+								<label for="lokasi_10">Halo Semarang 1</label><br/>
+								<input class="with-gap" name="lokasi" type="radio" value="Halo Semarang 2" id="lokasi_11" {{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'Halo Semarang 2'? 'checked' : ''}}/>
+								<label for="lokasi_11">Halo Semarang 2</label><br/>
+								<input class="with-gap" name="lokasi" type="radio" value="Landmark Pluit" id="lokasi_12" {{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'Landmark Pluit'? 'checked' : ''}}/>
+								<label for="lokasi_12">Landmark Pluit</label><br/>								
+							</div>
 						</div>		
+						<!--Total User/Device-->
+						<div class="form-group col-md-12 clearfix">
+							<p>
+								<label>Lantai</label>
+							</p>
+							<div class="form-group">
+								<input type="text" name="lantai" class="lantai form-control" style="border-bottom: solid #DADADA 1px" value="{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lantai}}">							
+							</div>
+						</div>
+
 						<!--Antivirus-->
 						<div class="form-group col-md-12">
 							<P>
@@ -124,7 +154,8 @@
 							<label for="antivirus_1">Ya</label><br/>
 							<input class="with-gap" name="antivirus" type="radio" value="Tidak" id="antivirus_2" {{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->antivirus == 'Tidak'? 'checked' : ''}}/>
 							<label for="antivirus_2" >Tidak</label><br/>								
-						</div>		
+						</div>	
+
 						<!--Total User/Device-->
 						<div class="form-group col-md-12 clearfix">
 							<p>
@@ -140,7 +171,7 @@
 								<label>Koneksi ke Switch</label>
 							</p>
 							<div class="form-group">
-								<input type="text" name="koneksi_ke_switch" class="koneksi_ke_switch form-control" style="border-bottom: solid #DADADA 1px" value="{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->koneksi_ke_switch}}">							
+									<input name="koneksi_ke_switch" class="form-control lan_switch" readonly="true" style="background: #DADADA" type="text" placeholder=" (Diisi oleh tim network)" value="{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->koneksi_ke_switch}}" name="koneksiSwitch">
 							</div>
 						</div>
 						<!--Port Switch-->
@@ -149,7 +180,8 @@
 								<label>Port Switch</label>
 							</p>
 							<div class="form-group">
-								<input type="text" name="port_switch" class="port_switch form-control" style="border-bottom: solid #DADADA 1px" value="{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->port_switch}}">							
+								<input name="port_switch" class="form-control lan_switch" readonly="true" style="background: #DADADA" type="text" placeholder=" (Diisi oleh tim network)" value="{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->port_switch}}" name="koneksiSwitch">
+							
 							</div>
 						</div>
 					</div>
@@ -160,7 +192,7 @@
 								<label for="ipadress">Segment IP Address</label>
 							</p>
 							<div class="form-group">
-								<input type="text" name="segment_ip_address" class="segment_ip_address form-control" style="border-bottom: solid #DADADA 1px" value="{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->segment_ip_address}}">							
+								<input class="form-control lan_switch" readonly="true" style="background: #DADADA" type="text" placeholder=" (Diisi oleh tim network)" value="{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->segment_ip_address}}" name="segment_ip_address">
 							</div>
 						</div>
 						<!--IP Phone-->
@@ -178,12 +210,30 @@
 						<!--Lama Pemakaian-->
 						<div class="form-group col-md-12 clearfix">
 							<p>
+								<label>Lama Pemakaian</label>
+							</p>
+							<div class="form-group">
+								<input class="with-gap lan_lama_pemakaian" name="lama_pemakaian" type="radio" value="Permanent" id="lama_permanent" {{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lama_pemakaian == "Permanent" ? "checked" : ""}}/>
+								<label for="lama_permanent">Permanent</label><br/>
+								<input class="with-gap" name="lama_pemakaian" type="radio" value="Temporary" id="lama_temporary" {{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lama_pemakaian != "Permanent" ? "checked" : ""}} />
+								<label for="lama_temporary">Temporary</label><br/>
+								<div class="col-md-12" style="{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lama_pemakaian != 'Permanent' ? '' : 'display: none'}}">
+									&nbsp;&nbsp;&nbsp;<b>Sampai dengan: </b>
+									<input type="date" style="border: solid #DADADA 1px;" id="lama_tanggal" value="{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lama_pemakaian != 'Permanent' ? $serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lama_pemakaian : ''}}">	
+								</div>
+							</div>
+						</div>
+
+
+						<!-- <div class="form-group col-md-12 clearfix">
+							<p>
 								<label for="lama_pemakaian">Lama Pemakaian</label>
 							</p>
 							<div class="form-group">
 								<input type="text" name="lama_pemakaian" class="lama_pemakaian form-control" style="border-bottom: solid #DADADA 1px" value="{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lama_pemakaian}}">							
 							</div>
-						</div>							
+						</div>	 -->
+
 						<!--Bypass NAC/ISE-->
 						<div class="form-group col-md-12">
 							<P>
@@ -195,13 +245,13 @@
 							<label for="bypass_2">Tidak</label><br/>								
 						</div>		
 						<!--MAC Address-->
-						<div class="form-group col-md-12 clearfix" id="macAddressDiv" style="display:none">
+						<div class="form-group col-md-12 clearfix" id="macAddressDiv">
 							<p>
 								<label>IP/MAC Address</label>
 							</p>
 							<div class="form-group">
 								<div style="border: solid #DADADA 1px">
-									<textarea class="form-control" style="resize:none" rows="5" name="macAddress" disabled="true">aa:bb:cc:dd</textarea>
+									<textarea class="form-control" style="resize:none" rows="5" name="mac_address">{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->mac_address}}</textarea>
 								</div>
 							</div>
 						</div>								
@@ -232,6 +282,72 @@
 
 @section('content-script')
 <script>
+
+
+	function isValidPort(port){
+		portList = port.split("<br>");
+		for(i=0;i<portList.length;i++){
+			portList[i] = portList[i].trim();
+			if( isNaN(portList[i]) || Number(portList[i]) < 1 || Number(portList[i]) > 65535)			
+				return false;
+		}
+		return true;
+	}
+
+	function isHostIp(str){
+		chunk = str.split(".");
+		if(chunk.length == 4){
+			for(i=0;i<4;i++){
+				if( Number(chunk[i]) < 0 || Number(chunk[i]) > 255 ){
+					return false;
+				}
+			}
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	function blankArea(arr){
+		errFlag = 0;
+
+		$.each(arr, function( index, value ) {
+			// alert(index + " " + value.length);
+			if( index == 'port' &&  (arr['protocol'] == 'IP' || arr['protocol'] == 'ICMP') ){
+				//do nothing
+			}else{
+			  if(value.length == 0){
+			  	errFlag = 1;
+			  	return false;
+			  }						
+			}
+		});
+		if(errFlag == 1)
+			return true;
+		else
+			return false;
+	}
+
+	function isPositiveNumber(inp){
+		if(isNaN(inp) == false && inp >= 1){
+			return true;
+		}
+		return false;
+			}
+
+
+	$("input[name='lama_pemakaian']").change(function(){
+		if($(this).val() == "Temporary"){
+			$("#lama_permanent").removeClass("lan_lama_pemakaian");
+			$("#lama_tanggal").addClass("lan_lama_pemakaian");
+			$("#lama_tanggal").parent().show();
+		}else{
+			$("#lama_tanggal").removeClass("lan_lama_pemakaian");
+			$("#lama_permanent").addClass("lan_lama_pemakaian");
+			$("#lama_tanggal").parent().hide();
+		}
+	});
+
 	$("#btnSubmit").click(function(e){
     	e.preventDefault();
     	var arr = {};
@@ -247,14 +363,31 @@
 			tmpArr['lokasi'] = $("input[name=lokasi]:checked").val();
 			tmpArr['antivirus'] = $("input[name=antivirus]:checked").val();
 			tmpArr['total_user_per_device'] = $("input[name=total_user_per_device]").val();
+			tmpArr['lantai'] = $("input[name=lantai]").val();
 			tmpArr['koneksi_ke_switch'] = $("input[name=koneksi_ke_switch]").val();
 			tmpArr['port_switch'] = $("input[name=port_switch]").val();
 			tmpArr['segment_ip_address'] = $("input[name=segment_ip_address]").val();
 			tmpArr['ip_phone'] = $("input[name=ip_phone]:checked").val();
-			tmpArr['lama_pemakaian'] = $("input[name=lama_pemakaian]").val();
+			tmpArr['lama_pemakaian'] = $("#mainTable .lan_lama_pemakaian").first().val();
 			tmpArr['bypass_nas_ise'] = $("input[name=bypass_nas_ise]:checked").val();
+
+			//validation area
+			var err = "";
+			if( blankArea(tmpArr) == true ) err += "<br/>All column must be filled.";
+			if( !isPositiveNumber(tmpArr['total_user_per_device']) || !isPositiveNumber(tmpArr['lantai']) ) err += "<br/>Total user and floor must be positive integer..";
+			if(err.length > 0){
+				toastr.error(err.substring(5), "Form Open Port");		    					
+				errFlag = 1;
+				return false;
+			}
+
 			lanArr.push(tmpArr);
 		});	
+
+		if(errFlag == 1){
+			return false;
+		}
+
     	$.ajax({
 			url: "{{Request::URL()}}",
 			type: 'post',

@@ -359,19 +359,18 @@ active
 														<label for="lokasi">Lokasi</label>
 													</P>
 													<div class="col-md-6">
-															<input class="with-gap" name="lokasi" type="radio" value="Menara BCA" id="lokasi_1" checked />
-															<label for="lokasi_1">Menara BCA</label><br/>
-															<input class="with-gap" name="lokasi" type="radio" value="Wisma Asia 2" id="lokasi_2" />
-															<label for="lokasi_2">Wisma Asia 2</label><br/>
-															<input class="with-gap" name="lokasi" type="radio" value="Grha Asia" id="lokasi_3" />
-															<label for="lokasi_3">Grha Asia</label><br/>
-															<input class="with-gap" name="lokasi" type="radio" value="Chase Plaza" id="lokasi_4" />
-															<label for="lokasi_4">Chase Plaza</label><br/>
-															<input class="with-gap" name="lokasi" type="radio" value="Wisma BSD" id="lokasi_5" />
-															<label for="lokasi_5">Wisma BSD</label><br/>
-															<input class="with-gap" name="lokasi" type="radio" value="Wisma PI" id="lokasi_6" />
-															<label for="lokasi_6">Wisma PI</label><br/>
-																
+														<input class="with-gap" name="lokasi" type="radio" value="Menara BCA" id="lokasi_1" checked />
+														<label for="lokasi_1">Menara BCA</label><br/>
+														<input class="with-gap" name="lokasi" type="radio" value="Wisma Asia 2" id="lokasi_2" />
+														<label for="lokasi_2">Wisma Asia 2</label><br/>
+														<input class="with-gap" name="lokasi" type="radio" value="Grha Asia" id="lokasi_3" />
+														<label for="lokasi_3">Grha Asia</label><br/>
+														<input class="with-gap" name="lokasi" type="radio" value="Chase Plaza" id="lokasi_4" />
+														<label for="lokasi_4">Chase Plaza</label><br/>
+														<input class="with-gap" name="lokasi" type="radio" value="Wisma BSD" id="lokasi_5" />
+														<label for="lokasi_5">Wisma BSD</label><br/>
+														<input class="with-gap" name="lokasi" type="radio" value="Wisma PI" id="lokasi_6" />
+														<label for="lokasi_6">Wisma PI</label><br/>																
 													</div>
 													<div class="col-md-6">
 														<input name="lokasi" type="radio" value="CPC Alam Sutera" id="lokasi_7" class="with-gap" />
@@ -516,7 +515,7 @@ active
 													</p>
 													<div class="form-group">
 														<div style="border: solid #DADADA 1px">
-															<textarea class="form-control lan_mac" style="resize:none" rows="5" placeholder="MAC Address" name="macAddress"></textarea>
+															<textarea class="form-control lan_mac" style="resize:none" rows="5" placeholder="MAC Address" name="macAddress" id="lan_mac_address"></textarea>
 														</div>
 													</div>
 												</div>
@@ -1567,6 +1566,8 @@ active
 	    				tmpArr['tanggal_pemakaian'] = panel_lan.find(".lan_tanggal_pemakaian").first().val();
 	    				tmpArr['lama_pemakaian'] = panel_lan.find(".lan_lama_pemakaian").first().val();
 						tmpArr['total_user_per_device'] = panel_lan.find(".lan_total_user").first().val();
+						tmpArr['mac_address'] = panel_lan.find("#lan_mac_address").val();
+
 
 						panel_lan.find('input[name="ipphone"]').each(function(){
 							if( $(this).is(':checked') ){

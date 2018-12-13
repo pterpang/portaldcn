@@ -130,9 +130,7 @@
 									<td class="deskripsi" contenteditable="true">
 										{!! $row->deskripsi !!}
 									</td>	
-									<td class="id" style="display: none">
-										{!!$row->id !!}
-									</td>
+									<td class="id" style="display: none">{!!$row->id !!}</td>
 								</tr>								
 							<?php endif ?>
 						<?php endforeach ?>		

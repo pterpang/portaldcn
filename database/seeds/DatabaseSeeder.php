@@ -299,6 +299,7 @@ class DatabaseSeeder extends Seeder
 			'lama_pemakaian' => '1 bulan',
 			'bypass_nas_ise' =>  'tidak',
 			'created_at' => '9/18/2018',
+			'mac_address' => 'AA:BB:CC:DD'	
 		]);
 
 		DB::table('form_permohonan_koneksi_lans')->insert([
@@ -317,6 +318,7 @@ class DatabaseSeeder extends Seeder
 			'lama_pemakaian' => '2 bulan',
 			'bypass_nas_ise' =>  'tidak',
 			'created_at' => '9/18/2018',
+			'mac_address' => 'AA:BB:CC:DD'
 		]);
 			
 		// factory(App\Service::class, 50)->create();

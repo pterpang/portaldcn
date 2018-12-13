@@ -10,6 +10,7 @@
 						<h2 class="content-submenu"></h2>
 					</div>
 					<div class="col-xs-12 col-sm-6" align="right">
+						<button class="btn bg-primary" onclick="window.history.back();"><i class="material-icons" style="margin-right: 5px">arrow_back</i>Back</button>
 						<a class="btn bg-teal" href="{{Request::URL()}}/edit" id="atoedit">
 							<i class="material-icons" style="margin-right: 5px">edit</i>Edit
 						</a>
@@ -96,12 +97,42 @@
 						<?php foreach ($serviceDetail->Form_Pendaftaran_Remote_Access as $row): ?>
 							<tr>
 								<td>{{$i++}}</td>
-								<td>{{$row->nama_server}}</td>
-								<td>{{$row->ip_address}}</td>
+								<td>
+								<?php
+								foreach (explode("<br>", $row->nama_server) as $row2) {
+									echo "<p>". $row2 ."</p>";
+								}
+								?>
+								</td>
+								<td>
+									<?php
+									foreach (explode("<br>", $row->ip_address) as $row2) {
+										echo "<p>". $row2 ."</p>";
+									}
+									?>
+								</td>
 								<td>{{$row->protocol}}</td>
-								<td>{{strlen($row->port) > 0? $row->port : '-'}}</td>	
-								<td>{{$row->client}}</td>
-								<td>{{$row->deskripsi}}</td>
+								<td>
+									<?php
+									foreach (explode("<br>", $row->port) as $row2) {
+										echo "<p>". $row2 ."</p>";
+									}
+									?>
+								</td>	
+								<td>
+									<?php
+									foreach (explode("<br>", $row->client) as $row2) {
+										echo "<p>". $row2 ."</p>";
+									}
+									?>
+								</td>
+								<td>
+									<?php
+									foreach (explode("<br>", $row->deskripsi) as $row2) {
+										echo "<p>". $row2 ."</p>";
+									}
+									?>
+								</td>
 								<?php if (isset($row->finish_date)): ?>
 									<td align="center" class="col-teal status status-complete">Complete</td>		
 								<?php else: ?>

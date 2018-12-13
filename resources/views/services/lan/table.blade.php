@@ -113,19 +113,49 @@
 									<P>
 										<label for="lokasi">Lokasi</label>
 									</P>
-									
-									<input class="with-gap" name="lokasi" type="radio" value="MenaraBCA" id="lokasi_1"
-											{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'MBCA'? 'checked' : 'disabled="true"'}} />
+
+									<div class="col-md-6">
+										<input class="with-gap" name="lokasi" type="radio" value="Menara BCA" id="lokasi_1"
+											{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'Menara BCA'? 'checked' : 'disabled="true"'}} />
 										<label for="lokasi_1">Menara BCA</label><br/>
-									<input class="with-gap" name="lokasi" type="radio" value="WismaAsia2" id="lokasi_2" 
-											{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'WSA2'? 'checked' : 'disabled="true"'}} />
+										<input class="with-gap" name="lokasi" type="radio" value="Wisma Asia 2" id="lokasi_2" 
+												{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'Wisma Asia 2'? 'checked' : 'disabled="true"'}} />
 										<label for="lokasi_2">Wisma Asia 2</label><br/>
-									<input class="with-gap" name="lokasi" type="radio" value="GrhaAsia" id="lokasi_3" 
-											{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'WSBY'? 'checked' : 'disabled="true"'}} />
+										<input class="with-gap" name="lokasi" type="radio" value="Grha Asia" id="lokasi_3" 
+												{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'Grha Asia'? 'checked' : 'disabled="true"'}} />
 										<label for="lokasi_3">Grha Asia</label><br/>
-									<input class="with-gap" name="lokasi" type="radio" value="Lainnya" id="lokasi_4" 
-											{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi != 'MBCA' && $serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi != 'WSA2' && $serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi != 'WSBY'? 'checked' : 'disabled="true"'}} />
-										<label for="lokasi_4">Lainnya</label>  
+										<input class="with-gap" name="lokasi" type="radio" value="Chase Plaza" id="lokasi_4"
+												{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'Chase Plaza'? 'checked' : 'disabled="true"'}} />
+										<label for="lokasi_4">Menara BCA</label><br/>
+										<input class="with-gap" name="lokasi" type="radio" value="Wisma BSD" id="lokasi_5" 
+												{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'Wisma BSD'? 'checked' : 'disabled="true"'}} />
+										<label for="lokasi_5">Wisma PI</label><br/>
+										<input class="with-gap" name="lokasi" type="radio" value="Wisma PI" id="lokasi_6" 
+												{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'Wisma PI'? 'checked' : 'disabled="true"'}} />
+										<label for="lokasi_6">Wisma PI</label><br/>
+										
+									</div>
+									<div class="col-md-6">
+										<input class="with-gap" name="lokasi" type="radio" value="CPC Alam Sutera" id="lokasi_7"
+												{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'CPC Alam Sutera'? 'checked' : 'disabled="true"'}} />
+										<label for="lokasi_7">CPC Alam Sutera</label><br/>
+										<input class="with-gap" name="lokasi" type="radio" value="BLI Sentul" id="lokasi_8" 
+												{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'CPC Alam Sutera'? 'checked' : 'disabled="true"'}} />
+										<label for="lokasi_8">BLI Sentul</label><br/>
+										<input class="with-gap" name="lokasi" type="radio" value="Halo Menara Batavia" id="lokasi_9" 
+												{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'Halo Menara Batavia'? 'checked' : 'disabled="true"'}} />
+										<label for="lokasi_9">Halo Menara Batavia</label><br/>
+										<input class="with-gap" name="lokasi" type="radio" value="Halo Semarang 1" id="lokasi_10"
+												{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'Halo Semarang 1'? 'checked' : 'disabled="true"'}} />
+										<label for="lokasi_10">Halo Semarang 1</label><br/>
+										<input class="with-gap" name="lokasi" type="radio" value="Halo Semarang 2" id="lokasi_11" 
+												{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'Halo Semarang 2'? 'checked' : 'disabled="true"'}} />
+										<label for="lokasi_11">Halo Semarang 2</label><br/>
+										<input class="with-gap" name="lokasi" type="radio" value="Landmark Pluit" id="lokasi_12" 
+												{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lokasi == 'Landmark Pluit'? 'checked' : 'disabled="true"'}} />
+										<label for="lokasi_12">Landmark Pluit</label>										
+									</div>
+									
 								</div>		
 								<!--Antivirus-->
 								<div class="form-group col-md-12">
@@ -139,6 +169,15 @@
 											{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->antivirus == 'Tidak'? 'checked' : 'disabled="true"'}} />
 										<label for="antivirus_2">Tidak</label><br/>								
 								</div>		
+								<!--Lantai-->
+								<div class="form-group col-md-12 clearfix">
+									<p>
+										<label>Lantai</label>
+									</p>
+									<div class="form-group">
+										{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->lantai}}
+									</div>
+								</div>
 								<!--Total User/Device-->
 								<div class="form-group col-md-12 clearfix">
 									<p>
@@ -214,13 +253,13 @@
 									<label for="bypass_2">Tidak</label><br/>								
 								</div>		
 								<!--MAC Address-->
-								<div class="form-group col-md-12 clearfix" id="macAddressDiv" style="display:none">
+								<div class="form-group col-md-12 clearfix" id="macAddressDiv">
 									<p>
 										<label>IP/MAC Address</label>
 									</p>
 									<div class="form-group">
 										<div style="border: solid #DADADA 1px">
-											<textarea class="form-control" style="resize:none" rows="5" name="macAddress" disabled="true">aa:bb:cc:dd</textarea>
+											<textarea class="form-control" style="resize:none" rows="5" name="macAddress" disabled="true">{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->mac_address	}}</textarea>
 										</div>
 									</div>
 								</div>								
@@ -232,29 +271,6 @@
             <!-- #END# Page Content -->
 <div class="row clearfix" id="progressSection">
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-	<!--div class="card">
-			<div class="header">
-				<div class="row clearfix">
-					<div class="col-xs-12 col-sm-6">
-						<h2 >Progress Status</h2>
-					</div>
-				</div>
-			</div>
-			<div class="body">
-				<div class="progress">
-                    <?php if ($serviceDetail->Form_Permohonan_Koneksi_Lan[0]->pic == "none"): ?>
-			<div class="progress-bar progress-bar" role="progressbar" aria-valuenow="0"
-                 aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
-            <?php elseif ($parentProgress == 100):?>
-			<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100"
-                 aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
-        <?php else: ?>
-			<div class="progress-bar progress-bar" role="progressbar" aria-valuenow="100"
-                 aria-valuemin="" aria-valuemax="100" style="width: 50%"></div>
-        <?php endif ?>
-			</div>
-        </div>
-    </div-->
 		<div class="card">
 			<div class="header">
 				<div class="row clearfix">
@@ -281,8 +297,6 @@
     var expectedFinishDate = new Date("{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->expected_finish_date}}");
     var finishDate = "{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->finish_date}}";
     var pic = "{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->pic}}";
-    //var expectedFinishDate = new Date(2018,11,10,15,33,00);
-    //var startDate = new Date(2018,11,10,15,30,00);
 
 </script>
 @stop
