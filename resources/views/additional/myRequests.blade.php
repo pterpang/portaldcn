@@ -99,10 +99,22 @@
 												<a href="{{Request::URL() . '/ASDelivery/' . $row->id}}" class="row"><i class="material-icons" style="margin-right: 10px">group</i>Application Service Delivery</a>
 											<?php endif ?>
 										</td>
+                                        <?php if($row->parentProgress ==0):?>
 										<td>
-											{{date_format($row->created_at, 'd F Y')}}<br/>
+											{{$row->created_at? date_format($row->created_at, 'd F Y') : "-"}}<br/>
+											<span class="col-red">({{$row->parentProgress}}% complete)</span>
+										</td>
+                                        <?php elseif($row->parentProgress ==100):?>
+										<td>
+											{{$row->created_at? date_format($row->created_at, 'd F Y') : "-"}}<br/>
 											<span class="col-green">({{$row->parentProgress}}% complete)</span>
-										</td>	
+										</td>
+                                        <?php else:?>
+										<td>
+											{{$row->created_at? date_format($row->created_at, 'd F Y') : "-"}}<br/>
+											<span class="col-orange">({{$row->parentProgress}}% complete)</span>
+										</td>
+                                    <?php endif ?>
 									<?php endforeach ?>
 								</tbody>
 							</table>

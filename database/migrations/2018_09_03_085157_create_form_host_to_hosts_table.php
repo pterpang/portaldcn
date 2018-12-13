@@ -20,7 +20,7 @@ class CreateFormHostToHostsTable extends Migration
 			$table->string('pic');
             $table->dateTime('start_date')->nullable();
             $table->datetime('expected_finish_date')->nullable();
-			$table->date('finish_date')->nullable();
+            $table->dateTime('finish_date')->nullable();
 			$table->string('nama_partner');
 			$table->string('link_komunikasi');
 			$table->string('site');

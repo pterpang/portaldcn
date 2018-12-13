@@ -20,7 +20,7 @@ class CreateFormPendaftaranRemoteAccessesTable extends Migration
 			$table->string('pic');
             $table->dateTime('start_date')->nullable();
             $table->datetime('expected_finish_date')->nullable();
-			$table->date('finish_date')->nullable();
+            $table->dateTime('finish_date')->nullable();
 			$table->string('jenis_remote_access');
 			$table->string('jenis_user_remote');
 			$table->string('environment');
