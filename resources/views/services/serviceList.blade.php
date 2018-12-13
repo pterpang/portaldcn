@@ -61,7 +61,7 @@
 											<td>{{$row->requester_name}}</td>
 											<td>{{$row->no_remedy}}</td>
 											<td>{{$row->project_name}}</td>
-											<td>{{$row->created_at}}</td>	
+											<td>{{$row->created_at}}</td>
 											<td align="center">
 													<a href="{{Request::url() . '/' . $row->id}}" class="btn bg-green">
 														<i class="material-icons" style="margin-right: 5px">remove_red_eye</i>View

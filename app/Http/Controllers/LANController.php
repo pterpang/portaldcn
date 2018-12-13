@@ -110,7 +110,7 @@ class LANController extends Controller
 
     public function remoteAccess()
     {
-        $serviceList= Service::with('Form_Pendaftaran_Remote_Access')->where('category', 2) ->get(); 
+        $serviceList= Service::with('Form_Pendaftaran_Remote_Access')->where('category', 4) ->get();
         $activeClasses = ['lan_active', 'lan_services_active', 'lan_remoteAccess_active'];
         $category = "remoteAccess";
         return view('services.serviceList', compact('activeClasses', 'serviceList', 'category'));

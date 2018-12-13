@@ -18,6 +18,8 @@ class CreateAplicationServiceDeliveriesTable extends Migration
             $table->timestamps();
 			$table->integer('service_id');
 			$table->string('pic');
+            $table->dateTime('start_date')->nullable();
+            $table->datetime('expected_finish_date')->nullable();
 			$table->date('finish_date')->nullable();
 			$table->string('service_aplikasi')->nullable();
 			$table->string('lokasi');

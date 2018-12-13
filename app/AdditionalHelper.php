@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Faker\Provider\DateTime;
 use Illuminate\Database\Eloquent\Model;
 
 class AdditionalHelper extends Model
@@ -145,5 +146,40 @@ class AdditionalHelper extends Model
             array_push($requests, $count);
         }
         return $requests;
+    }
+
+    public static function addWorkingDays($date){
+        //$arrayHoliday = ["2017-12-25","2017-01-01"]; //dummy data
+        //$arrayHoliday = [];
+        $arrayHoliday = $array = json_decode(file_get_contents("https://raw.githubusercontent.com/guangrei/Json-Indonesia-holidays/master/calendar.json"),true);
+        $count = 8;
+
+        /*old */
+        //$startDate=date('m-j', strtotime($date));
+        //$endDate = date('m-j', strtotime('+ '.$count.' weekdays'));
+        //foreach($arrayHoliday as $holidayDate){
+        //    if($startDate<=date('m-j',strtotime($holidayDate)) && date('m-j',strtotime($holidayDate))<=$endDate
+        //    && date('N', strtotime($holidayDate))!=6 && date('N', strtotime($holidayDate)!=7)){
+        //        $count = $count + 1;
+        //        $endDate = date('m-j', strtotime('+ '.$count.' weekdays'));
+        //    }
+        //}
+        $startDate = date('Ymj', strtotime($date));
+        $newDate = '';
+
+        $i = 0;
+        while ($i <= $count){
+            if(isset($arrayHoliday[$startDate])){
+                $newDate = date('Ymj', strtotime($startDate.'+ 1 weekdays'));
+                $startDate = $newDate;
+            }
+            $newDate = date('Ymj', strtotime($startDate.'+ 1 weekdays'));
+            $startDate = $newDate;
+            $i++;
+        }
+
+        $endDate = date('Y-m-j', strtotime($newDate));
+
+        return $endDate;
     }
 }
