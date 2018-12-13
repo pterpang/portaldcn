@@ -60,6 +60,9 @@
 											}else if($row->category == 4){
 												echo "Remote Office & LAN HQ";
 											}
+											else if($row->category == 5){
+												echo "Network Security & Monitoring";
+											}
 											?>
 										<td>
 											<?php if (sizeof($row->Form_Open_Port) > 0): ?>

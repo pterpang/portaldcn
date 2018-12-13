@@ -4,7 +4,13 @@
 <!-- Bootstrap Core Css -->
 <link href="{{ asset('AdminBSB/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css') }}" rel="stylesheet">
 <meta name="csrf-token" content="{{ csrf_token() }}">
+<style type="text/css">
+.tdDisabled{
+	cursor: not-allowed;
+	background: gray;
+}
 
+</style>
 @stop
 
 @foreach ($activeClasses as $class)
@@ -118,11 +124,17 @@
 								<td contenteditable="true" class="ip_address">
 									{!! $row->ip_address !!}
 								</td>
-								<td contenteditable="true" class="protocol">
-									{!! $row->protocol !!}
+								<td contenteditable="true">
+									<select class="form-control portType tdPortType spk op_protocol protocol">
+										<option value="TCP" {{$row->protocol == 'TCP'? 'selected=selected':''}}>TCP</option>
+										<option value="UDP" {{$row->protocol == 'UDP'? 'selected=selected':''}}>UDP</option>
+										<option value="TCP-UDP" {{$row->protocol == 'TCP-UDP'? 'selected=selected':''}}>TCP-UDP</option>
+										<option value="ICMP" {{$row->protocol == 'ICMP'? 'selected=selected':''}}>ICMP</option>
+										<option value="IP" {{$row->protocol == 'IP'? 'selected=selected':''}}>IP</option>
+									</select>
 								</td>
-								<td contenteditable="true" class="port">
-									{!! $row->nama_server !!}
+								<td class="port {!! strlen($row->port)? "" : "tdDisabled disabled" !!}" {!! strlen($row->port)? "contenteditable='true'" : "" !!} >
+									{!! $row->port !!}
 								</td>	
 								<td contenteditable="true" class="client">
 									{!! $row->client !!}
@@ -153,6 +165,70 @@
 
 @section('content-script')
 <script>
+
+	function isValidPort(port){
+		portList = port.split("<br>");
+		for(i=0;i<portList.length;i++){
+			portList[i] = portList[i].trim();
+			if( isNaN(portList[i]) || Number(portList[i]) < 1 || Number(portList[i]) > 65535)			
+				return false;
+		}
+		return true;
+	}
+
+	function isHostIp(str){
+		chunk = str.split(".");
+		if(chunk.length == 4){
+			for(i=0;i<4;i++){
+				if( Number(chunk[i]) < 0 || Number(chunk[i]) > 255 ){
+					return false;
+				}
+			}
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	function blankArea(arr){
+		errFlag = 0;
+
+		$.each(arr, function( index, value ) {
+			if( index == 'port' &&  (arr['protocol'] == 'IP' || arr['protocol'] == 'ICMP') ){
+				//do nothing
+			}else{
+			  if(value.length == 0){
+			  	errFlag = 1;
+			  	return false;
+			  }						
+			}
+		});
+		if(errFlag == 1)
+			return true;
+		else
+			return false;
+	}
+
+	function isPositiveNumber(inp){
+		if(isNaN(inp) == false && inp >= 1){
+			return true;
+		}
+		return false;
+	}
+
+	$("#mainTable").on('change', '.tdPortType', function(){
+		if( $(this).val() == "IP" || $(this).val() == "ICMP")	{
+			tdDis = $(this).parent().next();
+			tdDis.html("");
+			tdDis.attr("contenteditable", "false");
+			tdDis.addClass("tdDisabled");
+		}else{
+			tdDis = $(this).parent().next();
+			tdDis.attr("contenteditable", "true");
+			tdDis.removeClass("tdDisabled");
+		}
+	});
+
 	$("#btnSubmit").click(function(e){
     	e.preventDefault();
     	opForm = [];
@@ -168,12 +244,30 @@
 			tmpArr['id'] = $(this).find(".id").first().html();
 			tmpArr['nama_server'] = $(this).find(".nama_server").first().html();
 			tmpArr['ip_address'] = $(this).find(".ip_address").first().html();
-			tmpArr['protocol'] = $(this).find(".protocol").first().html();
+			tmpArr['protocol'] = $(this).find(".protocol").first().val();
 			tmpArr['port'] = $(this).find(".port").first().html();
 			tmpArr['client'] = $(this).find(".client").first().html();
 			tmpArr['deskripsi'] = $(this).find(".deskripsi").first().html();
+
+			//validation area
+			var err = "";
+			if( blankArea(tmpArr) == true ) err += "<br/>All column must be filled.";
+			if( isHostIp(tmpArr["ip_address"]) != true ) err += "<br/>Invalid IP Address.";
+			if( !isValidPort(tmpArr["port"])  && !( tmpArr['protocol'] === "ICMP" || tmpArr['protocol'] === "IP")) err += "<br/>Port number must be 1-65535.";
+			
+			if(err.length > 0){
+				toastr.error(err.substring(5), "Form Remote Access");		    					
+				errFlag = 1;		    					
+				return false;
+			}
+
 			opArr.push(tmpArr);
 		});	
+
+		if(errFlag == 1){
+			return false;
+		}
+		
     	$.ajax({
 			url: "{{Request::URL()}}",
 			type: 'post',

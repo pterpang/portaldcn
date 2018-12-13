@@ -109,7 +109,7 @@
 	$(".takejob").click(function(e){
 			e.preventDefault();
 			var url = $(this).attr("url");
-			// alert("{{URL::to('') . '/'}}" + url);
+			var redirectURL = $(this).prev().attr('href');
 			if(window.confirm("Are you sure?")){
 
 				$.ajax({
@@ -121,7 +121,7 @@
 				  	success: function(response){
 						if(response.length == 0){
 							alert("Success");
-							location.reload();						
+							window.location = redirectURL;			
 						}else{
 							alert(response);
 						}

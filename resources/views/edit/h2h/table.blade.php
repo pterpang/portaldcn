@@ -174,6 +174,52 @@
 
 @section('content-script')
 <script>
+	function isValidPort(port){
+		if(Number(port) >= 1 && Number(port) <= 65535)
+			return true;
+		return false;
+	}
+
+	function isHostIp(str){
+		chunk = str.split(".");
+		if(chunk.length == 4){
+			for(i=0;i<4;i++){
+				if( Number(chunk[i]) < 0 || Number(chunk[i]) > 255 ){
+					return false;
+				}
+			}
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	function blankArea(arr){
+		errFlag = 0;
+
+		$.each(arr, function( index, value ) {
+			if( index == 'port' &&  (arr['protocol'] == 'IP' || arr['protocol'] == 'ICMP') ){
+				//do nothing
+			}else{
+			  if(value.length == 0){
+			  	errFlag = 1;
+			  	return false;
+			  }						
+			}
+		});
+		if(errFlag == 1)
+			return true;
+		else
+			return false;
+	}
+
+	function isPositiveNumber(inp){
+		if(isNaN(inp) == false && inp >= 1){
+			return true;
+		}
+		return false;
+	}
+
 	$("#btnSubmit").click(function(e){
     	e.preventDefault();
     	opForm = [];
@@ -196,6 +242,18 @@
 			tmpArr['ip_p2p_partner'] = $(this).find(".ip_p2p_partner").first().html();
 			tmpArr['port_aplikasi'] = $(this).find(".port_aplikasi").first().html();
 			tmpArr['nama_aplikasi'] = $(this).find(".nama_aplikasi").first().html();
+
+			//validation area
+			var err = "";
+			if( blankArea(tmpArr) == true ) err += "<br/>All column must be filled.";
+			if( isHostIp(tmpArr["ip_server_partner"]) != true || isHostIp(tmpArr["ip_server_bca"]) != true || isHostIp(tmpArr["ip_p2p_partner"]) != true || isHostIp(tmpArr["ip_p2p_bca"]) != true ) err += "<br/>Invalid IP Address.";
+			if( !isValidPort(tmpArr['port_aplikasi']) ) err += "<br/>Port number must be 1-65535.";
+			if(err.length > 0){
+				toastr.error(err.substring(5), "Form H2H");		    					
+				errFlag = 1;
+				return false;
+			}
+			
 			h2hArr.push(tmpArr);
 		});	
     	$.ajax({

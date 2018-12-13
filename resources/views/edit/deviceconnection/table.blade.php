@@ -160,6 +160,52 @@
 
 @section('content-script')
 <script>
+	function isValidPort(port){
+		if(Number(port) >= 1 && Number(port) <= 65535)
+			return true;
+		return false;
+	}
+
+	function isHostIp(str){
+		chunk = str.split(".");
+		if(chunk.length == 4){
+			for(i=0;i<4;i++){
+				if( Number(chunk[i]) < 0 || Number(chunk[i]) > 255 ){
+					return false;
+				}
+			}
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	function blankArea(arr){
+		errFlag = 0;
+
+		$.each(arr, function( index, value ) {
+			if( index == 'port' &&  (arr['protocol'] == 'IP' || arr['protocol'] == 'ICMP') ){
+				//do nothing
+			}else{
+			  if(value.length == 0){
+			  	errFlag = 1;
+			  	return false;
+			  }						
+			}
+		});
+		if(errFlag == 1)
+			return true;
+		else
+			return false;
+	}
+
+	function isPositiveNumber(inp){
+		if(isNaN(inp) == false && inp >= 1){
+			return true;
+		}
+		return false;
+	}
+
 	$("#btnSubmit").click(function(e){
     	e.preventDefault();
     	opForm = [];
@@ -178,6 +224,16 @@
 			tmpArr['koneksi_perangkat_network'] = $(this).find(".koneksi_perangkat_network").first().html();
 			tmpArr['deskripsi'] = $(this).find(".deskripsi").first().html();
 			tmpArr['interface'] = $(this).find(".interface").first().html();
+
+			//validation area
+			var err = "";
+			if( blankArea(tmpArr) == true ) err += "<br/>All column must be filled.";
+			if(err.length > 0){
+				toastr.error(err.substring(5), "Form Device Connection");		    					
+				errFlag = 1;		    					
+				return false;
+			}
+			
 			dcArr.push(tmpArr);
 		});	
     	$.ajax({

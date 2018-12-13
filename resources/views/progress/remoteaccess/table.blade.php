@@ -99,7 +99,7 @@
 								<td>{{$row->nama_server}}</td>
 								<td>{{$row->ip_address}}</td>
 								<td>{{$row->protocol}}</td>
-								<td>{{$row->port}}</td>	
+								<td>{{strlen($row->port) > 0? $row->port : '-'}}</td>	
 								<td>{{$row->client}}</td>
 								<td>{{$row->deskripsi}}</td>
 								<?php if (isset($row->finish_date)): ?>

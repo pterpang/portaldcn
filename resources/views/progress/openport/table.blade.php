@@ -85,7 +85,7 @@
 							<th>Source</th>
 							<th>Destination</th>
 							<th>Protocol</th>
-							<th>Port Numbe	 r</th>		
+							<th>Port Number</th>		
 							<th>Direction</th>
 							<th>Description</th>
 							<th>Status</th>										
@@ -118,7 +118,7 @@
 									}
 									?>
 								</td>	
-								<td>{{$row->arah}} Arah</td>
+								<td>{{$row->arah}} Direction</td>
 								<td>
 									<?php
 									foreach (explode("<br>", $row->fungsi) as $row2) {

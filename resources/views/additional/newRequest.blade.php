@@ -168,7 +168,7 @@ active
 													<th>No.</th>
 													<th>Source</th>
 													<th>Destination</th>
-													<th>Port Type</th>                
+													<th>Protocol</th>                
 													<th>Port Number</th>                
 													<th>Direction</th>              
 													<th>Action</th>              
@@ -1365,9 +1365,13 @@ active
 			});
 
 			function isValidPort(port){
-				if(Number(port) >= 1 && Number(port) <= 65535)
-					return true;
-				return false;
+				portList = port.split("<br>");
+				for(i=0;i<portList.length;i++){
+					portList[i] = portList[i].trim();
+					if( isNaN(portList[i]) || Number(portList[i]) < 1 || Number(portList[i]) > 65535)			
+						return false;
+				}
+				return true;
 			}
 
 			function isHostIp(str){
@@ -1386,11 +1390,16 @@ active
 
 			function blankArea(arr){
 				errFlag = 0;
+
 				$.each(arr, function( index, value ) {
-				  if(value.length == 0){
-				  	errFlag = 1;
-				  	return false;
-				  }
+					if( index == 'port' &&  (arr['protocol'] == 'IP' || arr['protocol'] == 'ICMP') ){
+						//do nothing
+					}else{
+					  if(value.length == 0){
+					  	errFlag = 1;
+					  	return false;
+					  }						
+					}
 				});
 				if(errFlag == 1)
 					return true;
@@ -1442,12 +1451,13 @@ active
 		    				//validation area
 		    				var err = "";
 		    				if( blankArea(tmpArr) == true ) err += "<br/>All column must be filled.";
-		    				if( !isValidPort(tmpArr['port']) ) err += "<br/>All port Number must between 1-65536.";
+		    				if( !isValidPort(tmpArr['port']) && !( tmpArr['protocol'] === "ICMP" || tmpArr['protocol'] === "IP") ) err += "<br/>All port Number must between 1-65536.";
 		    				if(err.length > 0){
 		    					toastr.error(err.substring(5), "Form Open Port");		    					
 		    					errFlag = 1;
 		    					return false;
 		    				}
+
 		    				opArr.push(tmpArr);
 		    			});		    			
 		    		} 
@@ -1534,7 +1544,7 @@ active
 		    				var err = "";
 		    				if( blankArea(tmpArr) == true ) err += "<br/>All column must be filled.";
 							if( isHostIp(tmpArr["ip_address"]) != true ) err += "<br/>Invalid IP Address.";
-		    				if( !isValidPort(tmpArr["port"]) ) err += "<br/>Port number must be 1-65535.";
+		    				if( !isValidPort(tmpArr["port"])  && !( tmpArr['protocol'] === "ICMP" || tmpArr['protocol'] === "IP")) err += "<br/>Port number must be 1-65535.";
 		    				
 		    				if(err.length > 0){
 		    					toastr.error(err.substring(5), "Form Remote Access");		    					
