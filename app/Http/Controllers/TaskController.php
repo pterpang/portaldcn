@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\AdditionalHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -102,7 +103,11 @@ class TaskController extends Controller
     public function takeOpenport($id)
     {
         try{
-            Form_Open_Port::where('service_id', '=', $id)->update(['pic' => Auth::user()->name]);  
+            $date = AdditionalHelper::addWorkingDays(date('Y-m-j'));
+            $time = date('H:i:s');
+            $expectedFinishDate = $date.' '.$time;
+            Form_Open_Port::where('service_id', '=', $id)->update(['pic' => Auth::user()->name,
+                'start_date'=>date('Y-m-d H:i:s'),'expected_finish_date'=>$expectedFinishDate]);
             echo "";    
         }catch(Exception $e){
             echo "Error in when updating data.";
@@ -112,7 +117,11 @@ class TaskController extends Controller
     public function takeDeviceConnection($id)
     {
         try{
-            Form_Koneksi_Device_ke_Jaringan::where('service_id', '=', $id)->update(['pic' => Auth::user()->name]);  
+            $date = AdditionalHelper::addWorkingDays(date('Y-m-j'));
+            $time = date('H:i:s');
+            $expectedFinishDate = $date.' '.$time;
+            Form_Koneksi_Device_ke_Jaringan::where('service_id', '=', $id)->update(['pic' => Auth::user()->name,
+                'start_date'=>date('Y-m-d H:i:s'),'expected_finish_date'=>$expectedFinishDate]);
             echo "";    
         }catch(Exception $e){
             echo "Error in when updating data.";
@@ -121,7 +130,11 @@ class TaskController extends Controller
     public function takeASDelivery($id)
     {
         try{
-            Aplication_Service_Delivery::where('service_id', '=', $id)->update(['pic' => Auth::user()->name]);  
+            $date = AdditionalHelper::addWorkingDays(date('Y-m-j'));
+            $time = date('H:i:s');
+            $expectedFinishDate = $date.' '.$time;
+            Aplication_Service_Delivery::where('service_id', '=', $id)->update(['pic' => Auth::user()->name,
+                'start_date'=>date('Y-m-d H:i:s'),'expected_finish_date'=>$expectedFinishDate]);
             echo "";    
         }catch(Exception $e){
             echo "Error in when updating data.";
@@ -131,7 +144,11 @@ class TaskController extends Controller
     public function takeRemoteAccess($id)
     {
         try{
-            Form_Pendaftaran_Remote_Access::where('service_id', '=', $id)->update(['pic' => Auth::user()->name]);  
+            $date = AdditionalHelper::addWorkingDays(date('Y-m-j'));
+            $time = date('H:i:s');
+            $expectedFinishDate = $date.' '.$time;
+            Form_Pendaftaran_Remote_Access::where('service_id', '=', $id)->update(['pic' => Auth::user()->name,
+                'start_date'=>date('Y-m-d H:i:s'),'expected_finish_date'=>$expectedFinishDate]);
             echo "";    
         }catch(Exception $e){
             echo "Error in when updating data.";
@@ -141,7 +158,11 @@ class TaskController extends Controller
     public function takeH2h($id)
     {
         try{
-            Form_Host_to_Host::where('service_id', '=', $id)->update(['pic' => Auth::user()->name]);  
+            $date = AdditionalHelper::addWorkingDays(date('Y-m-j'));
+            $time = date('H:i:s');
+            $expectedFinishDate = $date.' '.$time;
+            Form_Host_to_Host::where('service_id', '=', $id)->update(['pic' => Auth::user()->name,
+                'start_date'=>date('Y-m-d H:i:s'),'expected_finish_date'=>$expectedFinishDate]);
             echo "";    
         }catch(Exception $e){
             echo "Error in when updating data.";
@@ -151,7 +172,11 @@ class TaskController extends Controller
     public function takeLan($id)
     {
         try{
-            Form_Permohonan_Koneksi_Lan::where('service_id', '=', $id)->update(['pic' => Auth::user()->name]);  
+            $date = AdditionalHelper::addWorkingDays(date('Y-m-j'));
+            $time = date('H:i:s');
+            $expectedFinishDate = $date.' '.$time;
+            Form_Permohonan_Koneksi_Lan::where('service_id', '=', $id)->update(['pic' => Auth::user()->name,
+                'start_date'=>date('Y-m-d H:i:s'),'expected_finish_date'=>$expectedFinishDate]);
             echo "";    
         }catch(Exception $e){
             echo "Error in when updating data.";

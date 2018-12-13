@@ -119,6 +119,7 @@ class TPController extends Controller
         $activeClasses = ['tp_active', 'tp_services_active', 'tp_ASDelivery_active'];
         $parentProgress = AdditionalHelper::getParentProgress($id);
         $otherService = AdditionalHelper::getOtherServiceById($id);
-        return view('services.asdelivery.table', compact('activeClasses', 'serviceDetail', 'parentProgress', 'otherService'));
+        $category = "ASDelivery";
+        return view('services.asdelivery.table', compact('activeClasses', 'serviceDetail', 'parentProgress', 'otherService','category'));
     }
 }

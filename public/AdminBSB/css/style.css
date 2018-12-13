@@ -8040,3 +8040,31 @@ html.ie11 .dropdown-menu ul.menu li a {
 html.ie11 .bs-searchbox .form-control {
   width: 90%; }
 
+/* star rating css */
+.rating-stars ul{
+  list-style-type: none;
+  padding: 0;
+
+  -moz-user-select:none;
+  -webkit-user-select:none;
+}
+
+.rating-stars ul >li.star {
+  display: inline-block;
+}
+
+/*idle state*/
+.rating-stars ul >li.star>i.material-icons{
+  font-size: 2.5em;
+  color: #ccc;
+}
+
+/*hover state*/
+.rating-stars ul >li.star.hover>i.material-icons{
+  color: #FFCC36;
+}
+
+/*selected state*/
+.rating-stars ul >li.star.selected>i.material-icons{
+  color: #FF912C;
+}

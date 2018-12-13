@@ -356,4 +356,59 @@ td{
 		</div>
 	</div>
 </div>
+<div class="row clearfix" id="progressSection">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<!--div class="card">
+			<div class="header">
+				<div class="row clearfix">
+					<div class="col-xs-12 col-sm-6">
+						<h2 >Progress Status</h2>
+					</div>
+				</div>
+			</div>
+			<div class="body">
+				<div class="progress">
+                    <?php if ($serviceDetail->Form_Application_Service_Delivery[0]->pic == "none"): ?>
+			<div class="progress-bar progress-bar" role="progressbar" aria-valuenow="0"
+                 aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            <?php elseif ($parentProgress == 100):?>
+			<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100"
+                 aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+        <?php else: ?>
+			<div class="progress-bar progress-bar" role="progressbar" aria-valuenow="100"
+                 aria-valuemin="" aria-valuemax="100" style="width: 50%"></div>
+        <?php endif ?>
+			</div>
+        </div>
+    </div-->
+		<div class="card">
+			<div class="header">
+				<div class="row clearfix">
+					<div class="col-xs-12 col-sm-6">
+						<h2>SLA BAR</h2>
+					</div>
+				</div>
+			</div>
+			<div class="body">
+				<p id="title"></p>
+				<div class="progress" style="position: relative">
+					<div id="text" class="center" style="position: absolute;left: 40%">
+					</div>
+					<div class="progress-bar bg-orange progress-bar-striped active" role="progressbar"
+						 aria-valuemin="0" aria-valuemax="100" id="progressBar" style="width:0%;">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+    var startDate = new Date("{{$serviceDetail->Form_Application_Service_Delivery[0]->start_date}}");
+    var expectedFinishDate = new Date("{{$serviceDetail->Form_Application_Service_Delivery[0]->expected_finish_date}}");
+    var finishDate = "{{$serviceDetail->Form_Application_Service_Delivery[0]->finish_date}}";
+    var pic = "{{$serviceDetail->Form_Application_Service_Delivery[0]->pic}}";
+    //var expectedFinishDate = new Date(2018,11,10,15,33,00);
+    //var startDate = new Date(2018,11,10,15,30,00);
+
+</script>
 @stop

@@ -1501,7 +1501,7 @@ active
 		    				var err = "";
 		    				if( blankArea(tmpArr) == true ) err += "<br/>All column must be filled.";
 		    				if( isHostIp(tmpArr["ip_server_partner"]) != true || isHostIp(tmpArr["ip_server_bca"]) != true || isHostIp(tmpArr["ip_p2p_partner"]) != true || isHostIp(tmpArr["ip_p2p_bca"]) != true ) err += "<br/>Invalid IP Address.";
-		    				if( !isValidPort(tmpArr[port_aplikasi]) ) err += "<br/>Port number must be 1-65535.";
+		    				if( !isValidPort(tmpArr['port_aplikasi']) ) err += "<br/>Port number must be 1-65535.";
 		    				if(err.length > 0){
 		    					toastr.error(err.substring(5), "Form H2H");		    					
 		    					errFlag = 1;

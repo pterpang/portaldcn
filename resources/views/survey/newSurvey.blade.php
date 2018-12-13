@@ -32,11 +32,30 @@
                         <div class="body">
                             <form id="mainForm" method="post" enctype="multipart/form-data">
                                 @csrf
-                                <div class="form-group">
+                                <div class="form-group text-center">
                                     <label for="rating">Rating</label>
-                                    <input name="rating" type="number" min="1" max="10" style="border-bottom: solid #DADADA 1px;" class="form-control"/>
+                                    <!--input name="rating" type="number" min="1" max="10" style="border-bottom: solid #DADADA 1px;" class="form-control"/-->
+                                    <div class='rating-stars text-center'>
+                                        <ul id='stars'>
+                                            <li class='star' title='1' data-value='1'>
+                                                <i class='material-icons'>star</i>
+                                            </li>
+                                            <li class='star' title='2' data-value='2'>
+                                                <i class='material-icons'>star</i>
+                                            </li>
+                                            <li class='star' title='3' data-value='3'>
+                                                <i class='material-icons'>star</i>
+                                            </li>
+                                            <li class='star' title='4' data-value='4'>
+                                                <i class='material-icons'>star</i>
+                                            </li>
+                                            <li class='star' title='5' data-value='5'>
+                                                <i class='material-icons'>star</i>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group text-center">
                                     <label for="description">Reviews & Feedback</label>
                                     <textarea name="description" rows="10" style="border: solid #DADADA 1px; resize: none; overflow: scroll" class="form-control"></textarea>
                                 </div>
@@ -66,9 +85,40 @@
     <script>
         $(document).ready(function(){
 
+            $("#stars li").on('mouseover',function () {
+               var onStar = parseInt($(this).data('value'), 10);
+
+               $(this).parent().children("li.star").each(function (e) {
+                   if(e<onStar){
+                       $(this).addClass("hover");
+                   }
+                   else{
+                       $(this).removeClass("hover");
+                   }
+               })
+            }).on('mouseout',function () {
+                $(this).parent().children("li.star").each(function(e){
+                    $(this).removeClass("hover");
+                });
+            });
+            
+            $("#stars li").on('click',function () {
+                var onStar = parseInt($(this).data('value'), 10);
+                var stars = $(this).parent().children('li.star');
+
+                for (i = 0; i < stars.length; i++) {
+                    $(stars[i]).removeClass('selected');
+                }
+
+                for (i = 0; i < onStar; i++) {
+                    $(stars[i]).addClass('selected');
+                }
+            });
+
             $("#btnSubmit").click(function(e){
                 e.preventDefault();
-                var rating = $('input[name=rating]').val();
+                //var rating = $('li[name=rating]').val();
+                var rating = parseInt($("#stars li.selected").last().data('value'),10);
                 var description = $('textarea[name=description]').val();
                 if(rating=='' || description=='')
                 {
@@ -91,7 +141,7 @@
                             _token: '{{csrf_token()}}'},
                         success: function(e){
                             if(e == "OK"){
-                                alert('Successfully Added.');
+                                alert('Thank you for your feedback!');
                                 window.location = '{{route('survey')}}';
                             }else{
                                 alert('Error: ' + e);
