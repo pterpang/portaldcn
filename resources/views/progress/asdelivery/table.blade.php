@@ -92,6 +92,7 @@ td{
 										}
 										if($flag == 0){
 											$date = new DateTime($doneDate);
+                                            $time = date("H:i:s");
 											$result = $date->format('d F Y');
 											echo $result;
 										}
@@ -361,7 +362,7 @@ td{
                     <?php if ($serviceDetail->Form_Application_Service_Delivery[0]->pic == "none"): ?>
 					<div class="progress-bar bg-red progress-bar" role="progressbar" aria-valuenow="0"
 						 aria-valuemin="0" aria-valuemax="100" style="width: 100%">Request Belum Diambil</div>
-                    <?php elseif($serviceDetail->Form_Application_Service_Delivery[0]->finish_date == null): ?>
+                    <?php elseif($flag == 1): ?>
 					<div class="progress-bar bg-orange progress-bar-striped active" role="progressbar"
 						 aria-valuemin="0" aria-valuemax="100" id="progressBar" style="width:0%;">
                         <?php else:?>
@@ -377,7 +378,7 @@ td{
 <script>
     var startDate = new Date("{{$serviceDetail->Form_Application_Service_Delivery[0]->start_date}}");
     var expectedFinishDate = new Date("{{$serviceDetail->Form_Application_Service_Delivery[0]->expected_finish_date}}");
-    var finishDate = new Date("{{$serviceDetail->Form_Application_Service_Delivery[0]->finish_date}}");
+    var finishDate = "{{$date->format('D M d Y')}}";
     var pic = "{{$serviceDetail->Form_Application_Service_Delivery[0]->pic}}";
     //var expectedFinishDate = new Date(2018,11,10,15,33,00);
     //var startDate = new Date(2018,11,10,15,30,00);
