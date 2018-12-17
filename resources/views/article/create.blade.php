@@ -68,8 +68,8 @@
 <script src="{{asset('AdminBSB/js/pages/tables/jquery-datatable.js')}}"></script>
 
 <!-- Summernote plugin-->
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.js"></script>
+<link href="{{asset('Summernote/summernote-lite.css')}}" rel="stylesheet">
+<script src="{{asset('Summernote/summernote-lite.js')}}"></script>
 
 <script>
     $(document).ready(function(){
