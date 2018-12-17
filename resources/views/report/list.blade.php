@@ -62,7 +62,7 @@
 												<td>{{$row->pic ? $row->pic : '-'}}</td>
 												<td>{{$row->created_at}}</td>
 												<td>{{$row->finish_date ? $row->finish_date : '-'}}</td>
-												<td>{{$row->diff}}</td>
+												<td>{{$row->diff  != "-" ? $row->diff . ' day(s)' : '-'}}</td>
 											</tr>										
 										<?php endforeach ?>
 									<?php endif ?>									

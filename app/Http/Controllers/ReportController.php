@@ -11,23 +11,6 @@ use DB;
 
 class ReportController extends Controller
 {
-    private function makeQuery($table){
-        return DB::select("
-                             SELECT svc.id AS id,
-                                svc.requester_name AS requester_name,
-                                svc.no_remedy AS no_remedy,
-                                svc.project_name AS project_name,
-                                CAST(svc.created_at AS DATE) AS created_at,
-                                ISNULL((SELECT finish_date
-                                FROM $table
-                                WHERE service_id = svc.id AND finish_date IS NOT NULL), '') AS finish_date,
-                                ISNULL((SELECT pic
-                                FROM $table
-                                WHERE service_id = svc.id), '') AS pic
-                            FROM services svc
-                            WHERE (SELECT COUNT(*) FROM $table WHERE service_id = svc.id) > 0
-                        ");
-    }
 
     private function makeQuery2($table, $min, $max){
         return DB::select("
@@ -77,7 +60,7 @@ class ReportController extends Controller
             if (in_array($period->format('*-m-d'), $holidayDays)) continue;
             $days++;
         }
-        return $days;
+        return $days-1 < 1 ? 1 : $days-1;
     }
 
     private function checkParameter(&$request, &$min, &$max, &$serviceList, &$metaData, $tableName){
