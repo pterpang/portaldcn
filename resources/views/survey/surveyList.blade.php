@@ -46,7 +46,7 @@
                                         <td>{{$i++}}</td>
                                         <td>{{$row->name}}</td>
                                         <td>{{$row->rating}}</td>
-                                        <td>{{$row->description}}</td>
+                                        <td><?php echo $row->description?></td>
                                     </tr>
                                     <?php endforeach; ?>
                                 </tbody>

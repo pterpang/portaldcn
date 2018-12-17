@@ -55,9 +55,9 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="form-group text-center">
+                                <div class="form-group">
                                     <label for="description">Reviews & Feedback</label>
-                                    <textarea name="description" rows="10" style="border: solid #DADADA 1px; resize: none; overflow: scroll" class="form-control"></textarea>
+                                    <textarea id="summernote" name="description" rows="10" style="border: solid #DADADA 1px; resize: none; overflow: scroll" class="form-control"></textarea>
                                 </div>
                             </form>
                         </div>
@@ -82,6 +82,10 @@
     <!-- Custom Js -->
     <script src="{{asset('AdminBSB/js/pages/tables/jquery-datatable.js')}}"></script>
 
+    <!-- Summernote plugin-->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.js"></script>
+
     <script>
         $(document).ready(function(){
 
@@ -101,6 +105,11 @@
                     $(this).removeClass("hover");
                 });
             });
+
+            $('#summernote').summernote({
+                    placeholder:"Type here...",
+                    height:300
+                });
             
             $("#stars li").on('click',function () {
                 var onStar = parseInt($(this).data('value'), 10);

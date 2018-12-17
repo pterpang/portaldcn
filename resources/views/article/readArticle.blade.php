@@ -41,7 +41,7 @@
                                 <h3 style="margin-bottom: 40px">{{$article->judul}}</h3>        
                                 <img src="{{URL::to('')}}/uploads/images/article/{{$article->image}}" style="max-width: 500px; max-height: 500px"/>                        
                             </center>
-                            <p style="text-indent: 30px; margin-top: 50px; text-align: justify; text-justify: inter-word;">{{$article->isi}}</p>
+                            <div style="text-indent: 30px; margin-top: 50px; text-align: justify; text-justify: inter-word;"><?php echo $article->isi;?></div>
                         </article>
                     </div>
                 </div>
