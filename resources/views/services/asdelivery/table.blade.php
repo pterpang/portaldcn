@@ -107,6 +107,11 @@ td{
 											}
 										}
 										if($flag == 0){
+										    if($serviceDetail->Form_Application_Service_Delivery[0]->finish_date == null){
+										        //action('TaskController@finishASDelivery', $serviceDetail->Form_Application_Service_Delivery[0]->id);
+												$call = 'kepanggil';
+												\App\Http\Controllers\TaskController::finishASDelivery($serviceDetail->Form_Application_Service_Delivery[0]->id);
+											}
 											$date = new DateTime($doneDate);
 											$time = date("H:i:s");
 											$result = $date->format('d F Y');
@@ -427,8 +432,9 @@ td{
 <script>
     var startDate = new Date("{{$serviceDetail->Form_Application_Service_Delivery[0]->start_date}}");
     var expectedFinishDate = new Date("{{$serviceDetail->Form_Application_Service_Delivery[0]->expected_finish_date}}");
-    var finishDate = "{{$date->format('D M d Y')}}";
+    var finishDate = new Date("{{$serviceDetail->Form_Application_Service_Delivery[0]->finish_date}}");
     var pic = "{{$serviceDetail->Form_Application_Service_Delivery[0]->pic}}";
+	//alert(test);
     //var expectedFinishDate = new Date(2018,11,10,15,33,00);
     //var startDate = new Date(2018,11,10,15,30,00);
 

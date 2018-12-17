@@ -96,7 +96,7 @@ td{
 											$result = $date->format('d F Y');
 											echo $result;
 										}
-									?></td>									
+									?></td>
 							
 							</tr>
 							<tr>
@@ -346,7 +346,7 @@ td{
     </div-->
 		<div class="card">
 			<div class="header">
-				<div class="row clearfix">
+=				<div class="row clearfix">
 					<div class="col-xs-12 col-sm-6">
 						<h2>SLA Bar</h2>
 					</div>
@@ -367,7 +367,7 @@ td{
 						 aria-valuemin="0" aria-valuemax="100" id="progressBar" style="width:0%;">
                         <?php else:?>
 						<div class="progress-bar bg-light-green progress-bar" role="progressbar" aria-valuenow="0"
-							 aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+							 aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
 					</div>
                     <?php endif ?>
 				</div>
@@ -378,7 +378,7 @@ td{
 <script>
     var startDate = new Date("{{$serviceDetail->Form_Application_Service_Delivery[0]->start_date}}");
     var expectedFinishDate = new Date("{{$serviceDetail->Form_Application_Service_Delivery[0]->expected_finish_date}}");
-    var finishDate = "{{$date->format('D M d Y')}}";
+    var finishDate = new Date("{{$serviceDetail->Form_Application_Service_Delivery[0]->finish_date}}");
     var pic = "{{$serviceDetail->Form_Application_Service_Delivery[0]->pic}}";
     //var expectedFinishDate = new Date(2018,11,10,15,33,00);
     //var startDate = new Date(2018,11,10,15,30,00);

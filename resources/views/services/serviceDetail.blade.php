@@ -229,7 +229,7 @@
 		document.getElementById("startDate").innerHTML="<b>Taken at:</b> "+ startDate;
 		document.getElementById("expectedFinishDate").innerHTML= "<b>Expected to be finished at:</b> " + expectedFinishDate.toString();
 
-		if(finishDate!="Invalid Date"){
+		if(finishDate!="Invalid Date" ){
             document.getElementById("finishedDate").innerHTML="<b>Finished at:</b> "+ finishDate;
 		}
 
