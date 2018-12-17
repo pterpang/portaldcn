@@ -42,7 +42,7 @@
                         		</div>
                         		<div class="form-group">
                         			<label for="judul">Konten</label>
-                        			<textarea name="isi" rows="15" style="border: solid #DADADA 1px; resize: none; overflow: scroll" class="form-control"></textarea>
+                        			<textarea id = "summernote" name="isi" rows="15" style="border: solid #DADADA 1px; resize: none; overflow: scroll" class="form-control"></textarea>
                         		</div>                        		
                         	</form>                     
                         </div>
@@ -67,8 +67,18 @@
 <!-- Custom Js -->
 <script src="{{asset('AdminBSB/js/pages/tables/jquery-datatable.js')}}"></script>
 
+<!-- Summernote plugin-->
+<link href="{{asset('Summernote/summernote-lite.css')}}" rel="stylesheet">
+<script src="{{asset('Summernote/summernote-lite.js')}}"></script>
+
 <script>
     $(document).ready(function(){
+
+
+        $('#summernote').summernote({
+            placeholder:"Type here...",
+            height:300
+        });
 
         $("#btnSubmit").click(function(e){
             e.preventDefault();

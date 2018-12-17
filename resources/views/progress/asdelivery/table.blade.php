@@ -92,10 +92,11 @@ td{
 										}
 										if($flag == 0){
 											$date = new DateTime($doneDate);
+                                            $time = date("H:i:s");
 											$result = $date->format('d F Y');
 											echo $result;
 										}
-									?></td>									
+									?></td>
 							
 							</tr>
 							<tr>
@@ -345,7 +346,7 @@ td{
     </div-->
 		<div class="card">
 			<div class="header">
-				<div class="row clearfix">
+=				<div class="row clearfix">
 					<div class="col-xs-12 col-sm-6">
 						<h2>SLA Bar</h2>
 					</div>
@@ -361,12 +362,12 @@ td{
                     <?php if ($serviceDetail->Form_Application_Service_Delivery[0]->pic == "none"): ?>
 					<div class="progress-bar bg-red progress-bar" role="progressbar" aria-valuenow="0"
 						 aria-valuemin="0" aria-valuemax="100" style="width: 100%">Request Belum Diambil</div>
-                    <?php elseif($serviceDetail->Form_Application_Service_Delivery[0]->finish_date == null): ?>
+                    <?php elseif($flag == 1): ?>
 					<div class="progress-bar bg-orange progress-bar-striped active" role="progressbar"
 						 aria-valuemin="0" aria-valuemax="100" id="progressBar" style="width:0%;">
                         <?php else:?>
 						<div class="progress-bar bg-light-green progress-bar" role="progressbar" aria-valuenow="0"
-							 aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+							 aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
 					</div>
                     <?php endif ?>
 				</div>

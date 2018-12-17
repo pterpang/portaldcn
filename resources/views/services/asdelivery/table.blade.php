@@ -107,7 +107,13 @@ td{
 											}
 										}
 										if($flag == 0){
+										    if($serviceDetail->Form_Application_Service_Delivery[0]->finish_date == null){
+										        //action('TaskController@finishASDelivery', $serviceDetail->Form_Application_Service_Delivery[0]->id);
+												$call = 'kepanggil';
+												\App\Http\Controllers\TaskController::finishASDelivery($serviceDetail->Form_Application_Service_Delivery[0]->id);
+											}
 											$date = new DateTime($doneDate);
+											$time = date("H:i:s");
 											$result = $date->format('d F Y');
 											echo $result;
 										}
@@ -131,7 +137,10 @@ td{
 						<?php $temp = $serviceDetail->Form_Application_Service_Delivery[0]->Form_Load_Balancer[0]; ?>
 						<div class="col-md-6 subservice" style="overflow:hidden">
 							<span style="font-weight: bold;">Load Balancing Server</span>
-							<?php if (isset($serviceDetail->Form_Application_Service_Delivery[0]->Form_Load_Balancer[0]->finish_date)): ?>
+                            <?php if ($serviceDetail->Form_Application_Service_Delivery[0]->pic == "none"): ?>
+							<span class="col-red status"> (Pending)</span>
+                            <?php else: ?>
+                            <?php if (isset($serviceDetail->Form_Application_Service_Delivery[0]->Form_Load_Balancer[0]->finish_date)): ?>
 								<span class="col-teal status status-complete">(Complete)</span>			
 							<?php else: ?>
 								<td align="center">
@@ -139,6 +148,7 @@ td{
 										<i class="material-icons" style="margin-right: 5px">done</i>Finish
 									</button>
 								</td>	
+							<?php endif ?>
 							<?php endif ?>
 							<table id="loadBalancingServer" class="table" style="margin-bottom: 30px">
 								<tr>
@@ -195,7 +205,9 @@ td{
 						<?php $temp = $serviceDetail->Form_Application_Service_Delivery[0]->Form_Web_Application_Firewall[0]; ?>
 						<div class="col-md-6 subservice" style="overflow:hidden">
 							<span style="font-weight:bold">Web Application Firewall</span>
-							<span>
+							<?php if ($serviceDetail->Form_Application_Service_Delivery[0]->pic == "none"): ?>
+								<span class="col-red status"> (Pending)</span>
+								<?php else: ?>
 							<?php if (isset($serviceDetail->Form_Application_Service_Delivery[0]->Form_Web_Application_Firewall[0]->finish_date)): ?>
 								<span class="col-teal status status-complete">(Complete)</span>			
 							<?php else: ?>
@@ -204,6 +216,7 @@ td{
 										<i class="material-icons" style="margin-right: 5px">done</i>Finish
 									</button>
 								</td>	
+							<?php endif ?>
 							<?php endif ?>
 							
 							</span>
@@ -245,6 +258,9 @@ td{
 						<?php $temp = $serviceDetail->Form_Application_Service_Delivery[0]->Form_Application_Acceleration[0]; ?>
 						<div class="col-md-6 subservice" style="overflow:hidden">
 							<span style="font-weight: bold">Application Acceleration</span>
+                            <?php if ($serviceDetail->Form_Application_Service_Delivery[0]->pic == "none"): ?>
+								<span class="col-red status"> (Pending)</span>
+                                <?php else: ?>
 							<?php if (isset($serviceDetail->Form_Application_Service_Delivery[0]->Form_Application_Acceleration[0]->finish_date)): ?>
 								<span class="col-teal status status-complete">(Complete)</span>			
 							<?php else: ?>
@@ -253,6 +269,7 @@ td{
 										<i class="material-icons" style="margin-right: 5px">done</i>Finish
 									</button>
 								</td>	
+							<?php endif ?>
 							<?php endif ?>
 							
 							<table id="applicationAcceleration" class="table" style="margin-bottom: 30px">
@@ -290,7 +307,7 @@ td{
 							<span style="font-weight: bold">Multiple Active Data Center</span>	
 							<span>
 							<?php if ($serviceDetail->Form_Application_Service_Delivery[0]->pic == "none"): ?>
-									<span class="col-red status">Pending</span>
+									<span class="col-red status">(Pending)</span>
 							<?php else: ?>	
 								<?php if (isset($serviceDetail->Form_Application_Service_Delivery[0]->Form_Multiple_Active_Data_Center[0]->finish_date)): ?>
 									<span class="col-teal status status-complete">(Complete)</span>			
@@ -399,7 +416,7 @@ td{
                     <?php if ($serviceDetail->Form_Application_Service_Delivery[0]->pic == "none"): ?>
 					<div class="progress-bar bg-red progress-bar" role="progressbar" aria-valuenow="0"
 						 aria-valuemin="0" aria-valuemax="100" style="width: 100%">Request Belum Diambil</div>
-                    <?php elseif($serviceDetail->Form_Application_Service_Delivery[0]->finish_date == null): ?>
+                    <?php elseif($flag == 1): ?>
 					<div class="progress-bar bg-orange progress-bar-striped active" role="progressbar"
 						 aria-valuemin="0" aria-valuemax="100" id="progressBar" style="width:0%;">
                         <?php else:?>
@@ -417,6 +434,7 @@ td{
     var expectedFinishDate = new Date("{{$serviceDetail->Form_Application_Service_Delivery[0]->expected_finish_date}}");
     var finishDate = new Date("{{$serviceDetail->Form_Application_Service_Delivery[0]->finish_date}}");
     var pic = "{{$serviceDetail->Form_Application_Service_Delivery[0]->pic}}";
+	//alert(test);
     //var expectedFinishDate = new Date(2018,11,10,15,33,00);
     //var startDate = new Date(2018,11,10,15,30,00);
 

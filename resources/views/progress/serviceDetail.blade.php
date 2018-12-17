@@ -183,11 +183,11 @@
             document.getElementById("text").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s left";
             if (currentDateDiff<0){
                 clearInterval(x);
-                document.getElementById("text").innerHTML = "Waktu Telah Habis!"
+                document.getElementById("text").innerHTML = "Waktu Telah Habis!";
             }
             else if(currentDateDiff>0 && finishDate!=""){
                 clearInterval(x);
-                document.getElementById("text").innerHTML = "Service Telah Selesai"
+                document.getElementById("text").innerHTML = "Service Telah Selesai";
             }
         },1000);
 

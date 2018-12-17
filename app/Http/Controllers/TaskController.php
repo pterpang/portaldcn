@@ -100,6 +100,15 @@ class TaskController extends Controller
     	}
     }
 
+    public static function finishASDelivery($id){
+        try{
+            Aplication_Service_Delivery::find($id)->update(['finish_date' => date('Y-m-d H:i:s')]);
+            echo "";
+        }catch(Exception $e){
+            echo "Error in when updating data.";
+        }
+    }
+
     public function takeOpenport($id)
     {
         try{

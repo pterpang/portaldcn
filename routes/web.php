@@ -211,6 +211,7 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::post('asdelivery/waf/finishTask/{id}', 'TaskController@finishWebApplicationFirewall');
 	Route::post('asdelivery/aa/finishTask/{id}', 'TaskController@finishApplicationAcceleration');
 	Route::post('asdelivery/madc/finishTask/{id}', 'TaskController@finishMADC');
+	Route::post('asdelivery/finishTask/{id}', 'TaskController@finishASDelivery');
 
 	// Taking Task
 	Route::post('IB/openport/{id}/take', 'TaskController@takeOpenport');	
