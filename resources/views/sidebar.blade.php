@@ -391,7 +391,40 @@
                             <span class="mainmenu-title">Reporting</span>
                         </a>
                         <ul class="ml-menu">
-                            <li class="@yield('lan_requestlist_active')">
+                                    <li class="@yield('lan_LAN_active')">
+                                        <a href="{{URL::to('report/openport')}}">
+                                            <span class="submenu-title">Open Port</span>
+                                        </a>
+                                    </li>
+                                    <li class="@yield('lan_openport_active')">
+                                        <a href="{{URL::to('report/deviceconnection')}}">
+                                            <span class="submenu-title">Device Connection</span>
+                                        </a>
+                                    </li>
+                                    <li class="@yield('lan_deviceconnection_active')">
+                                        <a href="{{URL::to('report/h2hconnection')}}">
+                                            <span class="submenu-title">H2H Connection</span>
+                                        </a>
+                                    </li>
+                                    <li class="@yield('lan_deviceconnection_active')">
+                                        <a href="{{URL::to('report/lanconnection')}}">
+                                            <span class="submenu-title">LAN Connection</span>
+                                        </a>
+                                    </li>
+                                    <li class="@yield('lan_deviceconnection_active')">
+                                        <a href="{{URL::to('report/remoteaccess')}}">
+                                            <span class="submenu-title">Remote Access</span>
+                                        </a>
+                                    </li>
+                                    <li class="@yield('lan_deviceconnection_active')">
+                                        <a href="{{URL::to('report/asdelivery')}}">
+                                            <span class="submenu-title">Application Service Delivery</span>
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                        <!-- <ul class="ml-menu"> -->
+                            <!-- <li class="@yield('lan_requestlist_active')">
                                 <a href="{{URL::to('report')}}">
                                     <span class="submenu-title">General Report</span>
                                 </a>
@@ -465,8 +498,8 @@
                                     </li>
                                     
                                 </ul>
-                            </li>
-                        </ul>
+                            </li> -->
+                        <!-- </ul> -->
                     </li>
                     <?php endif ?>
 					<li class="header">User Navigation</li>	

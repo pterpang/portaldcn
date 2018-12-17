@@ -21,6 +21,9 @@
 Route::get('/email', 'AdditionalController@sendEmail');
 Route::get('/login', 'Auth\LoginController@customLogin');
 
+Route::post('/getOpenPortByDate', 'ReportController@getOpenPortByDate');
+Route::get('/getOpenPortByDate', 'ReportController@getOpenPortByDate');
+
 Route::get('/login', function(){ 
     if(Auth::check()){
         return redirect('/');
@@ -230,10 +233,15 @@ Route::group(['middleware' => ['auth']], function(){
 
 	Route::get('report', 'ReportController@index');
 	Route::get('report/openport', 'ReportController@openPort');
+	Route::post('report/openport', 'ReportController@openPort');
 	Route::get('report/deviceconnection', 'ReportController@deviceconnection');
+	Route::post('report/deviceconnection', 'ReportController@deviceconnection');
 	Route::get('report/h2hconnection', 'ReportController@h2hConnection');
+	Route::post('report/h2hconnection', 'ReportController@h2hConnection');
 	Route::get('report/lanconnection', 'ReportController@lanConnection');
+	Route::post('report/lanconnection', 'ReportController@lanConnection');
 	Route::get('report/remoteaccess', 'ReportController@remoteAccess');
+	Route::post('report/remoteaccess', 'ReportController@remoteAccess');
 	Route::get('report/IB', 'ReportController@IB');
 	Route::get('report/SF', 'ReportController@SF');
 	Route::get('report/TP', 'ReportController@TP');
@@ -244,8 +252,6 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/survey','SurveyController@create')->name('survey');
     Route::post('/survey/insert','SurveyController@store')->name('newSurvey');
     Route::get('/survey/surveyList','SurveyController@index')->name('surveyList');
-
-
 
 });
 

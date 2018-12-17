@@ -1,7 +1,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-<title>Dashboard | Portal DCN</title>
+<title>Portal DCN</title>
 <!-- Favicon-->
 <link rel="icon" href="{{asset('dcn_icon.ico')}}" type="image/x-icon">
 

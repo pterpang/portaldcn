@@ -54,37 +54,37 @@ class AdditionalController extends Controller
 			$metaRes = Service::create($meta);
 			for($i = 0; $i < sizeof($op); $i++) {
 				$op[$i]['service_id'] = $metaRes->id;
-				$op[$i]['pic'] = "none";
+				$op[$i]['pic'] = "-";
 				Form_Open_Port::create($op[$i]);
 			}
 
 			for($i = 0; $i < sizeof($dc); $i++) {
 				$dc[$i]['service_id'] = $metaRes->id;
-				$dc[$i]['pic'] = "none";
+				$dc[$i]['pic'] = "-";
 				Form_Koneksi_Device_ke_Jaringan::create($dc[$i]);
 			}
 
 			for($i = 0; $i < sizeof($h2h); $i++) {
 				$h2h[$i]['service_id'] = $metaRes->id;
-				$h2h[$i]['pic'] = "none";
+				$h2h[$i]['pic'] = "-";
 				Form_Host_to_Host::create($h2h[$i]);
 			}
 
 			for($i = 0; $i < sizeof($ra); $i++) {
 				$ra[$i]['service_id'] = $metaRes->id;
-				$ra[$i]['pic'] = "none";
+				$ra[$i]['pic'] = "-";
 				Form_Pendaftaran_Remote_Access::create($ra[$i]);
 			}
 
 			if(isset($lan[0]) && sizeof($lan) > 0){
 				$lan[0]['service_id'] = $metaRes->id;
-				$lan[0]['pic'] = "none";			
+				$lan[0]['pic'] = "-";			
 				Form_Permohonan_Koneksi_Lan::create($lan[0]);
 			}
 
 			if(sizeof($asd) > 0){
 				$asd['service_id'] = $metaRes->id;
-				$asd['pic'] = "none";
+				$asd['pic'] = "-";
 				$asdRes = Aplication_Service_Delivery::create($asd);
 
 				if(strpos($asd['service_aplikasi'], 'LB') !== false){

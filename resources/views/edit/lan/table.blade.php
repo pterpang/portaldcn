@@ -247,7 +247,7 @@
 						<!--MAC Address-->
 						<div class="form-group col-md-12 clearfix" id="macAddressDiv">
 							<p>
-								<label>IP/MAC Address</label>
+								<label>MAC Address</label>
 							</p>
 							<div class="form-group">
 								<div style="border: solid #DADADA 1px">
@@ -370,7 +370,7 @@
 			tmpArr['ip_phone'] = $("input[name=ip_phone]:checked").val();
 			tmpArr['lama_pemakaian'] = $("#mainTable .lan_lama_pemakaian").first().val();
 			tmpArr['bypass_nas_ise'] = $("input[name=bypass_nas_ise]:checked").val();
-
+			tmpArr['mac_address'] = $("textarea[name=mac_address]").val();
 			//validation area
 			var err = "";
 			if( blankArea(tmpArr) == true ) err += "<br/>All column must be filled.";

@@ -21,95 +21,53 @@
             <!-- Page Content -->
             <div class="row clearfix">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="card">
-                        <div class="header">
-                            <div class="row clearfix">
-                                <div class="col-xs-12 col-sm-6">
-                                    <h2 class="content-submenu">SLA Report for {{$category}} This Month</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="body">     
-                        	<div class="row" style="padding-bottom: 0px !important">
-	                        	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-				                    <div class="info-box bg-teal hover-expand-effect">
-				                        <div class="icon">
-				                            <i class="material-icons">playlist_add_check</i>
-				                        </div>
-				                        <div class="content">
-				                            <div class="text">Total Request</div>
-				                            <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20">{{$metaData['count']}}</div>
-				                        </div>
-				                    </div>
-				                </div>                                               		
-				               <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-				                    <div class="info-box bg-teal hover-expand-effect">
-				                        <div class="icon">
-				                            <i class="material-icons">playlist_add_check</i>
-				                        </div>
-				                        <div class="content">
-				                            <div class="text">Request Per Day</div>
-				                            <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20">{{$metaData['average']}}</div>
-				                        </div>
-				                    </div>
-				                </div> 
-				                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-				                    <div class="info-box bg-teal hover-expand-effect">
-				                        <div class="icon">
-				                            <i class="material-icons">playlist_add_check</i>
-				                        </div>
-				                        <div class="content">
-				                            <div class="text">Unfinished Task</div>
-				                            <div class="number count-to ufTask" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20">125</div>
-				                        </div>
-				                    </div>
-				                </div>                                               		
-				                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-				                    <div class="info-box bg-blue hover-expand-effect">
-				                        <div class="icon">
-				                            <i class="material-icons">playlist_add_check</i>
-				                        </div>
-				                        <div class="content">
-				                            <div class="text">Finish Percentage</div>
-				                            <div class="number count-to pcTask" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20">80%</div>
-				                        </div>
-				                    </div>
-				                </div>                                    		
-                        	</div>
-                        </div>
-                    </div>
 
                     <div class="card">
-                        <div class="body" style="padding-top: 50px">
-							<table class="table table-bordered table-hover table-striped js-exportable" id="mainTable">
+                    	<div class="col-md-12" id="divSearch">
+                    		<h3>Date Range:</h3>
+	                    	<form action="" method="post">
+								@csrf	                    	
+		                    	<input type="date" name="start" id="min" value="{{isset($_POST['start']) ? $_POST['start'] : ''}}">
+		                    	&nbsp;-&nbsp;
+		                    	<input type="date" name="end" id="max" value="{{isset($_POST['start']) ? $_POST['end'] : ''}}">
+		                    	<input type="text" name="isSearch" id="isSearch" value="1" style="display: none">
+		                    	<span id="urlAjax" style="display: none">{{URL::to('getOpenPortByDate')}}</span>	                    		
+								<button id="btnSearch" class=" btn bg-teal" type="submit" style="margin-left: 5px">FILTER</button>
+	                    	</form>
+                    	</div>
+
+                        <div class="body" style="padding-top: 120px">
+							<table class="table table-bordered table-hover table-striped dataTable js-exportable" id="mainTable">
 								<thead>
 									<tr>
 										<th>No</th>
 										<th>Requester</th>
 										<th>Remedy</th>
 										<th>Description</th>
-										<th>Request Date</th>	
-										<th>Status</th>	
+										<th>PIC</th>
+										<th>Request Date</th>
+										<th>Finish Date</th>
+										<th>Work Time</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php
-										$i = 1 ;
-									?>
-
-									<?php foreach ($serviceList as $row): ?>										
-										<tr>
-											<td>{{$i++}}</td>
-											<td>{{$row->requester_name}}</td>
-											<td>{{$row->no_remedy}}</td>
-											<td>{{$row->project_name}}</td>
-											<td>{{$row->created_at}}</td>	
-											<td class="svcStatus {{$row->status == 'DONE'? 'svcDone' : ''}}">{{$row->status}}</td>
-										</tr>												
-									<?php endforeach ?>
+									<?php if ( !isset ( $_SESSION['flash_message'] ) ): ?>
+										<?php $i = 1; ?>
+										<?php foreach ($serviceList as $row): ?>
+											<tr>
+												<td>{{$i++}}</td>
+												<td>{{$row->requester_name}}</td>
+												<td>{{$row->no_remedy}}</td>
+												<td>{{$row->project_name}}</td>
+												<td>{{$row->pic ? $row->pic : '-'}}</td>
+												<td>{{$row->created_at}}</td>
+												<td>{{$row->finish_date ? $row->finish_date : '-'}}</td>
+												<td>{{$row->diff}}</td>
+											</tr>										
+										<?php endforeach ?>
+									<?php endif ?>									
 								</tbody>
-							</table>
-							
+							</table>							
                         </div>
                     </div>
                 </div>
@@ -132,14 +90,27 @@
 <script src="{{asset('AdminBSB/plugins/jquery-datatable/extensions/export/vfs_fonts.js')}}"></script>
 <script src="{{asset('AdminBSB/plugins/jquery-datatable/extensions/export/buttons.html5.min.js')}}"></script>
 <script src="{{asset('AdminBSB/plugins/jquery-datatable/extensions/export/buttons.print.min.js')}}"></script>
+<script src="{{asset('AdminBSB/plugins/jquery-datatable/extensions/ranged_dates.js')}}"></script>
 
 <!-- Custom Js -->
 <script src="{{asset('AdminBSB/js/pages/tables/jquery-datatable.js')}}"></script>
 <script>
 	$(document).ready(function(){
+		<?php
+			if( isset($_SESSION['flash_message'] )) {
+				echo "alert('" . $_SESSION['flash_message'] . "');";
+			}
+		?>
 		$(".ufTask").html( $(".svcStatus").length - $(".svcDone").length );
 		$(".pcTask").html( ($(".svcDone").length / $(".svcStatus").length * 100).toFixed(1) + "%" );
-		
+		// Add event listeners to the two range filtering inputs
+     	
+
+     	var min = $("#min").val();
+     	var max = $("#max").val();
+     	$("title").html("Portal DCN | {{$category}} Report \nFrom 	" + min + " to " + max);
+
+     	$(".content-mainmenu").html("{{$category}} Reporting");
 	});
 </script>
 @stop
