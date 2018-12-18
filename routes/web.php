@@ -254,6 +254,9 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/survey/insert','SurveyController@store')->name('newSurvey');
     Route::get('/survey/surveyList','SurveyController@index')->name('surveyList');
 
+	Route::post('/sla/{id}/update','SLAController@update');
+    Route::resource('/sla', 'SLAController');
+
 });
 
 // Auth::routes();

@@ -382,7 +382,12 @@
                             <span class="mainmenu-title">Survey Responses</span>
                         </a>
                     </li>
-
+                     <li class="ml-mainmenu @yield('sla_active')">
+                        <a href="{{URL::to('/sla')}}">
+                            <i class="material-icons">insert_chart</i>
+                            <span class="mainmenu-title">SLA Management</span>
+                        </a>
+                    </li>
 
 
                     <li class="ml-mainmenu @yield('report_active')">

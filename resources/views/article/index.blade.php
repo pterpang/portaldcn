@@ -33,6 +33,7 @@
 								<thead>
 									<tr>
 										<th>No</th>
+										<th>Created Date</th>
 										<th>Image</th>
 										<th>Title</th>
 										<th>Content</th>
@@ -44,6 +45,7 @@
 									<?php foreach ($articleList as $row): ?>
 									<tr>
 										<td>{{$i++}}</td>
+										<td>{{date("Y-m-d", strtotime($row->created_at))}}</td>
 										<td>
 											<?php if ( strlen($row->image) == 0 ): ?>
 												<img style="max-width: 150px; max-height: 150px" src="{{URL::to('uploads/images/article/default.jpg')}}">

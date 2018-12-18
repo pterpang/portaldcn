@@ -112,9 +112,9 @@ class TaskController extends Controller
     public function takeOpenport($id)
     {
         try{
-            $date = AdditionalHelper::addWorkingDays(date('Y-m-j'));
-            $time = date('H:i:s');
-            $expectedFinishDate = $date.' '.$time;
+            $expectedFinishDate = AdditionalHelper::addWorkingDays(date('Y-m-d'));
+            //$time = date('H:i:s');
+            //$expectedFinishDate = $date.' '.$time;
             Form_Open_Port::where('service_id', '=', $id)->update(['pic' => Auth::user()->name,
                 'start_date'=>date('Y-m-d H:i:s'),'expected_finish_date'=>$expectedFinishDate]);
             echo "";    
@@ -126,9 +126,9 @@ class TaskController extends Controller
     public function takeDeviceConnection($id)
     {
         try{
-            $date = AdditionalHelper::addWorkingDays(date('Y-m-j'));
-            $time = date('H:i:s');
-            $expectedFinishDate = $date.' '.$time;
+            $expectedFinishDate = AdditionalHelper::addWorkingDays(date('Y-m-j'));
+            //$time = date('H:i:s');
+            //$expectedFinishDate = $date.' '.$time;
             Form_Koneksi_Device_ke_Jaringan::where('service_id', '=', $id)->update(['pic' => Auth::user()->name,
                 'start_date'=>date('Y-m-d H:i:s'),'expected_finish_date'=>$expectedFinishDate]);
             echo "";    
@@ -139,9 +139,9 @@ class TaskController extends Controller
     public function takeASDelivery($id)
     {
         try{
-            $date = AdditionalHelper::addWorkingDays(date('Y-m-j'));
-            $time = date('H:i:s');
-            $expectedFinishDate = $date.' '.$time;
+            $expectedFinishDate = AdditionalHelper::addWorkingDays(date('Y-m-j'));
+            //$time = date('H:i:s');
+            //$expectedFinishDate = $date.' '.$time;
             Aplication_Service_Delivery::where('service_id', '=', $id)->update(['pic' => Auth::user()->name,
                 'start_date'=>date('Y-m-d H:i:s'),'expected_finish_date'=>$expectedFinishDate]);
             echo "";    
@@ -153,9 +153,9 @@ class TaskController extends Controller
     public function takeRemoteAccess($id)
     {
         try{
-            $date = AdditionalHelper::addWorkingDays(date('Y-m-j'));
-            $time = date('H:i:s');
-            $expectedFinishDate = $date.' '.$time;
+            $expectedFinishDate = AdditionalHelper::addWorkingDays(date('Y-m-j'));
+            //$time = date('H:i:s');
+            //$expectedFinishDate = $date.' '.$time;
             Form_Pendaftaran_Remote_Access::where('service_id', '=', $id)->update(['pic' => Auth::user()->name,
                 'start_date'=>date('Y-m-d H:i:s'),'expected_finish_date'=>$expectedFinishDate]);
             echo "";    
@@ -167,9 +167,9 @@ class TaskController extends Controller
     public function takeH2h($id)
     {
         try{
-            $date = AdditionalHelper::addWorkingDays(date('Y-m-j'));
-            $time = date('H:i:s');
-            $expectedFinishDate = $date.' '.$time;
+            $expectedFinishDate = AdditionalHelper::addWorkingDays(date('Y-m-j'));
+            //$time = date('H:i:s');
+            //$expectedFinishDate = $date.' '.$time;
             Form_Host_to_Host::where('service_id', '=', $id)->update(['pic' => Auth::user()->name,
                 'start_date'=>date('Y-m-d H:i:s'),'expected_finish_date'=>$expectedFinishDate]);
             echo "";    
@@ -181,9 +181,9 @@ class TaskController extends Controller
     public function takeLan($id)
     {
         try{
-            $date = AdditionalHelper::addWorkingDays(date('Y-m-j'));
-            $time = date('H:i:s');
-            $expectedFinishDate = $date.' '.$time;
+            $expectedFinishDate = AdditionalHelper::addWorkingDays(date('Y-m-j'));
+            //$time = date('H:i:s');
+            //$expectedFinishDate = $date.' '.$time;
             Form_Permohonan_Koneksi_Lan::where('service_id', '=', $id)->update(['pic' => Auth::user()->name,
                 'start_date'=>date('Y-m-d H:i:s'),'expected_finish_date'=>$expectedFinishDate]);
             echo "";    
