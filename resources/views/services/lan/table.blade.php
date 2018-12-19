@@ -11,7 +11,7 @@
                                     <h2 class="content-submenu"></h2>
                                 </div>
 								<div class="col-xs-12 col-sm-6" align="right">
-									<?php if ($serviceDetail->Form_Permohonan_Koneksi_Lan[0]->pic == "none"): ?>
+									<?php if ($serviceDetail->Form_Permohonan_Koneksi_Lan[0]->pic == "-"): ?>
 										<a class="btn bg-blue takejob" href="#" url="{{Request::URL()}}/take">
 											<i class="material-icons" style="margin-right: 5px">assignment</i>Take
 										</a>
@@ -93,7 +93,7 @@
 							</div>
 							<P>
 								Status: 
-								<?php if ($serviceDetail->Form_Permohonan_Koneksi_Lan[0]->pic == "none"): ?>
+								<?php if ($serviceDetail->Form_Permohonan_Koneksi_Lan[0]->pic == "-"): ?>
 									<span class="col-red status">Pending</span>
 								<?php else: ?>
 									<?php if (isset($serviceDetail->Form_Permohonan_Koneksi_Lan[0]->finish_date)): ?>
@@ -286,12 +286,17 @@
 				<div class="progress" style="position: relative">
 					<div id="text" class="center" style="position: absolute;left: 40%">
 					</div>
-                    <?php if ($serviceDetail->Form_Permohonan_Koneksi_Lan[0]->pic == "none"): ?>
+                    <?php if ($serviceDetail->Form_Permohonan_Koneksi_Lan[0]->pic == "-"): ?>
 					<div class="progress-bar bg-red progress-bar" role="progressbar" aria-valuenow="0"
 						 aria-valuemin="0" aria-valuemax="100" style="width: 100%">Request Belum Diambil</div>
                     <?php elseif($serviceDetail->Form_Permohonan_Koneksi_Lan[0]->finish_date == null): ?>
 					<div class="progress-bar bg-orange progress-bar-striped active" role="progressbar"
 						 aria-valuemin="0" aria-valuemax="100" id="progressBar" style="width:0%;">
+                        <?php elseif($serviceDetail->Form_Permohonan_Koneksi_Lan[0]->finish_date > $serviceDetail->
+						Form_Permohonan_Koneksi_Lan[0]->expected_finish_date):?>
+						<div class="progress-bar bg-red progress-bar" role="progressbar" aria-valuenow="0"
+							 aria-valuemin="0" aria-valuemax="100" style="width: 100%">Request Telah Melewati Waktu Yang Ditentukan</div>
+					</div>
                         <?php else:?>
 						<div class="progress-bar bg-light-green progress-bar" role="progressbar" aria-valuenow="0"
 							 aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>

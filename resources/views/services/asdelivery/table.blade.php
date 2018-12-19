@@ -16,7 +16,7 @@ td{
 						<h2 class="content-submenu"></h2>
 					</div>
 					<div class="col-xs-12 col-sm-6" align="right">
-						<?php if ($serviceDetail->Form_Application_Service_Delivery[0]->pic == "none"): ?>
+						<?php if ($serviceDetail->Form_Application_Service_Delivery[0]->pic == "-"): ?>
 							<a class="btn bg-blue takejob" href="#" url="{{Request::URL()}}/take">
 								<i class="material-icons" style="margin-right: 5px">assignment</i>Take
 							</a>
@@ -137,7 +137,7 @@ td{
 						<?php $temp = $serviceDetail->Form_Application_Service_Delivery[0]->Form_Load_Balancer[0]; ?>
 						<div class="col-md-6 subservice" style="overflow:hidden">
 							<span style="font-weight: bold;">Load Balancing Server</span>
-                            <?php if ($serviceDetail->Form_Application_Service_Delivery[0]->pic == "none"): ?>
+                            <?php if ($serviceDetail->Form_Application_Service_Delivery[0]->pic == "-"): ?>
 							<span class="col-red status"> (Pending)</span>
                             <?php else: ?>
                             <?php if (isset($serviceDetail->Form_Application_Service_Delivery[0]->Form_Load_Balancer[0]->finish_date)): ?>
@@ -205,7 +205,7 @@ td{
 						<?php $temp = $serviceDetail->Form_Application_Service_Delivery[0]->Form_Web_Application_Firewall[0]; ?>
 						<div class="col-md-6 subservice" style="overflow:hidden">
 							<span style="font-weight:bold">Web Application Firewall</span>
-							<?php if ($serviceDetail->Form_Application_Service_Delivery[0]->pic == "none"): ?>
+							<?php if ($serviceDetail->Form_Application_Service_Delivery[0]->pic == "-"): ?>
 								<span class="col-red status"> (Pending)</span>
 								<?php else: ?>
 							<?php if (isset($serviceDetail->Form_Application_Service_Delivery[0]->Form_Web_Application_Firewall[0]->finish_date)): ?>
@@ -258,7 +258,7 @@ td{
 						<?php $temp = $serviceDetail->Form_Application_Service_Delivery[0]->Form_Application_Acceleration[0]; ?>
 						<div class="col-md-6 subservice" style="overflow:hidden">
 							<span style="font-weight: bold">Application Acceleration</span>
-                            <?php if ($serviceDetail->Form_Application_Service_Delivery[0]->pic == "none"): ?>
+                            <?php if ($serviceDetail->Form_Application_Service_Delivery[0]->pic == "-"): ?>
 								<span class="col-red status"> (Pending)</span>
                                 <?php else: ?>
 							<?php if (isset($serviceDetail->Form_Application_Service_Delivery[0]->Form_Application_Acceleration[0]->finish_date)): ?>
@@ -306,7 +306,7 @@ td{
 						<div class="col-md-6 subservice" style="overflow:hidden">
 							<span style="font-weight: bold">Multiple Active Data Center</span>	
 							<span>
-							<?php if ($serviceDetail->Form_Application_Service_Delivery[0]->pic == "none"): ?>
+							<?php if ($serviceDetail->Form_Application_Service_Delivery[0]->pic == "-"): ?>
 									<span class="col-red status">(Pending)</span>
 							<?php else: ?>	
 								<?php if (isset($serviceDetail->Form_Application_Service_Delivery[0]->Form_Multiple_Active_Data_Center[0]->finish_date)): ?>
@@ -385,7 +385,7 @@ td{
 			</div>
 			<div class="body">
 				<div class="progress">
-                    <?php if ($serviceDetail->Form_Application_Service_Delivery[0]->pic == "none"): ?>
+                    <?php if ($serviceDetail->Form_Application_Service_Delivery[0]->pic == "-"): ?>
 			<div class="progress-bar progress-bar" role="progressbar" aria-valuenow="0"
                  aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
             <?php elseif ($parentProgress == 100):?>
@@ -413,12 +413,17 @@ td{
 				<div class="progress" style="position: relative">
 					<div id="text" class="center" style="position: absolute;left: 40%">
 					</div>
-                    <?php if ($serviceDetail->Form_Application_Service_Delivery[0]->pic == "none"): ?>
+                    <?php if ($serviceDetail->Form_Application_Service_Delivery[0]->pic == "-"): ?>
 					<div class="progress-bar bg-red progress-bar" role="progressbar" aria-valuenow="0"
 						 aria-valuemin="0" aria-valuemax="100" style="width: 100%">Request Belum Diambil</div>
                     <?php elseif($flag == 1): ?>
 					<div class="progress-bar bg-orange progress-bar-striped active" role="progressbar"
 						 aria-valuemin="0" aria-valuemax="100" id="progressBar" style="width:0%;">
+                        <?php elseif($serviceDetail->Form_Application_Service_Delivery[0]->finish_date > $serviceDetail->Form_Application_Service_Delivery[0]->
+                        expected_finish_date):?>
+						<div class="progress-bar bg-red progress-bar" role="progressbar" aria-valuenow="0"
+							 aria-valuemin="0" aria-valuemax="100" style="width: 100%">Request Telah Melewati Waktu Yang Ditentukan</div>
+					</div>
                         <?php else:?>
 						<div class="progress-bar bg-light-green progress-bar" role="progressbar" aria-valuenow="0"
 							 aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>

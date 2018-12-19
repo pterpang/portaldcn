@@ -331,7 +331,7 @@ td{
 			</div>
 			<div class="body">
 				<div class="progress">
-                    <?php if ($serviceDetail->Form_Application_Service_Delivery[0]->pic == "none"): ?>
+                    <?php if ($serviceDetail->Form_Application_Service_Delivery[0]->pic == "-"): ?>
 			<div class="progress-bar progress-bar" role="progressbar" aria-valuenow="0"
                  aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
             <?php elseif ($parentProgress == 100):?>
@@ -359,7 +359,7 @@ td{
 				<div class="progress" style="position: relative">
 					<div id="text" class="center" style="position: absolute;left: 40%">
 					</div>
-                    <?php if ($serviceDetail->Form_Application_Service_Delivery[0]->pic == "none"): ?>
+                    <?php if ($serviceDetail->Form_Application_Service_Delivery[0]->pic == "-"): ?>
 					<div class="progress-bar bg-red progress-bar" role="progressbar" aria-valuenow="0"
 						 aria-valuemin="0" aria-valuemax="100" style="width: 100%">Request Belum Diambil</div>
                     <?php elseif($flag == 1): ?>

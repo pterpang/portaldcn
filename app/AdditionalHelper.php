@@ -164,21 +164,28 @@ class AdditionalHelper extends Model
         //        $endDate = date('m-j', strtotime('+ '.$count.' weekdays'));
         //    }
         //}
-        $startDate = date('Ymj', strtotime($date));
+        $startDate = date('Ymd', strtotime($date));
         $newDate = '';
 
         $i = 0;
-        while ($i <= $count){
+        while ($i < $count){
             if(isset($arrayHoliday[$startDate])){
-                $newDate = date('Ymj', strtotime($startDate.'+ 1 weekdays'));
-                $startDate = $newDate;
+                $i = $i - 1;
             }
-            $newDate = date('Ymj', strtotime($startDate.'+ 1 weekdays'));
+            $newDate = date('Ymd', strtotime($startDate.' + 1 weekdays'));
             $startDate = $newDate;
             $i++;
         }
+        //for($a = 0;$a<8;$a++) {
+        //    if (isset($arrayHoliday[$startDate])) {
+        //        $newDate = date('Ymj', strtotime($startDate . '+ 1 weekdays'));
+        //        $startDate = $newDate;
+        //    }
+        //    $newDate = date('Ymj', strtotime($startDate . '+ 1 weekdays'));
+        //    $startDate = $newDate;
+        //}
 
-        $endDate = date('Y-m-j', strtotime($newDate));
+        $endDate = date('Y-m-d', strtotime($newDate)).' 23:59:59';
 
         return $endDate;
     }

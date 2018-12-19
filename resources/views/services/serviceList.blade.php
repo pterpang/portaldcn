@@ -69,7 +69,7 @@
 
 												<?php if ($subService->where('service_id', '=', $row->id)
 																		->first()
-																		->pic == "none"): ?>
+																		->pic == "-"): ?>
 														
 													<a url="{{Request::url() . '/' . $row->id . '/take'}}" href="#" class="btn bg-blue takejob">
 														<i class="material-icons" style="margin-right: 5px">assignment</i>Take

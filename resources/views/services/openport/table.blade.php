@@ -10,7 +10,7 @@
 						<h2 class="content-submenu"></h2>
 					</div>
 					<div class="col-xs-12 col-sm-6" align="right">
-						<?php if ($serviceDetail->Form_Open_Port[0]->pic == "none"): ?>
+						<?php if ($serviceDetail->Form_Open_Port[0]->pic == "-"): ?>
 							<a class="btn bg-blue takejob" href="#" url="{{Request::URL()}}/take">
 								<i class="material-icons" style="margin-right: 5px">assignment</i>Take
 							</a>
@@ -118,7 +118,7 @@
 								<td>{{ $row->arah }} Arah</td>
 								<td>{{ $row->action }}</td>
 								<td>{!! $row->fungsi !!}</td>
-								<?php if ($serviceDetail->Form_Open_Port[0]->pic == "none"): ?>
+								<?php if ($serviceDetail->Form_Open_Port[0]->pic == "-"): ?>
 									<td align="center" class="col-red status status">Pending</td>
 								<?php else: ?>
 									<?php if (isset($row->finish_date)): ?>
@@ -151,7 +151,7 @@
 			</div>
 			<div class="body">
 				<div class="progress">
-                    <?php if ($serviceDetail->Form_Open_Port[0]->pic == "none"): ?>
+                    <?php if ($serviceDetail->Form_Open_Port[0]->pic == "-"): ?>
 					<div class="progress-bar progress-bar" role="progressbar" aria-valuenow="0"
 						 aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
 					<?php elseif ($parentProgress == 100):?>
@@ -179,12 +179,17 @@
 				<div class="progress">
 					<div id="text" class="center" style="position: absolute;left: 40%">
 					</div>
-                    <?php if ($serviceDetail->Form_Open_Port[0]->pic == "none"): ?>
-					<div class="progress-bar bg-red progress-bar" role="progressbar" aria-valuenow="0"
+                    <?php if ($serviceDetail->Form_Open_Port[0]->pic == "-"): ?>
+					<div class="progress-bar bg-grey progress-bar" role="progressbar" aria-valuenow="0"
 						 aria-valuemin="0" aria-valuemax="100" style="width: 100%">Request Belum Diambil</div>
 					<?php elseif($serviceDetail->Form_Open_Port[0]->finish_date == null): ?>
 					<div class="progress-bar bg-orange progress-bar-striped active" role="progressbar"
 						 aria-valuemin="0" aria-valuemax="100" id="progressBar" style="width:0%;">
+					<?php elseif($serviceDetail->Form_Open_Port[0]->finish_date > $serviceDetail->Form_Open_Port[0]->
+						expected_finish_date):?>
+						<div class="progress-bar bg-red progress-bar" role="progressbar" aria-valuenow="0"
+							 aria-valuemin="0" aria-valuemax="100" style="width: 100%">Request Telah Melewati Waktu Yang Ditentukan</div>
+						</div>
 					<?php else:?>
 						<div class="progress-bar bg-light-green progress-bar" role="progressbar" aria-valuenow="0"
 							 aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>

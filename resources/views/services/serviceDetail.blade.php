@@ -224,7 +224,7 @@
         $("#progressBar").css("width",percentage+"%");
 	}
 
-	if(pic != "none"){
+	if(pic != "-"){
 
 		document.getElementById("startDate").innerHTML="<b>Taken at:</b> "+ startDate;
 		document.getElementById("expectedFinishDate").innerHTML= "<b>Expected to be finished at:</b> " + expectedFinishDate.toString();
@@ -244,7 +244,7 @@
             document.getElementById("text").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s left";
             if (currentDateDiff<0){
                 clearInterval(x);
-                document.getElementById("text").innerHTML = "Waktu Telah Habis!"
+                //document.getElementById("text").innerHTML = "Waktu Telah Habis!"
             }
             else if(currentDateDiff>0 && percentage==100){
                 clearInterval(x);

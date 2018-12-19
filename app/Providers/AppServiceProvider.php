@@ -18,32 +18,32 @@ class AppServiceProvider extends ServiceProvider
         $openPortRequests = DB::table('form_open_ports')
             ->join('services', 'form_open_ports.service_id','=','services.id')
             ->selectRaw('form_open_ports.id, services.category')
-            ->where('pic', '=','none')
+            ->where('pic', '=','-')
             ->get();
         $deviceConnectionRequests =  DB::table('form_koneksi_device_ke_jaringans')
             ->join('services', 'form_koneksi_device_ke_jaringans.service_id','=','services.id')
             ->selectRaw('form_koneksi_device_ke_jaringans.id, services.category')
-            ->where('pic', '=','none')
+            ->where('pic', '=','-')
             ->get();
         $ASDeliveryRequests = DB::table('aplication_service_deliveries')
             ->join('services', 'aplication_service_deliveries.service_id','=','services.id')
             ->selectRaw('aplication_service_deliveries.id, services.category')
-            ->where('pic', '=','none')
+            ->where('pic', '=','-')
             ->get();
         $H2HRequests = DB::table('form_host_to_hosts')
             ->join('services', 'form_host_to_hosts.service_id','=','services.id')
             ->selectRaw('form_host_to_hosts.id, services.category')
-            ->where('pic', '=','none')
+            ->where('pic', '=','-')
             ->get();
        $LANRequests = DB::table('form_permohonan_koneksi_lans')
             ->join('services', 'form_permohonan_koneksi_lans.service_id','=','services.id')
             ->selectRaw('form_permohonan_koneksi_lans.id, services.category')
-            ->where('pic', '=','none')
+            ->where('pic', '=','-')
             ->get();
         $remoteAccessRequests = DB::table('form_pendaftaran_remote_accesses')
             ->join('services', 'form_pendaftaran_remote_accesses.service_id','=','services.id')
             ->selectRaw('form_pendaftaran_remote_accesses.id, services.category')
-            ->where('pic', '=','none')
+            ->where('pic', '=','-')
             ->get();
 
         //IB

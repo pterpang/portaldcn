@@ -359,7 +359,7 @@ active
 														<label for="lokasi">Lokasi</label>
 													</P>
 													<div class="col-md-6">
-														<input class="with-gap" name="lokasi" type="radio" value="Menara BCA" id="lokasi_1" checked />
+														<input class="with-gap" name="lokasi" type="radio" value="Menara BCA" id="lokasi_1" />
 														<label for="lokasi_1">Menara BCA</label><br/>
 														<input class="with-gap" name="lokasi" type="radio" value="Wisma Asia 2" id="lokasi_2" />
 														<label for="lokasi_2">Wisma Asia 2</label><br/>
@@ -420,7 +420,7 @@ active
 															<input class="form-control lan_lama_pemakaian" type="text" placeholder="Lama Pemakaian" name="lama_pemakaian">
 
 														</div> -->
-														<input class="with-gap lan_lama_pemakaian" name="lama_pemakaian" type="radio" value="Permanent" id="lama_permanent" checked />
+														<input class="with-gap lan_lama_pemakaian" name="lama_pemakaian" type="radio" value="Permanent" id="lama_permanent"  />
 														<label for="lama_permanent">Permanent</label><br/>
 														<input class="with-gap" name="lama_pemakaian" type="radio" value="Temporary" id="lama_temporary" />
 														<label for="lama_temporary">Temporary</label><br/>
@@ -435,7 +435,7 @@ active
 													<P>
 														<label for="antivirus">Antivirus</label>
 													</P>
-													<input class="with-gap" name="antivirus" type="radio" value="Ya" id="antivirus_1" checked />
+													<input class="with-gap" name="antivirus" type="radio" value="Ya" id="antivirus_1"  />
 													<label for="antivirus_1">Ya</label><br/>
 													<input class="with-gap" name="antivirus" type="radio" value="Tidak" id="antivirus_2" />
 													<label for="antivirus_2">Tidak</label><br/>								
@@ -491,7 +491,7 @@ active
 													<P>
 														<label for="ipphone">IP Phone</label>
 													</P>
-													<input class="with-gap" name="ipphone" type="radio" value="Cisco" id="ipphone_1" checked />
+													<input class="with-gap" name="ipphone" type="radio" value="Cisco" id="ipphone_1"  />
 													<label for="ipphone_1">Cisco</label><br/>
 													<input class="with-gap" name="ipphone" type="radio" value="Avaya" id="ipphone_2"/>
 													<label for="ipphone_2">Avaya</label><br/>
@@ -503,7 +503,7 @@ active
 													<P>
 														<label for="bypass">Bypass NAC/ISE</label>
 													</P>
-													<input class="with-gap" name="bypass" type="radio" value="Ya" id="bypass_1" checked />
+													<input class="with-gap" name="bypass" type="radio" value="Ya" id="bypass_1"  />
 													<label for="bypass_1">Ya</label><br/>
 													<input class="with-gap" name="bypass" type="radio" value="Tidak" id="bypass_2" />
 													<label for="bypass_2">Tidak</label><br/>								
@@ -636,7 +636,7 @@ active
 																		<P>
 																			<label for="SSL">SSL</label>
 																		</P>
-																		<input class="with-gap" name="lb_SSL" type="radio" value="Ya" id="SSL_1" checked />
+																		<input class="with-gap" name="lb_SSL" type="radio" value="Ya" id="SSL_1"  />
 																		<label for="SSL_1">Ya</label><br/>
 																		<input class="with-gap" name="lb_SSL" type="radio" value="Tidak" id="SSL_2" />
 																		<label for="SSL_2">Tidak</label><br/>								
@@ -646,7 +646,7 @@ active
 																		<P>
 																			<label for="persistence">Persistence</label>
 																		</P>
-																		<input class="with-gap" name="lb_persistence" type="radio" value="Ya" id="persistence_1" checked />
+																		<input class="with-gap" name="lb_persistence" type="radio" value="Ya" id="persistence_1"  />
 																		<label for="persistence_1">Ya</label><br/>
 																		<input class="with-gap" name="lb_persistence" type="radio" value="Tidak" id="persistence_2" />
 																		<label for="persistence_2">Tidak</label><br/>								
@@ -744,7 +744,7 @@ active
 																				<P>
 																					<label for="SSL3">SSL</label>
 																				</P>
-																				<input class="with-gap" name="waf_ssl" type="radio" value="Ya" id="waf_ssl_1" checked />
+																				<input class="with-gap" name="waf_ssl" type="radio" value="Ya" id="waf_ssl_1"  />
 																				<label for="waf_ssl_1">Ya</label><br/>
 																				<input class="with-gap" name="waf_ssl" type="radio" value="Tidak" id="waf_ssl_2" />
 																				<label for="waf_ssl_2">Tidak</label><br/>								
@@ -805,7 +805,7 @@ active
 																		<P>
 																			<label for="aa_ssl">SSL</label>
 																		</P>
-																		<input class="with-gap" name="aa_ssl" type="radio" value="Ya" id="aa_ssl2" checked />
+																		<input class="with-gap" name="aa_ssl" type="radio" value="Ya" id="aa_ssl2"  />
 																		<label for="aa_ssl2">Ya</label><br/>
 																		<input class="with-gap" name="aa_ssl" type="radio" value="Tidak" id="aa_ssl1" />
 																		<label for="aa_ssl1">Tidak</label><br/>								
@@ -835,7 +835,7 @@ active
 																			<P>
 																				<label for="SSL3">lokasi/Sticky</label>
 																			</P>
-																			<input class="with-gap" name="madc_lokasi" type="radio" value="Internal" id="lokasi_13" checked />
+																			<input class="with-gap" name="madc_lokasi" type="radio" value="Internal" id="lokasi_13"  />
 																			<label for="lokasi_13">Internal</label><br/>
 																			
 																			<input class="with-gap" name="madc_lokasi" type="radio" value="Eksternal" id="lokasi_23" />
@@ -881,7 +881,7 @@ active
 																			<P>
 																				<label for="SSL3">Persistence/Sticky</label>
 																			</P>
-																			<input class="with-gap" name="madc_persistence" type="radio" value="Ya" id="madc_p1" checked />
+																			<input class="with-gap" name="madc_persistence" type="radio" value="Ya" id="madc_p1"  />
 																			<label for="madc_p1">Ya</label><br/>
 																			<input class="with-gap" name="madc_persistence" type="radio" value="Tidak" id="madc_p2" />
 																			<label for="madc_p2">Tidak</label><br/>								
