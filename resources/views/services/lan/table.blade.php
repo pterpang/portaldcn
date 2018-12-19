@@ -287,7 +287,7 @@
 					<div id="text" class="center" style="position: absolute;left: 40%">
 					</div>
                     <?php if ($serviceDetail->Form_Permohonan_Koneksi_Lan[0]->pic == "-"): ?>
-					<div class="progress-bar bg-red progress-bar" role="progressbar" aria-valuenow="0"
+					<div class="progress-bar bg-grey progress-bar" role="progressbar" aria-valuenow="0"
 						 aria-valuemin="0" aria-valuemax="100" style="width: 100%">Request Belum Diambil</div>
                     <?php elseif($serviceDetail->Form_Permohonan_Koneksi_Lan[0]->finish_date == null): ?>
 					<div class="progress-bar bg-orange progress-bar-striped active" role="progressbar"
