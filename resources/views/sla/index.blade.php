@@ -32,42 +32,27 @@
 							<table class="table table-bordered table-hover table-striped js-basic-example" id="mainTable">
 								<thead>
 									<tr>
-										<th>No</th>
-										<th>Created Date</th>
-										<th>Image</th>
-										<th>Title</th>
-										<th>Content</th>
-										<th>Action</th>		
+										<th>No</th>	
+										<th>Layanan</th>	
+										<th>Lama Kerja</th>	
+										<th>Tingkat Keberhasilam</th>			
+										<th>Action</th>								
 									</tr>
 								</thead>
 								<tbody>
 									<?php $i = 1; ?>
-									<?php foreach ($articleList as $row): ?>
+									<?php foreach ($slaList as $row): ?>
 									<tr>
 										<td>{{$i++}}</td>
-										<td>{{date("Y-m-d", strtotime($row->created_at))}}</td>
-										<td>
-											<?php if ( strlen($row->image) == 0 ): ?>
-												<img style="max-width: 150px; max-height: 150px" src="{{URL::to('uploads/images/article/default.jpg')}}">
-											<?php else: ?>
-												<img style="max-width: 150px; max-height: 150px" src="{{URL::to('uploads/images/article/' . $row->image)}}">												
-											<?php endif ?>
-										</td>
-										<td>{{$row->judul}}</td>
-										<td>
-											<?php
-												if(strlen($row->isi) > 300){
-													echo substr($row->isi, 0, 300) . "... <a href='". Request::url() . '/' . $row->id ."'>read more</a>";
-												}else{
-													echo $row->isi;
-												}
-											?>
-										</td>
+										<td>{{$row->description}}</td>
+										<td>{{$row->lama_kerja}}</td>
+										<td>{{number_format((float)$row->tingkat_keberhasilan, 2, '.', '')}}%</td>													
 										<td align="center">
-											<a href="{{Request::url() . '/' . $row->id}}" class="btn bg-green">
-												<i class="material-icons" style="margin-right: 5px">remove_red_eye</i>View
-											</a>											
-										</td>										
+											<a href="{{Request::url() . '/' . $row->id . '/edit'}}" class="btn bg-green">
+												<i class="material-icons" style="margin-right: 5px">edit</i>Edit
+											</a>
+										</td>
+									</tr>
 									<?php endforeach ?>
 								</tbody>
 							</table>

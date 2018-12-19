@@ -14,7 +14,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articleList = Article::all();
+        $articleList = Article::all()->sortByDesc('created_at');
         $activeClasses = ['article_active', 'article_requestlist_active'];
         $i = 0;
         return view('article.index', compact('activeClasses', 'articleList'));

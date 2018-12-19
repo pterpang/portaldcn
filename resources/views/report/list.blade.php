@@ -22,7 +22,7 @@
             <div class="row clearfix">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-                    <div class="card">
+                    <div class="card" style="overflow: hidden">
                     	<div class="col-md-12" id="divSearch">
                     		<h3>Date Range:</h3>
 	                    	<form action="" method="post">
@@ -44,30 +44,101 @@
 										<th>Requester</th>
 										<th>Remedy</th>
 										<th>Description</th>
-										<th>PIC</th>
 										<th>Request Date</th>
 										<th>Finish Date</th>
 										<th>Work Time</th>
+										<th>SLA Status</th>										
+										<th>PIC</th>
 									</tr>
 								</thead>
 								<tbody>
 									<?php if ( !isset ( $_SESSION['flash_message'] ) ): ?>
-										<?php $i = 1; ?>
+										<?php
+											$i = 1; 
+											$onTimeCount = 0;
+										?>
 										<?php foreach ($serviceList as $row): ?>
 											<tr>
 												<td>{{$i++}}</td>
 												<td>{{$row->requester_name}}</td>
 												<td>{{$row->no_remedy}}</td>
 												<td>{{$row->project_name}}</td>
-												<td>{{$row->pic ? $row->pic : '-'}}</td>
 												<td>{{$row->created_at}}</td>
 												<td>{{$row->finish_date ? $row->finish_date : '-'}}</td>
 												<td>{{$row->diff  != "-" ? $row->diff . ' day(s)' : '-'}}</td>
+												<td>
+													<?php
+													if ( $row->finish_date == null ) {
+														echo '-';
+													} else {
+														if( $row->diff  <=  $sla->lama_kerja ){
+															echo '<span class="col-green">On Time</span>';
+															$onTimeCount++;	
+														} else{
+															echo '<span class="col-red">Extended</span>';
+														}
+													}
+													
+													?>
+												</td>
+												<td>{{$row->pic ? $row->pic : '-'}}</td>
 											</tr>										
 										<?php endforeach ?>
 									<?php endif ?>									
 								</tbody>
-							</table>							
+							</table>
+
+							<?php if ( sizeof($serviceList) > 0 ): ?>
+								<div class="row" style="margin-top: 30px;">
+									<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+					                    <div class="info-box bg-pink hover-expand-effect">
+					                        <div class="icon">
+					                            <i class="material-icons">import_export</i>
+					                        </div>
+					                        <div class="content">
+					                            <div class="text">Total Request</div>
+					                            <div class="number count-to">{{$metaData['count']}} Requests</div>
+					                        </div>
+					                    </div>
+					                </div>		
+									<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+					                    <div class="info-box bg-teal hover-expand-effect">
+					                        <div class="icon">
+					                            <i class="material-icons">import_export</i>
+					                        </div>
+					                        <div class="content">
+					                            <div class="text">Total Workdays</div>
+					                            <div class="number count-to">{{$metaData['dayDiff']}} Days</div>
+					                        </div>
+					                    </div>
+					                </div>						
+									<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+					                    <div class="info-box bg-orange hover-expand-effect">
+					                        <div class="icon">
+					                            <i class="material-icons">import_export</i>
+					                        </div>
+					                        <div class="content">
+					                            <div class="text">Average Request per Day</div>
+					                            <div class="number count-to">{{number_format((float)$metaData['count']/$metaData['dayDiff'], 2, '.', '')}} Request</div>
+					                        </div>
+					                    </div>
+					                </div>				
+									<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+					                    <div class="info-box bg-green hover-expand-effect">
+					                        <div class="icon">
+					                            <i class="material-icons">import_export</i>
+					                        </div>
+					                        <div class="content">
+					                            <div class="text">SLA Level</div>
+					                            <div class="number count-to">{{number_format((float)$onTimeCount/$metaData['count']*100, 2, '.', '')}}% {{number_format((float)$onTimeCount/$metaData['count']*100, 2, '.', '') >= $sla->tingkat_keberhasilan? '(Passed)' : '(Failed)'}}</div>
+					                        </div>
+					                    </div>
+					                </div>				
+									
+								</div>
+
+
+							<?php endif ?>
                         </div>
                     </div>
                 </div>

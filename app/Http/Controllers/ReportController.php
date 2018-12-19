@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Request;
 use App\Form_Open_Port;
 use App\Service;
+use App\SLA;
 use App\AdditionalHelper;
 use Yajra\Datatables\Datatables;
 use DB;
@@ -77,7 +78,9 @@ class ReportController extends Controller
             foreach ($serviceList as $row) {
                 $row->diff = $row->finish_date != NULL ? $this->number_of_working_days($row->created_at, $row->finish_date) : '-';
             }
-            $metaData = $this->getMeta($tableName)[0];        
+            $metaData = array();
+            $metaData['count'] = sizeof($serviceList);
+            $metaData['dayDiff'] = $this->number_of_working_days($min, $max);                       
         }
     }
 
@@ -95,9 +98,10 @@ class ReportController extends Controller
         $max = $request->post('end');
         $serviceList = null;
         $metaData = null;
+        $sla = SLA::where('id', 1)->get()->first();
 
         $this->checkParameter($request, $min, $max, $serviceList, $metaData, 'form_open_ports');
-        return view('report.list', compact('activeClasses', 'serviceList', 'category', 'metaData'));
+        return view('report.list', compact('activeClasses', 'serviceList', 'category', 'metaData', 'sla'));
     }
 
     public function deviceConnection(){
@@ -108,9 +112,10 @@ class ReportController extends Controller
         $max = $request->post('end');
         $serviceList = null;
         $metaData = null;
+        $sla = SLA::where('id', 2)->get()->first();
 
         $this->checkParameter($request, $min, $max, $serviceList, $metaData, 'form_koneksi_device_ke_jaringans');
-        return view('report.list', compact('activeClasses', 'serviceList', 'category', 'metaData'));
+        return view('report.list', compact('activeClasses', 'serviceList', 'category', 'metaData', 'sla'));
     }
 
     public function H2HConnection(){
@@ -121,9 +126,10 @@ class ReportController extends Controller
         $max = $request->post('end');
         $serviceList = null;
         $metaData = null;
+        $sla = SLA::where('id', 3)->get()->first();
 
         $this->checkParameter($request, $min, $max, $serviceList, $metaData, 'form_host_to_hosts');
-        return view('report.list', compact('activeClasses', 'serviceList', 'category', 'metaData'));
+        return view('report.list', compact('activeClasses', 'serviceList', 'category', 'metaData', 'sla'));
     }
 
     public function LANConnection(){
@@ -134,9 +140,10 @@ class ReportController extends Controller
         $max = $request->post('end');
         $serviceList = null;
         $metaData = null;
+        $sla = SLA::where('id', 4)->get()->first();
 
         $this->checkParameter($request, $min, $max, $serviceList, $metaData, 'form_permohonan_koneksi_lans');
-        return view('report.list', compact('activeClasses', 'serviceList', 'category', 'metaData'));
+        return view('report.list', compact('activeClasses', 'serviceList', 'category', 'metaData', 'sla'));
     }
 
 	public function remoteAccess(){
@@ -147,9 +154,10 @@ class ReportController extends Controller
         $max = $request->post('end');
         $serviceList = null;
         $metaData = null;
+        $sla = SLA::where('id', 5)->get()->first();
 
         $this->checkParameter($request, $min, $max, $serviceList, $metaData, 'form_pendaftaran_remote_accesses');
-        return view('report.list', compact('activeClasses', 'serviceList', 'category', 'metaData'));
+        return view('report.list', compact('activeClasses', 'serviceList', 'category', 'metaData', 'sla'));
     }
 
     public function IB(){

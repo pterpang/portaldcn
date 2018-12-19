@@ -18,6 +18,14 @@ class DatabaseSeeder extends Seeder
         DB::table('categories')->insert(['description' => 'Remote Office & LAN HQ']);
         DB::table('categories')->insert(['description' => 'Network Security']);
 
+        DB::table('slas')->insert(['description' => 'Open Port', 'lama_kerja' => 8, 'tingkat_keberhasilan' => 95]);
+        DB::table('slas')->insert(['description' => 'Device Connection', 'lama_kerja' => 4, 'tingkat_keberhasilan' => 98]);
+        DB::table('slas')->insert(['description' => 'Host to Host', 'lama_kerja' => 4, 'tingkat_keberhasilan' => 99.98]);
+        DB::table('slas')->insert(['description' => 'Application Service Delivery', 'lama_kerja' => 4, 'tingkat_keberhasilan' => 98]);
+        DB::table('slas')->insert(['description' => 'LAN Connection', 'lama_kerja' => 4, 'tingkat_keberhasilan' => 98]);
+		DB::table('slas')->insert(['description' => 'Remote Access', 'lama_kerja' => 4, 'tingkat_keberhasilan' => 98]);
+
+
 		DB::table('users')->insert([
 			'name' => 'administrator',		
 			'username' => 'admin',		
