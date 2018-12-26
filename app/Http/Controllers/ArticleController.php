@@ -27,9 +27,18 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        $activeClasses = ['newar_active'];
+        $activeClasses = ['artl_active','newar_active'];
          return view('article.create', compact('activeClasses'));
     }
+
+    public function listArticle()
+    {
+        $articleList = Article::all()->sortByDesc('created_at');
+        $activeClasses = ['artl_active', 'articleList_active'];
+        //$i = 0;
+        return view('article.articleList', compact('activeClasses', 'articleList'));
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -81,6 +90,13 @@ class ArticleController extends Controller
         return view('article.readArticle', compact('activeClasses', 'article'));
     }
 
+    public function readAsAdmin($id)
+    {
+        $article = Article::find($id);
+        $activeClasses = ['article_active', 'article_requestlist_active'];
+        return view('article.readArticle2', compact('activeClasses', 'article'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -123,6 +139,8 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Article::find($id)->delete();
+
+        echo "OK";
     }
 }

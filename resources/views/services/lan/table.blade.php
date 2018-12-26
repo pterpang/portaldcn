@@ -27,6 +27,9 @@
 									<a class="btn bg-teal" href="{{Request::URL()}}/edit" id="atoedit">
 										<i class="material-icons" style="margin-right: 5px">edit</i>Edit
 									</a>
+										<a class="btn bg-red" href="#" id="deleteLAN" data-id="{{$serviceDetail->Form_Permohonan_Koneksi_Lan[0]->service_id}}">
+											<i class="material-icons" style="margin-right: 5px">cancel</i>Delete
+										</a>
 								</div>		
                             </div>
                         </div>

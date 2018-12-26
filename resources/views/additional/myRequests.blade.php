@@ -3,6 +3,7 @@
 @section('content-head')
 <!-- Bootstrap Core Css -->
 <link href="{{ asset('AdminBSB/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css') }}" rel="stylesheet">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @stop
 
 @foreach ($activeClasses as $class)
@@ -38,7 +39,8 @@
 										<th>Description</th>
 										<th>Category</th>
 										<th>Task</th>
-										<th>Request Date</th>	
+										<th>Request Date</th>
+										<!--th>Action</th-->
 									</tr>
 								</thead>
 								<tbody>
@@ -115,6 +117,11 @@
 											<span class="col-orange">({{$row->parentProgress}}% complete)</span>
 										</td>
                                     <?php endif ?>
+										<!--td align="center">
+											<a href="#" class="btn bg-red delete" id="deleteRequest{{$row->id}}" data-id="{{$row->id}}" data-token="{{ csrf_token() }}">
+												<i class="material-icons" style="margin-right: 5px">cancel</i>Cancel
+											</a>
+										</td-->
 									<?php endforeach ?>
 								</tbody>
 							</table>
@@ -135,5 +142,33 @@
 <script src="{{asset('AdminBSB/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js')}}"></script>
 <!-- Custom Js -->
 <script src="{{asset('AdminBSB/js/pages/tables/jquery-datatable.js')}}"></script>
+
+<script>
+	<?php foreach($requestList as $row):?>
+	$('#deleteRequest{{$row->id}}').click(function (e) {
+	    e.preventDefault();
+		if(window.confirm("Are you sure? All data will be lost.")){
+		 	var id = $(this).data('id');
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url:'/myRequests/delete/'+id,
+				type:'delete',
+				data: {'id': id,'_token': '{{csrf_token()}}'},
+				success: function (e) {
+                    if (e == "OK") {
+                        alert("Your Requests have been successfully cancelled");
+                        window.location = "../myRequests";
+                    }
+                }
+ 			})
+		}
+    });
+	<?php endforeach?>
+</script>
 
 @stop

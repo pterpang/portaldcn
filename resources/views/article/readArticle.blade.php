@@ -28,7 +28,7 @@
 							</div>
                             <div class="col-xs-12 col-sm-6" align="right">
                                 <button class="btn bg-teal btn-lg" onclick="window.history.back()"><< BACK</button>
-                                <?php if (Auth::user()->name === "portaldcn"): ?>
+                                <?php if (Auth::user()->name === "guest"): ?>
                                     <a class="btn bg-teal btn-lg" href="{{Request::URL()}}/edit">EDIT</a>
                                 <?php endif ?>
                             </div>                              

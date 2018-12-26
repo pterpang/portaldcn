@@ -35,7 +35,7 @@
 										<th>No</th>	
 										<th>Layanan</th>	
 										<th>Lama Kerja</th>	
-										<th>Tingkat Keberhasilam</th>			
+										<th>Tingkat Keberhasilan</th>
 										<th>Action</th>								
 									</tr>
 								</thead>

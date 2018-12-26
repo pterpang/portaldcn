@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Aplication_Service_Delivery;
+use App\Form_Host_to_Host;
+use App\Form_Koneksi_Device_ke_Jaringan;
+use App\Form_Open_Port;
+use App\Form_Pendaftaran_Remote_Access;
+use App\Form_Permohonan_Koneksi_Lan;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Service;
 use App\AdditionalHelper;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use League\Flysystem\Exception;
 
 class MyRequestsController extends Controller
 {
@@ -86,12 +94,26 @@ class MyRequestsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        try{
+            Form_Open_Port::where('service_id', '=', $id)->delete();
+            Form_Koneksi_Device_ke_Jaringan::where('service_id', '=', $id)->delete();
+            Form_Host_to_Host::where('service_id', '=', $id)->delete();
+            Form_Permohonan_Koneksi_Lan::where('service_id', '=', $id)->delete();
+            Form_Pendaftaran_Remote_Access::where('service_id', '=', $id)->delete();
+            Aplication_Service_Delivery::where('service_id', '=', $id)->delete();
+            $request = Service::find($id);
+            $request->delete();
+
+            echo "OK";
+        }
+        catch (Exception $e){
+            echo "Error ".$e->getMessage();
+        }
     }
 
     //////////////////////////////////////////////////

@@ -18,7 +18,7 @@ class SurveyController extends Controller
     {
         $activeClasses = ['surveyList_active'];
         $data = DB::table('survey')
-            ->select('name', 'rating', 'description')
+            ->select('id','name', 'rating', 'description')
             ->get();
         return view('survey.surveyList', compact('activeClasses', 'data'));
     }
@@ -89,11 +89,14 @@ class SurveyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Survey  $survey
+     * @param $id
      * @return \Illuminate\Http\Response
+     * @internal param Survey $survey
      */
-    public function destroy(Survey $survey)
+    public function destroy($id)
     {
-        //
+        Survey::find($id)->delete();
+
+        echo "OK";
     }
 }

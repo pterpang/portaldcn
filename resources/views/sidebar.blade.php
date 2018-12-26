@@ -370,12 +370,26 @@
                                                    
                         </ul>
                     </li>
-                    <li class="ml-mainmenu  @yield('newar_active')">
-                        <a href="{{ URL::to('article/create') }}">
-                            <i class="material-icons">add_box</i>
-                            <span class="mainmenu-title">New Article</span>
+                    <!--li class="ml-mainmenu  @yield('artl_active')">
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">library_books</i>
+                            <span class="mainmenu-title">Article</span>
                         </a>
-                    </li>
+                        <ul class="ml-menu"-->
+                            <li class="@yield('newar_active')">
+                                <a href="{{URL::to('/article/create')}}">
+                                    <i class="material-icons">add_box</i>
+                                    <span class="submenu-title">New Article</span>
+                                </a>
+                            </li>
+                            <!--li class="@yield('articleList_active')">
+                                <a href="{{URL::to('/listArticle/')}}">
+                                    <i class="material-icons">library_books</i>
+                                    <span class="submenu-title">All Articles</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li-->
                     <li class="ml-mainmenu @yield('surveyList_active')">
                         <a href="{{URL::to('/survey/surveyList')}}">
                             <i class="material-icons">list</i>
@@ -544,7 +558,7 @@
 							<span class="mainmenu-title">Form Koneksi Device</span>
 						</a>
 					</li> -->					
-					<!--li class="header">Additional</li-->	
+					<!--li class="header">Additional</li-->
 					<!--li class="ml-mainmenu  @yield('tracking_active')">
 						<a href="{{ URL::to('tracking') }}">
 							<i class="material-icons">gps_fixed</i>

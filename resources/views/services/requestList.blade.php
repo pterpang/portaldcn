@@ -28,7 +28,7 @@
 								</div>
                             </div>
                         </div>
-                        <div class="body">        
+                        <div class="body">
 							<table class="table table-bordered table-hover table-striped js-basic-example" id="mainTable">
 								<thead>
 									<tr>
@@ -37,7 +37,8 @@
 										<th>Remedy</th>
 										<th>Description</th>
 										<th>Task</th>
-										<th>Request Date</th>	
+										<th>Request Date</th>
+										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -82,7 +83,7 @@
 									                else if (sizeof($row2->Form_Application_Acceleration) > 0)
 									                    $asdFlag = 1;
 									                else if (sizeof($row2->Form_Multiple_Active_Data_Center) > 0)
-									                    $asdFlag = 1;                   
+									                    $asdFlag = 1;
 									            }
 									        }
 
@@ -108,7 +109,12 @@
 											<span class="col-orange">({{$row->parentProgress}}% complete)</span>
 										</td>
 										<?php endif ?>
-									</tr>										
+										<td align="center">
+											<a href="#" class="btn bg-red delete" id="deleteRequest{{$row->id}}" data-id="{{$row->id}}" data-token="{{ csrf_token() }}">
+												<i class="material-icons" style="margin-right: 5px">cancel</i>Cancel
+											</a>
+										</td>
+									</tr>
 									<?php endforeach ?>
 								</tbody>
 							</table>
@@ -128,5 +134,36 @@
 <script src="{{asset('AdminBSB/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js')}}"></script>
 <!-- Custom Js -->
 <script src="{{asset('AdminBSB/js/pages/tables/jquery-datatable.js')}}"></script>
+
+<script>
+    <?php foreach($serviceList as $row):?>
+    $('#deleteRequest{{$row->id}}').click(function (e) {
+        e.preventDefault();
+        if(window.confirm("Are you sure? All data will be lost.")){
+            var id = $(this).data('id');
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url:'/Service/delete/'+id,
+                type:'delete',
+                data: {'id': id,'_token': '{{csrf_token()}}'},
+                success: function (e) {
+                    if (e == "OK") {
+                        alert("Your Requests have been successfully cancelled");
+                        location.reload();
+                    }
+                },
+                error: function (e) {
+                    alert("Error " + e.status);
+                }
+            })
+        }
+    });
+    <?php endforeach?>
+</script>
 
 @stop

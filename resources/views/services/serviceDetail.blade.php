@@ -265,5 +265,133 @@
         progressBar();
 	}
 
+    $("#deleteOpenPort").click(function (e) {
+        e.preventDefault();
+        if(window.confirm("Are you sure? All data will be lost.")) {
+            var id = $(this).data('id');
+            $.ajax({
+                url: '/OpenPort/delete/' + id,
+                type: 'delete',
+                data: {'id': id, '_token': '{{csrf_token()}}'},
+                success: function (e) {
+                    if (e == "OK") {
+                        alert("Your Requests have been successfully cancelled");
+                        window.location = "../openport";
+                    }
+                },
+                error: function (e) {
+                    alert("Error " + e.status);
+                }
+            })
+        }
+    });
+
+    $("#deleteDeviceConnection").click(function (e) {
+        e.preventDefault();
+        if(window.confirm("Are you sure? All data will be lost.")) {
+            var id = $(this).data('id');
+            $.ajax({
+                url: '/deviceConnection/delete/' + id,
+                type: 'delete',
+                data: {'id': id, '_token': '{{csrf_token()}}'},
+                success: function (e) {
+                    if (e == "OK") {
+                        alert("Your Requests have been successfully cancelled");
+                        window.location = "../deviceConnection";
+                    }
+                },
+                error: function (e) {
+                    alert("Error " + e.status);
+                }
+            })
+        }
+    });
+
+    $("#deleteH2H").click(function (e) {
+        e.preventDefault();
+        if(window.confirm("Are you sure? All data will be lost.")) {
+            var id = $(this).data('id');
+            $.ajax({
+                url: '/H2H/delete/' + id,
+                type: 'delete',
+                data: {'id': id, '_token': '{{csrf_token()}}'},
+                success: function (e) {
+                    if (e == "OK") {
+                        alert("Your Requests have been successfully cancelled");
+                        window.location = "../H2H";
+                    }
+                },
+                error: function (e) {
+                    alert("Error " + e.status);
+                }
+            })
+        }
+    });
+
+    $("#deleteLAN").click(function (e) {
+        e.preventDefault();
+        if(window.confirm("Are you sure? All data will be lost.")) {
+            var id = $(this).data('id');
+            $.ajax({
+                url: '/LAN/delete/' + id,
+                type: 'delete',
+                data: {'id': id, '_token': '{{csrf_token()}}'},
+                success: function (e) {
+                    if (e == "OK") {
+                        alert("Your Requests have been successfully cancelled");
+                        window.location = "../LAN";
+                    }
+                },
+                error: function (e) {
+                    alert("Error " + e.status);
+                }
+            })
+        }
+    });
+
+    $("#deleteRemoteAccess").click(function (e) {
+        e.preventDefault();
+        if(window.confirm("Are you sure? All data will be lost.")) {
+            var id = $(this).data('id');
+            $.ajax({
+                url: '/remoteAccess/delete/' + id,
+                type: 'delete',
+                data: {'id': id, '_token': '{{csrf_token()}}'},
+                success: function (e) {
+                    if (e == "OK") {
+                        alert("Your Requests have been successfully cancelled");
+                        window.location = "../remoteAccess";
+                    }
+                },
+                error: function (e) {
+                    alert("Error " + e.status);
+                }
+            })
+        }
+    })
+
+    $("#deleteASDelivery").click(function (e) {
+        e.preventDefault();
+        if(window.confirm("Are you sure? All data will be lost.")) {
+            var id = $(this).data('id');
+            $.ajax({
+                url: '/ASDelivery/delete/' + id,
+                type: 'delete',
+                data: {'id': id, '_token': '{{csrf_token()}}'},
+                success: function (e) {
+                    if (e == "OK") {
+                        alert("Your Requests have been successfully cancelled");
+                        window.location = "../ASDelivery";
+                    }
+                },
+                error: function (e) {
+                    alert("Error " + e.status);
+                }
+            })
+        }
+    })
+
+
+
 </script>
 @stop

@@ -44,7 +44,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="isi" class="form-control">Content</label>
-                                <textarea class="form-control" id="isi" style="border: solid #DADADA 1px; padding: 10px; height: 300px; y-overflow: scroll; resize: none">{{$article->isi}}</textarea>
+                                <textarea class="form-control" id="summernote" style="border: solid #DADADA 1px; padding: 10px; height: 300px; y-overflow: scroll; resize: none">{{$article->isi}}</textarea>
                             </div>
                         </div>
                         
@@ -69,15 +69,24 @@
 <script src="{{asset('AdminBSB/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js')}}"></script>
 <!-- Custom Js -->
 <script src="{{asset('AdminBSB/js/pages/tables/jquery-datatable.js')}}"></script>
+
+<!-- Summernote plugin-->
+<link href="{{asset('Summernote/summernote-lite.css')}}" rel="stylesheet">
+<script src="{{asset('Summernote/summernote-lite.js')}}"></script>
 <script>
     $(document).ready(
         function(){
+            $('#summernote').summernote({
+                placeholder:"Type here...",
+                height:300
+            });
+
             $("#btnUpdate").click(function(e){
                 e.preventDefault();
                 var data = {};
                 data['id'] = $("#id").html();
                 data['judul'] = $("#judul").val();
-                data['isi'] = $("#isi").val();
+                data['isi'] = $("#summernote").val();
                 $.ajax({
                     url: "./update",
                     type: 'post',

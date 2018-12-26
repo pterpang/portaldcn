@@ -66,8 +66,14 @@
 										<td align="center">
 											<a href="{{Request::url() . '/' . $row->id}}" class="btn bg-green">
 												<i class="material-icons" style="margin-right: 5px">remove_red_eye</i>View
-											</a>											
-										</td>										
+											</a>
+                                            <?php if (Auth::user()->name == "guest"): ?>
+											<a class="btn bg-red btn-lg" href="#" id="deleteArticle{{$row->id}}" data-id="{{$row->id}}" style="margin-top: 3%">
+												<i class="material-icons" style="margin-right: 5px">cancel</i>Delete
+											</a>
+                                            <?php endif ?>
+										</td>
+
 									<?php endforeach ?>
 								</tbody>
 							</table>
@@ -88,5 +94,36 @@
 <script src="{{asset('AdminBSB/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js')}}"></script>
 <!-- Custom Js -->
 <script src="{{asset('AdminBSB/js/pages/tables/jquery-datatable.js')}}"></script>
+
+<script>
+    <?php foreach($articleList as $row):?>
+    $('#deleteArticle{{$row->id}}').click(function (e) {
+        e.preventDefault();
+        if(window.confirm("Are you sure? All data will be lost.")){
+            var id = $(this).data('id');
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url:'/article/delete/'+id,
+                type:'delete',
+                data: {'id': id,'_token': '{{csrf_token()}}'},
+                success: function (e) {
+                    if (e == "OK") {
+                        alert("The article have been successfully deleted");
+                        location.reload();
+                    }
+                },
+                error: function (e) {
+                    alert("Error " + e.status);
+                }
+            })
+        }
+    });
+    <?php endforeach?>
+</script>
 
 @stop

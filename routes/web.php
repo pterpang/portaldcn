@@ -60,6 +60,7 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::get('/article/{id}', 'ArticleController@read');
 	Route::get('/article/{id}/edit', 'ArticleController@edit');
 	Route::post('/article/{id}/update', 'ArticleController@update');
+	Route::delete('article/delete/{id}', 'ArticleController@destroy');
 	
 		// Route::resource('article', 'ArticleController');
 
@@ -91,9 +92,6 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::post('IB/ASDelivery/{id}/edit', 'AdditionalController@updateService');
 	Route::get('IB/deviceConnection/{id}/edit', 'IBController@editDeviceConnection');
 	Route::post('IB/deviceConnection/{id}/edit', 'AdditionalController@updateService');
-
-
-
 
 	Route::resource('IB', 'IBController');
 
@@ -152,6 +150,15 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::get('myRequests/ASDelivery/{id}', 'MyRequestsController@showASDelivery');
 	Route::get('myRequests/deviceConnection/{id}', 'MyRequestsController@showDeviceConnection');
 	Route::get('myRequests/remoteAccess/{id}', 'MyRequestsController@showRA');
+
+	//delete
+    Route::delete('Service/delete/{id}','TaskController@deleteRequest');
+    Route::delete('OpenPort/delete/{id}', 'TaskController@deleteOpenPort');
+    Route::delete('deviceConnection/delete/{id}', 'TaskController@deleteDeviceConnection');
+    Route::delete('LAN/delete/{id}', 'TaskController@deleteLAN');
+    Route::delete('H2H/delete/{id}', 'TaskController@deleteH2H');
+    Route::delete('remoteAccess/delete/{id}', 'TaskController@deleteRemoteAccess');
+    Route::delete('ASDelivery/delete/{id}', 'TaskController@deleteASDelivery');
 
 	// Editing My Request
 	Route::get('myRequests/openport/{id}/edit', 'MyRequestsController@editOpenport');
@@ -253,6 +260,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/survey','SurveyController@create')->name('survey');
     Route::post('/survey/insert','SurveyController@store')->name('newSurvey');
     Route::get('/survey/surveyList','SurveyController@index')->name('surveyList');
+    Route::delete('survey/delete/{id}','SurveyController@destroy');
 
 	Route::post('/sla/{id}/update','SLAController@update');
     Route::resource('/sla', 'SLAController');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\AdditionalHelper;
+use App\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -192,4 +193,81 @@ class TaskController extends Controller
         }
     }
 
+    public function deleteRequest($id)
+    {
+        try{
+            $asdId = Aplication_Service_Delivery::select('id')->where('service_id','=',$id)->first();
+
+            Form_Load_Balancer::where('aplication_service_deliveries_id','=',$asdId["id"])->delete();
+            Form_Application_Acceleration::where('aplication_service_deliveries_id','=',$asdId["id"])->delete();
+            Form_Web_Application_Firewall::where('aplication_service_deliveries_id','=',$asdId["id"])->delete();
+            Form_Multiple_Active_Data_Center::where('aplication_service_deliveries_id','=',$asdId["id"])->delete();
+
+            Form_Open_Port::where('service_id', '=', $id)->delete();
+            Form_Koneksi_Device_ke_Jaringan::where('service_id', '=', $id)->delete();
+            Form_Host_to_Host::where('service_id', '=', $id)->delete();
+            Form_Permohonan_Koneksi_Lan::where('service_id', '=', $id)->delete();
+            Form_Pendaftaran_Remote_Access::where('service_id', '=', $id)->delete();
+            Aplication_Service_Delivery::where('service_id', '=', $id)->delete();
+
+            $request = Service::find($id);
+            $request->delete();
+
+            echo "OK";
+        }
+        catch (Exception $e){
+            echo "Error ".$e->getMessage();
+        }
+    }
+
+    public function deleteOpenPort($id)
+    {
+        //Form_Open_Port::find($id)->delete();
+        Form_Open_Port::where('service_id', '=', $id)->delete();
+
+        echo "OK";
+    }
+
+    public function deleteDeviceConnection($id)
+    {
+        //Form_Koneksi_Device_ke_Jaringan::find($id)->delete();
+        Form_Koneksi_Device_ke_Jaringan::where('service_id', '=', $id)->delete();
+
+        echo "OK";
+    }
+
+    public function deleteH2H($id)
+    {
+        //Form_Host_to_Host::find($id)->delete();
+        Form_Host_to_Host::where('service_id', '=', $id)->delete();
+
+        echo "OK";
+    }
+
+    public function deleteLAN($id)
+    {
+        //Form_Permohonan_Koneksi_Lan::find($id)->delete();
+        Form_Permohonan_Koneksi_Lan::where('service_id', '=', $id)->delete();
+
+        echo "OK";
+    }
+
+    public function deleteRemoteAccess($id){
+        Form_Pendaftaran_Remote_Access::where('service_id', '=', $id)->delete();
+
+        echo "OK";
+    }
+
+    public function deleteASDelivery($id)
+    {
+        $asdId = Aplication_Service_Delivery::select('id')->where('service_id','=',$id)->first();
+        Form_Load_Balancer::where('aplication_service_deliveries_id','=',$asdId["id"])->delete();
+        Form_Application_Acceleration::where('aplication_service_deliveries_id','=',$asdId["id"])->delete();
+        Form_Web_Application_Firewall::where('aplication_service_deliveries_id','=',$asdId["id"])->delete();
+        Form_Multiple_Active_Data_Center::where('aplication_service_deliveries_id','=',$asdId["id"])->delete();
+
+        Aplication_Service_Delivery::find($asdId["id"])->delete();
+
+        echo "OK";
+    }
 }

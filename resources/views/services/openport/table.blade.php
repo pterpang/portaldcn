@@ -23,8 +23,11 @@
 								<i class="material-icons" style="margin-right: 5px">hourglass_full</i>On progress
 							</a>
 						<?php endif ?>	
-							<a class="btn bg-teal" href="{{Request::URL()}}/edit" id="atoedit" id="atoedit">
+							<a class="btn bg-teal" href="{{Request::URL()}}/edit" id="atoedit">
 								<i class="material-icons" style="margin-right: 5px">edit</i>Edit
+							</a>
+							<a class="btn bg-red" href="#" id="deleteOpenPort" data-id="{{$serviceDetail->Form_Open_Port[0]->service_id}}">
+								<i class="material-icons" style="margin-right: 5px">cancel</i>Delete
 							</a>
 					</div>			
 				</div>
