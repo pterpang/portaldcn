@@ -61,6 +61,7 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::get('/article/{id}/edit', 'ArticleController@edit');
 	Route::post('/article/{id}/update', 'ArticleController@update');
 	Route::delete('article/delete/{id}', 'ArticleController@destroy');
+	Route::get('/read', 'ArticleController@listArticle');
 	
 		// Route::resource('article', 'ArticleController');
 

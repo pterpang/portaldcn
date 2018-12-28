@@ -19,6 +19,7 @@ class CreateArticlesTable extends Migration
 			$table->string('judul');
             $table->string('image');
             $table->longText('isi');
+            $table->string('prioritas')->nullable();
         });
     }
 

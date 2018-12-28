@@ -14,8 +14,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articleList = Article::all()->sortByDesc('created_at');
-        $activeClasses = ['article_active', 'article_requestlist_active'];
+        $articleList = Article::all()->sortByDesc('created_at')->sortBy('prioritas');
+        $activeClasses = ['artl_active','article_active', 'article_requestlist_active'];
         $i = 0;
         return view('article.index', compact('activeClasses', 'articleList'));
     }
@@ -33,8 +33,9 @@ class ArticleController extends Controller
 
     public function listArticle()
     {
-        $articleList = Article::all()->sortByDesc('created_at');
-        $activeClasses = ['artl_active', 'articleList_active'];
+        $articleList = Article::all()->sortByDesc('created_at')->sortBy('prioritas');
+        //$activeClasses = ['artl_active', 'articleList_active'];
+        $activeClasses = ['artlList_active'];
         //$i = 0;
         return view('article.articleList', compact('activeClasses', 'articleList'));
     }

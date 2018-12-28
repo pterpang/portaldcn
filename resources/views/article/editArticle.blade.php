@@ -46,6 +46,14 @@
                                 <label for="isi" class="form-control">Content</label>
                                 <textarea class="form-control" id="summernote" style="border: solid #DADADA 1px; padding: 10px; height: 300px; y-overflow: scroll; resize: none">{{$article->isi}}</textarea>
                             </div>
+                            <div class="form-group">
+                                <label for="priority" class="form-control">Priority</label>
+                                <select required="true" id="priority" class="form-control" name="priority" >
+                                    <option value="" {{$article->prioritas == ""? 'selected=selected':''}}>-- Select Priority --</option>
+                                    <option value="High" {{$article->prioritas == "High"? 'selected=selected':''}}>High</option>
+                                    <option value="Low" {{$article->prioritas == "Low"? 'selected=selected':''}}>Low</option>
+                                </select>
+                            </div>
                         </div>
                         
                     </form>
@@ -87,6 +95,7 @@
                 data['id'] = $("#id").html();
                 data['judul'] = $("#judul").val();
                 data['isi'] = $("#summernote").val();
+                data['prioritas'] = $("#priority").val();
                 $.ajax({
                     url: "./update",
                     type: 'post',

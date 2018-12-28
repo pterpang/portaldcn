@@ -370,7 +370,7 @@
                                                    
                         </ul>
                     </li>
-                    <!--li class="ml-mainmenu  @yield('artl_active')">
+                    <li class="ml-mainmenu  @yield('artl_active')">
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">library_books</i>
                             <span class="mainmenu-title">Article</span>
@@ -382,14 +382,14 @@
                                     <span class="submenu-title">New Article</span>
                                 </a>
                             </li>
-                            <!--li class="@yield('articleList_active')">
-                                <a href="{{URL::to('/listArticle/')}}">
+                            <li class="@yield('article_active')">
+                                <a href="{{URL::to('article')}}">
                                     <i class="material-icons">library_books</i>
                                     <span class="submenu-title">All Articles</span>
                                 </a>
                             </li>
                         </ul>
-                    </li-->
+                    </li>
                     <li class="ml-mainmenu @yield('surveyList_active')">
                         <a href="{{URL::to('/survey/surveyList')}}">
                             <i class="material-icons">list</i>
@@ -571,8 +571,9 @@
 							<span class="mainmenu-title">My Requests</span>
 						</a>
 					</li>	
-                    <li class="ml-mainmenu  @yield('article_active')">
-                        <a href="{{ URL::to('article') }}">
+                    <li class="ml-mainmenu  @yield('artlList_active')">
+                        <!--a href="{{ URL::to('article') }}"-->
+                        <a href="{{ URL::to('read') }}">
                             <i class="material-icons">library_books</i>
                             <span class="mainmenu-title">Articles</span>
                         </a>
