@@ -80,31 +80,20 @@ active
 							<table id="metaTable">
 								<tr>
 									<td>Remedy<span style="color: red">*</span></td>
-									<td style="padding-left: 20px">
-										<table>
-											<tr>
-												<td><input type="text" style="width: 421px" class="form-control" name="no_remedy" id="no_remedy" placeholder="Last 6 digits"/>
-												</td>
-												<td>&nbsp;</td>
-												<td>
-													<button class="btn bg-teal" id="btnCheck" style="width: 76px">CHECK</button>
-													<!-- <label id="no_remedy-error" class="error" for="no_remedy"></label> -->
-												</td>
-											</tr>
-										</table>
-										
+									<td style="padding-left: 20px; padding-top: 10px">
+										<input type="text" class="form-control" name="no_remedy" id="no_remedy" placeholder="Change Number"/>
 									</td>
 								</tr>
 								<tr>
 									<td>Description<span style="color: red">*</span></td>
 									<td style="padding-left: 20px; padding-top: 10px">
-										<textarea class="w500 form-control" style="resize: none" rows="3" name="project_name" id="project_name" disabled="disabled" placeholder="Project Name"></textarea>
+										<textarea class="w500 form-control" style="resize: none" rows="3" name="project_name" id="project_name" placeholder="Project Name"></textarea>
 									</td>
 								</tr>
 								<tr>
 									<td>Categories<span style="color: red">*</span></td>
 									<td style="padding-left: 20px; padding-top: 10px">
-										<select required="true" id="category" class="w500 form-control" name="metaCategories" disabled="disabled">
+										<select required="true" id="category" class="w500 form-control" name="metaCategories">
 											<option value="">-- Select Category --</option>	
 											<?php foreach ($categories as $row): ?>
 												<option value="{{$row->id}}">{{$row->description}}</option>	
@@ -135,7 +124,7 @@ active
 
 								<tr>
 									<td colspan="2" style="padding-top: 20px">
-										<button class="btn bg-teal form-control" id="btnCreate" style="display: none">CREATE</button>
+										<button class="btn bg-teal form-control" id="btnCreate">CREATE</button>
 										<button class="btn bg-orange form-control" id="btnResetAll" style="display:none">RESET ALL</button>
 									</td>
 								</tr>
@@ -1040,8 +1029,8 @@ active
 			$("#category").val("");
 			$("#no_remedy").removeAttr("readonly");
 			$("#no_remedy").css("background", "none");
-			$("#btnCreate").css("display", "none");
-			$("textarea, select").attr("disabled", "disabled");
+			// $("#btnCreate").css("display", "none");
+			// $("textarea, select").attr("disabled", "disabled");
 
 
 			$(".panel-openport, .panel-hosttohost, .panel-remoteaccess").on('change', '.tdPortType', function(){
