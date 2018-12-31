@@ -140,7 +140,12 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        Article::find($id)->delete();
+        $request = Article::find($id);
+        $fileName = $request->image;
+        if(file_exists('uploads/images/article/'.$fileName)){
+            unlink('uploads/images/article/'.$fileName);
+        }
+        $request->delete();
 
         echo "OK";
     }
