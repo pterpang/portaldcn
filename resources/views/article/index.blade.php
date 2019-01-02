@@ -68,11 +68,11 @@
 											<a href="{{Request::url() . '/' . $row->id}}" class="btn bg-green">
 												<i class="material-icons" style="margin-right: 5px">remove_red_eye</i>View
 											</a>
-                                            <!--?php if (Auth::user()->name == "portaldcn"): ?-->
+                                            <?php if (Auth::user()->name == "portaldcn"): ?>
 											<a class="btn bg-red btn-lg" href="#" id="deleteArticle{{$row->id}}" data-id="{{$row->id}}" style="margin-top: 3%">
 												<i class="material-icons" style="margin-right: 5px">cancel</i>Delete
 											</a>
-                                            <!--?php endif ?-->
+                                            <?php endif ?>
 										</td>
                                         <td>{{$row->prioritas}}</td>
 
