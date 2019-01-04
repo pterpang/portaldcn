@@ -59,7 +59,7 @@ class NetsecController extends Controller
     {
 		$serviceList= Service::with('Form_Open_Port')->where('category', 5) ->get(); 
         $activeClasses = ['netsec_active', 'netsec_services_active', 'netsec_openport_active'];
-        $category = "openport";
+        $category = "openPort";
         return view('services.serviceList', compact('activeClasses', 'serviceList', 'category'));
     }
 	

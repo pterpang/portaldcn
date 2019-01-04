@@ -211,5 +211,23 @@
 		//var expectedFinishDate = new Date(2018,11,10,15,33,00);
 		//var startDate = new Date(2018,11,10,15,30,00);
 
+		$("#deleteOpenPort").click(function (e) {
+			e.preventDefault();
+            if(window.confirm("Are you sure? All data will be lost.")) {
+                var id = $(this).data('id');
+                $.ajax({
+                    url: '/OpenPort/delete/' + id,
+                    type: 'delete',
+                    data: {'id': id, '_token': '{{csrf_token()}}'},
+                    success: function (e) {
+                        if (e == "OK") {
+                            alert("Your Requests have been successfully cancelled");
+                            window.location = "../myRequests";
+                        }
+                    }
+                })
+            }
+        })
+
 	</script>
 @stop
