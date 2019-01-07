@@ -34,26 +34,20 @@
 									<tr>
 										<th>No</th>	
 										<th>Layanan</th>	
-										<th>Lama Kerja</th>	
+										<!--th>Lama Kerja</th-->
 										<th>Tingkat Keberhasilan</th>
-										<th>Action</th>								
+										<!--th>Action</th-->
 									</tr>
 								</thead>
 								<tbody>
-									<?php $i = 1; ?>
-									<?php foreach ($slaList as $row): ?>
+									<?php for($i=0;$i<6;$i++):?>
 									<tr>
-										<td>{{$i++}}</td>
-										<td>{{$row->description}}</td>
-										<td>{{$row->lama_kerja}}</td>
-										<td>{{number_format((float)$row->tingkat_keberhasilan, 2, '.', '')}}%</td>													
-										<td align="center">
-											<a href="{{Request::url() . '/' . $row->id . '/edit'}}" class="btn bg-green">
-												<i class="material-icons" style="margin-right: 5px">edit</i>Edit
-											</a>
-										</td>
+										<td>{{$i+1}}</td>
+										<td>{{$slaCategory[$i]}}</td>
+										<td>{{$slaList[$i]}}</td>
 									</tr>
-									<?php endforeach ?>
+									<?php endfor?>
+
 								</tbody>
 							</table>
 							
