@@ -28,10 +28,6 @@
 	background: white;
 }
 
-.panel-group{
-	margin-bottom: 0px;
-}
-
 label.error{
 	color: red;
 	font-weight: normal;
@@ -1151,6 +1147,11 @@ active
 			$("#btnCreate").click(function(e){
 				e.preventDefault();
 
+				if($.trim($("#project_name").val())==""){
+                    toastr.warning("Please Fill The Description");
+                    return false;
+				}
+
 				if($("input.services:checkbox:checked").length == 0){
 					toastr.warning("Please Choose the Services");
 					return false;
@@ -1188,6 +1189,7 @@ active
 					}
 					if( $("#ApplicationServiceDelivery:checked").length > 0 ){
 						$("#panel-asd").show();
+						$("#submitCard").hide();
 						$("#panel-asd").find("a").prop("href", "#");
 					}
 					if( $("#RemoteAccess:checked").length > 0 ){
@@ -1231,6 +1233,8 @@ active
 
 			$("#btnChoose").click(function(e){
 				e.preventDefault();
+
+				$("#submitCard").show();
 
 				if($("input.asdService:checkbox:checked").length == 0){
 					toastr.warning("Please Choose the Services");
@@ -1404,6 +1408,7 @@ active
 
 		    $("#btnSubmit").click(function(e){
 		    	e.preventDefault();
+
 		    	opForm = [];
 		    	var arr = {};
     			arr['no_remedy'] = $("#no_remedy").val();
@@ -1421,6 +1426,7 @@ active
 		    	aaArr = {};
 		    	madcArr = {};
 		    	errFlag = 0;
+
 		    	// $("input[name=checked-panel]:visible").each(function(){
 		    	$(".mainPanel:visible").each(function(){		    		
 		    		// open port
@@ -1599,6 +1605,10 @@ active
 
 		    		//ASD
 		    		if($(this).attr('sign') == 'dtcb4'){
+                        if($("input.asdService:checkbox:checked").length == 0){
+                            toastr.warning("Please Choose the Services");
+                            return false;
+                        }
 		    			asdArr['lokasi'] = "";
 		    			asdArr['service_aplikasi'] = "";
 		    			$("input[name=asdLokasi]:checked").each(function(){
@@ -1617,6 +1627,13 @@ active
 			    				lbArr['persistence'] = panelASD.find(".lb_persistence").first().val();	
 			    				lbArr['metode'] = panelASD.find(".lb_metode").first().val();				
 			    				lbArr['keterangan'] = panelASD.find(".lb_keterangan").first().val();
+
+			    				if(lbArr['ip_server']=='' || lbArr['ip_load_balancer'] == '' || lbArr['port'] =='' ||
+                                    lbArr['url'] =='' || lbArr['ssl'] == '' || lbArr['persistence'] == '' ||
+                                    lbArr['metode'] == '' || lbArr['keterangan'] == ''){
+			    				    alert('Please fill all the required fields!');
+									die();
+								}
 			    				panelASD.find('input[name="lb_SSL"]').each(function(){
 									if( $(this).is(':checked') ){
 										lbArr['ssl'] = $(this).val();
@@ -1636,7 +1653,14 @@ active
 			    				wafArr['ip_server_lb'] = panelASD.find(".waf_ip_server").first().val();
 			    				wafArr['port'] = panelASD.find(".waf_port").first().val();					
 			    				wafArr['source_ip'] = panelASD.find(".waf_source").first().val();	
-			    				wafArr['url'] = panelASD.find(".waf_url").first().val();	
+			    				wafArr['url'] = panelASD.find(".waf_url").first().val();
+
+			    				if(wafArr['ip_server_lb'] == '' || wafArr['port'] == '' || wafArr['source_ip'] =='' ||
+                                    wafArr['url'] == ''){
+                                    alert('Please fill all the required fields!');
+                                    die();
+								}
+
 			    				panelASD.find('input[name="waf_ssl"]').each(function(){
 									if( $(this).is(':checked') ){
 										wafArr['ssl'] = $(this).val();
@@ -1649,7 +1673,12 @@ active
 			    				aaArr['ip_server_lb'] = panelASD.find(".aa_ip_server").first().val();
 			    				aaArr['port'] = panelASD.find(".aa_port").first().val();					
 			    				aaArr['url'] = panelASD.find(".aa_url").first().val();	
-			    				// aaArr['ssl'] = panelASD.find(".aa_ssl").first().val();	
+			    				// aaArr['ssl'] = panelASD.find(".aa_ssl").first().val();
+
+								if(aaArr['ip_server_lb'] =='' || aaArr['port'] =='' || aaArr['url'] ==''){
+                                    alert('Please fill all the required fields!');
+                                    die();
+								}
 			    				
 			    				panelASD.find('input[name="aa_ssl"]').each(function(){
 									if( $(this).is(':checked') ){
@@ -1665,6 +1694,12 @@ active
 			    				madcArr['url'] = panelASD.find(".madc_url").first().val();				
 			    				madcArr['metode'] = panelASD.find(".madc_metode").first().val();				
 			    				madcArr['keterangan'] = panelASD.find(".madc_keterangan").first().val();
+
+			    				if(madcArr['ip_server_lb']=='' || madcArr['port'] =='' || madcArr['url'] == '' ||
+                                    madcArr['metode'] == '' || madcArr['keterangan'] == ''){
+                                    alert('Please fill all the required fields!');
+                                    die();
+								}
 			    				panelASD.find('input[name="madc_lokasi"]').each(function(){
 									if( $(this).is(':checked') ){
 										madcArr['lokasi'] = $(this).val();
