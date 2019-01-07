@@ -1151,6 +1151,11 @@ active
 			$("#btnCreate").click(function(e){
 				e.preventDefault();
 
+				if($.trim($("#project_name").val())==""){
+                    toastr.warning("Please Fill The Description");
+                    return false;
+				}
+
 				if($("input.services:checkbox:checked").length == 0){
 					toastr.warning("Please Choose the Services");
 					return false;

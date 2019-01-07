@@ -68,4 +68,15 @@
 <!-- Custom Js -->
 <script src="{{asset('AdminBSB/js/pages/tables/jquery-datatable.js')}}"></script>
 
+<script src="{{asset('AdminBSB/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('AdminBSB/plugins/jquery-datatable/extensions/export/buttons.flash.min.js')}}"></script>
+<script src="{{asset('AdminBSB/plugins/jquery-datatable/extensions/export/jszip.min.js')}}"></script>
+<script src="{{asset('AdminBSB/plugins/jquery-datatable/extensions/export/pdfmake.min.js')}}"></script>
+<script src="{{asset('AdminBSB/plugins/jquery-datatable/extensions/export/vfs_fonts.js')}}"></script>
+<script src="{{asset('AdminBSB/plugins/jquery-datatable/extensions/export/buttons.html5.min.js')}}"></script>
+<script src="{{asset('AdminBSB/plugins/jquery-datatable/extensions/export/buttons.print.min.js')}}"></script>
+<script src="{{asset('AdminBSB/plugins/jquery-datatable/extensions/ranged_dates.js')}}"></script>
+
+
+
 @stop
